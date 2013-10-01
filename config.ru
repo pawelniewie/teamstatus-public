@@ -24,6 +24,7 @@ if ENV['REDISCLOUD_URL']
 	Split.redis = ENV["REDISCLOUD_URL"]
 end
 
+Split.redis.namespace = "split:teamstatus"
 Split::Dashboard.use Rack::Auth::Basic do |username, password|
   username == 'pawel' && password == 'dupaJasiu'
 end
