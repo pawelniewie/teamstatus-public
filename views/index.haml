@@ -1,0 +1,36 @@
+- content_for(:head) do
+  != stylesheet_tag "index"
+- content_for(:scripts) do
+  :javascript
+    mixpanel.track("Home");
+
+.container-narrow
+  .header
+    %ul.nav.nav-pills.pull-right
+      %li.active
+        %a{:href => "/"} Home
+      %li
+        %a{:href => "/how-to-setup-self-updating-mac-app-in-5-minutes"} How to
+      %li
+        %a{:href => "mailto:pawelniewiadomski@me.com"} Contact
+    %h3.text-muted TeamStatus.TV
+  %hr/
+  .jumbotron
+    %h1=ab_test("header", "Develop self updating Mac app in 5 minutes!", "Build and host self updating Mac app in 5 minutes!", "Easy updates hosting for Sparkle!")
+    %p.lead=ab_test("subheader", "You want to focus on your app, I get it! That's why I prepared this super easy way to handle automatic updates for all your users!", "This site lets your host and publish new versions of your Mac app. Build it and we do the rest!")
+    %p
+      %a.btn.btn-lg.btn-success{:href => url('/auth/facebook')}=ab_test("login", "Try it out with Facebook login", "Click for a free trial", "Try it out for free")
+  .row.marketing
+    .col-lg-6
+      %h4 Based on proven technology
+      %p This site is using Sparkle the most popular self-updating framework for Mac
+      %h4 Customized
+      %p You'll get a customized Sparkle that requires no effort to integrate it with your project
+    .col-lg-6
+      %h4 Fast
+      %p The whole setup shouldn't take you more than 5 minutes
+      %h4 Fresh
+      %p A special link will return the latest version for your app - right to use on your product page
+  %hr/
+  .footer
+    %p &copy; Pawel Niewiadomski 2013

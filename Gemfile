@@ -6,9 +6,16 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "sinatra-support"
 gem "haml"
+gem "sass", :require => "sass"
+gem "compass"
 gem "puma"
+gem 'sprockets'
+gem 'sprockets-helpers'
+gem 'sprockets-sass'
+gem "yui-compressor"
+gem 'activesupport'
 gem 'rack-google-analytics'
-gem "split",  github: "andrew/split"
+gem "split",  github: "pawelniewie/split"
 
 group :development do
 	gem 'sinatra-reloader'

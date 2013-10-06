@@ -2,3 +2,5 @@
 .env
 vendor/install
 .bundle
+dump.rdb
+.sass-cache

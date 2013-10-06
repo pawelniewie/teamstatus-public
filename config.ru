@@ -16,8 +16,12 @@ end
 
 use Rack::Session::Cookie, :secret => ENV['COOKIE_SECRET']
 
+map App.assets_prefix do
+  run App.assets
+end
+
 map '/' do
-	run Sinatra::Application
+	run App
 end
 
 if ENV['REDISCLOUD_URL']
