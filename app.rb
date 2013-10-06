@@ -69,6 +69,7 @@ class App < Sinatra::Base
 
   post '/signup' do
     finished("template")
+    finished("twitter")
 
     email = params[:email]
     unless email.nil? || email.strip.empty?

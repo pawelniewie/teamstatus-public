@@ -1,36 +1,112 @@
 - content_for(:head) do
   != stylesheet_tag "index"
 - content_for(:scripts) do
+  !=javascript_tag('//cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js')
   :javascript
     mixpanel.track("Home");
 
-.container-narrow
-  .header
-    %ul.nav.nav-pills.pull-right
-      %li.active
-        %a{:href => "/"} Home
-      %li
-        %a{:href => "/how-to-setup-self-updating-mac-app-in-5-minutes"} How to
-      %li
-        %a{:href => "mailto:pawelniewiadomski@me.com"} Contact
-    %h3.text-muted TeamStatus.TV
-  %hr/
-  .jumbotron
-    %h1=ab_test("header", "Develop self updating Mac app in 5 minutes!", "Build and host self updating Mac app in 5 minutes!", "Easy updates hosting for Sparkle!")
-    %p.lead=ab_test("subheader", "You want to focus on your app, I get it! That's why I prepared this super easy way to handle automatic updates for all your users!", "This site lets your host and publish new versions of your Mac app. Build it and we do the rest!")
+.navbar-wrapper
+  .container
+    .navbar.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "#"} TeamStatus.TV
+/
+  Carousel
+  \==================================================
+#myCarousel.carousel.slide
+  / Indicators
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+  .carousel-inner
+    .item.active
+      %img{alt: "First slide", "data-src" => "holder.js/100%x500/auto/#777:#7a7a7a/text:First slide", src: "data:image/png;base64,"}/
+      .container
+        .carousel-caption
+          %h1 See progress of your project
+          %p Watch Bamboo builds, JIRA issues or Crucible reviews in one place.
+    .item
+      %img{alt: "Second slide", "data-src" => "holder.js/100%x500/auto/#777:#7a7a7a/text:Second slide", src: "data:image/png;base64,"}/
+      .container
+        .carousel-caption
+          %h1 See status of your systems
+          %p Watch processes, queues, disk space or memory usage in one place.
+    .item
+      %img{alt: "Third slide", "data-src" => "holder.js/100%x500/auto/#777:#7a7a7a/text:Third slide", src: "data:image/png;base64,"}/
+      .container
+        .carousel-caption
+          %h1 Adapt to your needs
+          %p Easily customize it to monitor all your systems.
+  %a.left.carousel-control{"data-slide" => "prev", href: "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-left
+  %a.right.carousel-control{"data-slide" => "next", href: "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-right
+
+.container.marketing
+  / Three columns of text below the carousel
+  .row
+    .col-lg-4
+      %img.img-circle{alt: "Generic placeholder image", "data-src" => "holder.js/140x140", src: "data:image/png;base64,"}/
+      %h2 For small
+      %p You can easily setup your first teamboard and check on your project within minutes, no coding required. You can easily integrate TeamStatus.TV with your Atlassian OnDemand account.
+    .col-lg-4
+      %img.img-circle{alt: "Generic placeholder image", "data-src" => "holder.js/140x140", src: "data:image/png;base64,"}/
+      %h2 For large
+      %p You can setup multiple teamboards for each of your teams, you can also allow multiple people to manage them. You can integrate with Atlassian OnDemand or you public instances.
+    .col-lg-4
+      %img.img-circle{alt: "Generic placeholder image", "data-src" => "holder.js/140x140", src: "data:image/png;base64,"}/
+      %h2 For enterprise
+      %p
+        You can setup VPN to access your internal system securely.
+        And if you don't like the idea of using cloud service
+        %a{:href => "mailto:enterprise@teamstatus.tv"} contact us
+        to discuss possibility of hosting TeamStatus.TV on your servers.
+
+  / START THE FEATURETTES
+  %hr.featurette-divider/
+  .row.featurette
+    .col-md-7
+      %h2.featurette-heading
+        First featurette heading.
+        %span.text-muted It'll blow your mind.
+      %p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+    .col-md-5
+      %img.featurette-image.img-responsive{alt: "Generic placeholder image", "data-src" => "holder.js/500x500/auto", src: "data:image/png;base64,"}/
+  %hr.featurette-divider/
+  .row.featurette
+    .col-md-5
+      %img.featurette-image.img-responsive{alt: "Generic placeholder image", "data-src" => "holder.js/500x500/auto", src: "data:image/png;base64,"}/
+    .col-md-7
+      %h2.featurette-heading
+        Oh yeah, it's that good.
+        %span.text-muted See for yourself.
+      %p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+  %hr.featurette-divider/
+  .row.featurette
+    .col-md-7
+      %h2.featurette-heading
+        And lastly, this one.
+        %span.text-muted Checkmate.
+      %p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+    .col-md-5
+      %img.featurette-image.img-responsive{alt: "Generic placeholder image", "data-src" => "holder.js/500x500/auto", src: "data:image/png;base64,"}/
+  %hr.featurette-divider/
+  / /END THE FEATURETTES
+  / FOOTER
+  %footer
+    %p.pull-right
+      %a{href: "#"} Back to top
     %p
-      %a.btn.btn-lg.btn-success{:href => url('/auth/facebook')}=ab_test("login", "Try it out with Facebook login", "Click for a free trial", "Try it out for free")
-  .row.marketing
-    .col-lg-6
-      %h4 Based on proven technology
-      %p This site is using Sparkle the most popular self-updating framework for Mac
-      %h4 Customized
-      %p You'll get a customized Sparkle that requires no effort to integrate it with your project
-    .col-lg-6
-      %h4 Fast
-      %p The whole setup shouldn't take you more than 5 minutes
-      %h4 Fresh
-      %p A special link will return the latest version for your app - right to use on your product page
-  %hr/
-  .footer
-    %p &copy; Pawel Niewiadomski 2013
+      \&#169; 2013 Pawel Niewiadomski
+      - if (twitter=ab_test("twitter", "none", "TeamStatusTV", "devonsteroids")) != "none"
+        \&#183;
+        %a{href: "http://twitter.com/#{twitter}"} Twitter
+      \&#183;
+      %a{href: "mailto:pawel@teamstatus.tv"} Contact us
+/ /.container
