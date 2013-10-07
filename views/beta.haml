@@ -12,7 +12,6 @@
 
   :javascript
     // <!-- Facebook share button -->
-
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
@@ -20,6 +19,14 @@
       js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+  :javascript
+    // <!-- Google Plus share button -->
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
 
 .navbar-wrapper
   .container
@@ -58,18 +65,11 @@
 
   %ul.social-list-small
     %li
-      %plusone{href: request.url, size: "medium"}
-      :javascript
-        // <!-- Google Plus share button -->
-        (function() {
-          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-          po.src = 'https://apis.google.com/js/plusone.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-        })();
+      %g:plusone{href: "http://teamstatus.tv/?template=haml", size: "medium"}
     %li
-      %a.twitter-share-button{"data-text" => "I just signed up for this:", "data-url" => request.url, href: "https://twitter.com/share"} Tweet
+      %a.twitter-share-button{"data-text" => "I just signed up for this:", "data-url" => "http://teamstatus.tv/?template=haml", href: "https://twitter.com/share"} Tweet
     %li
-      .fb-like{"data-font" => "arial", "data-href" => request.url, "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "90"}
+      .fb-like{"data-font" => "arial", "data-href" => "http://teamstatus.tv/?template=haml", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "90"}
       #fb-root
 
   #push
