@@ -67,6 +67,13 @@ class App < Sinatra::Base
     end
   end
 
+  get '/signup' do
+    finished("template")
+    finished("twitter")
+
+    haml :beta
+  end
+
   post '/signup' do
     finished("template")
     finished("twitter")
