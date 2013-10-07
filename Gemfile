@@ -12,6 +12,8 @@ gem "puma"
 gem 'sprockets'
 gem 'sprockets-helpers'
 gem 'sprockets-sass'
+gem "closure-compiler"
+gem "csso-rails"
 gem "yui-compressor"
 gem 'activesupport'
 gem 'rack-google-analytics'
