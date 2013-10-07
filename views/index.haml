@@ -26,19 +26,19 @@
     %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
   .carousel-inner
     .item.active
-      %img{alt: "First slide", "data-src" => "holder.js/100%x500/auto/#777:#7a7a7a/text:First slide", src: "data:image/png;base64,"}/
+      %img{alt: "JIRA integration", src: image_path("jiraboard.png")}/
       .container
         .carousel-caption
           %h1 See progress of your project
           %p Watch Bamboo builds, JIRA issues or Crucible reviews in one place.
     .item
-      %img{alt: "Second slide", "data-src" => "holder.js/100%x500/auto/#777:#7a7a7a/text:Second slide", src: "data:image/png;base64,"}/
+      %img{alt: "System integration", src: image_path("adminboard.png")}/
       .container
         .carousel-caption
           %h1 See status of your systems
           %p Watch processes, queues, disk space or memory usage in one place.
     .item
-      %img{alt: "Third slide", "data-src" => "holder.js/100%x500/auto/#777:#7a7a7a/text:Third slide", src: "data:image/png;base64,"}/
+      %img{alt: "Custom integration", src: image_path("customboard.png")}/
       .container
         .carousel-caption
           %h1 Adapt to your needs
@@ -52,53 +52,26 @@
   / Three columns of text below the carousel
   .row
     .col-lg-4
-      %img.img-circle{alt: "Generic placeholder image", "data-src" => "holder.js/140x140", src: "data:image/png;base64,"}/
+      %img.img-circle{alt: "Small team", src: image_path('small-team.png')}/
       %h2 For small
       %p You can easily setup your first teamboard and check on your project within minutes, no coding required. You can easily integrate TeamStatus.TV with your Atlassian OnDemand account.
+      %p
+        %a.btn.btn-default{href: "#"} Try it now »
     .col-lg-4
-      %img.img-circle{alt: "Generic placeholder image", "data-src" => "holder.js/140x140", src: "data:image/png;base64,"}/
+      %img.img-circle{alt: "Large enterprise", src: image_path('large-team.png')}/
       %h2 For large
       %p You can setup multiple teamboards for each of your teams, you can also allow multiple people to manage them. You can integrate with Atlassian OnDemand or you public instances.
-    .col-lg-4
-      %img.img-circle{alt: "Generic placeholder image", "data-src" => "holder.js/140x140", src: "data:image/png;base64,"}/
-      %h2 For enterprise
       %p
-        You can setup VPN to access your internal system securely.
-        And if you don't like the idea of using cloud service
-        %a{:href => "mailto:enterprise@teamstatus.tv"} contact us
-        to discuss possibility of hosting TeamStatus.TV on your servers.
+        %a.btn.btn-default{href: "#"} Try it now »
+    .col-lg-4
+      %img.img-circle{alt: "Enterprise", src: image_path('infinity.png')}/
+      %h2 For enterprise
+      %p You can setup VPN to access your internal system securely and if you don't like the idea of using cloud service there's a possibility of hosting TeamStatus.TV on your servers.
+      %p
+        %a.btn.btn-default{href: "#"} Contact us »
 
-  / START THE FEATURETTES
   %hr.featurette-divider/
-  .row.featurette
-    .col-md-7
-      %h2.featurette-heading
-        First featurette heading.
-        %span.text-muted It'll blow your mind.
-      %p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
-    .col-md-5
-      %img.featurette-image.img-responsive{alt: "Generic placeholder image", "data-src" => "holder.js/500x500/auto", src: "data:image/png;base64,"}/
-  %hr.featurette-divider/
-  .row.featurette
-    .col-md-5
-      %img.featurette-image.img-responsive{alt: "Generic placeholder image", "data-src" => "holder.js/500x500/auto", src: "data:image/png;base64,"}/
-    .col-md-7
-      %h2.featurette-heading
-        Oh yeah, it's that good.
-        %span.text-muted See for yourself.
-      %p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
-  %hr.featurette-divider/
-  .row.featurette
-    .col-md-7
-      %h2.featurette-heading
-        And lastly, this one.
-        %span.text-muted Checkmate.
-      %p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
-    .col-md-5
-      %img.featurette-image.img-responsive{alt: "Generic placeholder image", "data-src" => "holder.js/500x500/auto", src: "data:image/png;base64,"}/
-  %hr.featurette-divider/
-  / /END THE FEATURETTES
-  / FOOTER
+
   %footer
     %p.pull-right
       %a{href: "#"} Back to top
@@ -109,4 +82,4 @@
         %a{href: "http://twitter.com/#{twitter}"} Twitter
       \&#183;
       %a{href: "mailto:pawel@teamstatus.tv"} Contact us
-/ /.container
+
