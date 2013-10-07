@@ -1,9 +1,8 @@
 - content_for(:head) do
   != stylesheet_tag "index"
-  != stylesheet_tag "/public/css/main"
 - content_for(:scripts) do
   !=javascript_tag('//cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js')
-  !=javascript_tag("js/main.js")
+  !=javascript_tag("/js/main.js")
   :javascript
     mixpanel.track("Home");
 
@@ -45,16 +44,27 @@
 
 .container.marketing
 
+  .signup-invitation
+    %h1 Participate in our private beta!
+    We're currently running a closed beta program. Please leave your email and will contact you shortly.
+
   #notices
     #success{style: "display: none;"} Success! Please check your inbox for a confirmation request.
     #error{style: "display: none;"} Sorry, MailChimp couldn't validate your email. Try again?
-  %form.form-inline{action: "/signup"}
-    %input#email.input-xlarge{name: "email", placeholder: "Email me about the project", type: "text"}/
-    %button.btn.btn-success{type: "submit"} Subscribe
-  %p.signup-terms
-    You will receive only relevant, occasional messages, and your email
-    will be stored only by TeamStatus.TV, ensuring prompt removal should you
-    choose to unsubscribe.
+
+  %form{action: "/signup"}
+    .input-group
+      %input.form-control.input-lg#email{name: "email", placeholder: "Email me about the project", type: "text"}/
+      %span.input-group-btn
+        %button.btn.btn-success.input-lg{type: "submit"} Subscribe
+
+    %p.signup-terms
+      You will receive only relevant, occasional messages, and your email
+      will be stored only by TeamStatus.TV, ensuring prompt removal should you
+      choose to unsubscribe.
+
+  .discover
+    %h4 Help your friends discover this site!
 
   %ul.social-list-small
     %li
@@ -63,6 +73,8 @@
       %a.twitter-share-button{"data-text" => "I just signed up for this:", "data-url" => request.url, href: "https://twitter.com/share"} Tweet
     %li
       .fb-like{"data-font" => "arial", "data-href" => request.url, "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "90"}
+
+  #push
 
   %hr.featurette-divider/
 

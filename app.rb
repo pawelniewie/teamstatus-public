@@ -25,7 +25,7 @@ class App < Sinatra::Base
       config.allow_multiple_experiments = true
     end
 
-    %w{javascripts stylesheets images public/css public/js}.each do |type|
+    %w{javascripts stylesheets images}.each do |type|
       assets.append_path "assets/#{type}"
     end
 

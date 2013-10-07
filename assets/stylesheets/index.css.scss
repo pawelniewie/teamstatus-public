@@ -8,7 +8,55 @@ body {
   color: #5a5a5a;
 }
 
+/* SIGN UP
+-------------------------------------------------- */
 
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 60px;
+}
+
+#notices {
+  text-align: center;
+  min-height: 18px;
+  margin-top: 20px;
+}
+
+#success {
+  color: #40449B;
+}
+
+#error {
+  color: #E52228;
+}
+
+.signup-invitation, .discover {
+	text-align: center;
+}
+
+.discover {
+	margin-top: 50px;
+}
+
+form {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.signup-terms {
+	margin-top: 15px;
+}
+
+.social-list-small {
+    width: 90px;
+    min-height: 75px;
+    margin: 40px auto 0;
+    list-style-type: none;
+    list-style-position: outside;
+}
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
