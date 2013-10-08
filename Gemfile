@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 ruby '2.0.0'
 
-gem "hominid"
 gem "sinatra"
 gem "sinatra-contrib"
 gem "sinatra-support"
@@ -18,6 +17,7 @@ gem "yui-compressor"
 gem 'activesupport'
 gem 'rack-google-analytics'
 gem "split",  github: "pawelniewie/split"
+gem 'gibbon'
 
 group :development do
 	gem 'sinatra-reloader'

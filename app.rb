@@ -56,6 +56,12 @@ class App < Sinatra::Base
 
   helpers do
     include Sprockets::Helpers
+
+    def mailchimp
+      @gibbon ||= Gibbon::API.new(ENV['MAILCHIMP_KEY'])
+      @gibbon.throws_exceptions = false
+      return @gibbon
+    end
   end
 
   get '/' do
@@ -81,14 +87,14 @@ class App < Sinatra::Base
     email = params[:email]
     unless email.nil? || email.strip.empty?
 
-      mailchimp = Hominid::API.new(settings.mailchimp_api_key)
-      list_id = mailchimp.find_list_id_by_name(settings.mailchimp_list_name)
-      raise "Unable to retrieve list id from MailChimp API." unless list_id
+      list = mailchimp.lists.list({:filters => {:list_name => settings.mailchimp_list_name}})
+      raise "Unable to retrieve list id from MailChimp API." if list.nil? or list["status"] == "error"
+      raise "List not found from MailChimp API." if list["total"].to_i != 1
 
       # http://apidocs.mailchimp.com/api/rtfm/listsubscribe.func.php
       # double_optin, update_existing, replace_interests, send_welcome are all true by default (change as desired)
-      mailchimp.list_subscribe(list_id, email, {}, 'html', true, true, true, true)
-
+      status = mailchimp.lists.subscribe({:id => list["data"][0]["id"], :email => {:email => email}, :double_optin => true})
+      raise "Unable to add #{email} to list from MailChimp API." if status.nil? or status["status"] == "error"
     end
     "Success."
   end
