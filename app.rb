@@ -65,23 +65,10 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    version = ab_test("template", %w{haml erb})
-    if (version == "haml")
-      haml :index
-    else
-      erb :index
-    end
-  end
-
-  get '/signup' do
-    finished("template")
-    finished("twitter")
-
-    haml :beta
+    haml :index
   end
 
   post '/signup' do
-    finished("template")
     finished("twitter")
 
     email = params[:email]
