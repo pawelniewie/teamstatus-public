@@ -1,4 +1,4 @@
-module Common
+module TeamStatus
   module Helpers
 
   	def mailchimp

@@ -2,7 +2,11 @@ require 'rubygems'
 require 'bundler/setup'
 require 'split/dashboard'
 
-require './app'
+dir = File.dirname(__FILE__)
+$LOAD_PATH.unshift dir unless $LOAD_PATH.include?(dir)
+
+require 'teamstatus/public'
+require 'teamstatus/console'
 
 %w{COOKIE_SECRET MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_KEY GOOGLE_SECRET}.each do |var|
   abort("missing env var: please set #{var}") unless ENV[var]
@@ -16,13 +20,23 @@ end
 
 use Rack::Session::Cookie, :secret => ENV['COOKIE_SECRET']
 
-map App.assets_prefix do
-  run App.assets
+Mongoid.load!("config/mongoid.yml")
+
+map TeamStatus::PublicApp.assets_prefix do
+  run TeamStatus::PublicApp.assets
 end
 
 map '/' do
-	run App
+	run TeamStatus::PublicApp
 end
+
+# map '/console' do
+# 	run TeamStatus::ConsoleApp
+# end
+
+# map '/board' do
+# 	run TeamStatus::BoardApp
+# end
 
 if ENV['REDISCLOUD_URL']
 	Split.redis = ENV["REDISCLOUD_URL"]

@@ -1,0 +1,1 @@
+require "teamstatus/public/public.rb"

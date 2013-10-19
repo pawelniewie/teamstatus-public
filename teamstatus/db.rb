@@ -1,17 +1,36 @@
-Mongoid.load!("config/mongoid.yml")
+require "mongoid"
 
-class User
-	include Mongoid::Document
+module TeamStatus
+	module Database
 
-	# has_many :appcasts
+		class User
+			include Mongoid::Document
 
-	field :email, type: String
-	field :fullName, type: String
-	field :callingName, type: String
-	field :picture, type: String
-	field :googleToken, type: String
-	field :googleTokenExpires, type: Time
-	field :male, type: Boolean
+			has_many :boards
 
-	index({ email: 1 }, { unique: true })
+			field :email, type: String
+			field :fullName, type: String
+			field :callingName, type: String
+			field :picture, type: String
+			field :googleToken, type: String
+			field :googleTokenExpires, type: Time
+			field :male, type: Boolean
+
+			index({ email: 1 }, { unique: true })
+			index({ "_id" => 1, "boards.name" => 1 }, { unique: true })
+		end
+
+		class Board
+		    include Mongoid::Document
+
+				belongs_to :user
+		    # embeds_many :widgets
+
+		    field :name, type: String
+		    field :publicId, type: String
+
+		    index({ publicId: 1 }, { unique: true })
+		end
+
+	end
 end
