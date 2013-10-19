@@ -24,7 +24,6 @@ gem 'sprockets-helpers'
 gem 'sprockets-sass'
 gem "closure-compiler"
 gem "csso-rails"
-gem "yui-compressor"
 
 # Views
 gem "haml"
