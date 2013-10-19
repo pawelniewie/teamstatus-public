@@ -3,7 +3,48 @@
 - content_for(:scripts) do
   !=javascript_tag('//cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js')
   :javascript
-    mixpanel.track("Home");
+    mixpanel.track("Console");
+
+.navbar-wrapper
+  .container
+    .navbar.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "#"} TeamStatus.TV
 
 .container
-  Hello
+  %form.form-horizontal{role: "form"}
+    .form-group
+      %label.col-lg-2.control-label{for: "name"} Board name
+      .col-lg-10
+        %input#name.form-control{placeholder: "Name", type: "text"}/
+    .form-group
+      %label.col-lg-2.control-label{for: "jiraUrl"} JIRA address
+      .col-lg-10
+        %input#jiraUrl.form-control{placeholder: "http://your.jira.com", type: "url"}/
+    .form-group
+      %label.col-lg-2.control-label{for: "jiraUsername"} JIRA username
+      .col-lg-10
+        %input#jiraUsername.form-control{placeholder: "username", type: "email"}/
+    .form-group
+      %label.col-lg-2.control-label{for: "jiraPassword"} JIRA password
+      .col-lg-10
+        %input#jiraPassword.form-control{placeholder: "password", type: "password"}/
+    .form-group
+      .col-lg-offset-2.col-lg-10
+        %button.btn.btn-primary{type: "submit"} Save
+
+  %hr.footer-divider/
+
+  %footer
+    %p.pull-right
+      %a{href: "#"} Back to top
+    %p
+      \&#169; 2013 Team Status
+      \&#183;
+      %a{href: "mailto:pawel@teamstatus.tv"} Contact us
+
