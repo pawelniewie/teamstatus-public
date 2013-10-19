@@ -15,6 +15,9 @@ gem 'activesupport', '~> 3.1.0'
 gem 'rack-google-analytics'
 gem 'oauth2'
 
+# Monitoring
+gem 'newrelic_rpm'
+
 # Asset management
 gem 'sprockets'
 gem 'sprockets-helpers'

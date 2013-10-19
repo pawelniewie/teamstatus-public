@@ -63,6 +63,7 @@ GEM
     multi_json (1.8.1)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.8.164)
     oauth2 (0.9.2)
       faraday (~> 0.8)
       httpauth (~> 0.2)
@@ -127,6 +128,7 @@ DEPENDENCIES
   mandrill-api
   mongo
   mongoid (~> 3.0.0)
+  newrelic_rpm
   oauth2
   puma
   rack-google-analytics
