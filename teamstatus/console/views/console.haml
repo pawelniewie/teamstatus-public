@@ -15,27 +15,46 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{href: "#"} TeamStatus.TV
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{href: "#"} JIRA
+            %li
+              %a{href: "#feedback"} Feedback
 
 .container
-  %form.form-horizontal{role: "form"}
-    .form-group
-      %label.col-lg-2.control-label{for: "name"} Board name
-      .col-lg-10
-        %input#name.form-control{placeholder: "Name", type: "text"}/
-    .form-group
-      %label.col-lg-2.control-label{for: "jiraUrl"} JIRA address
-      .col-lg-10
-        %input#jiraUrl.form-control{placeholder: "http://your.jira.com", type: "url"}/
-    .form-group
-      %label.col-lg-2.control-label{for: "jiraUsername"} JIRA username
-      .col-lg-10
-        %input#jiraUsername.form-control{placeholder: "username", type: "email"}/
-    .form-group
-      %label.col-lg-2.control-label{for: "jiraPassword"} JIRA password
-      .col-lg-10
-        %input#jiraPassword.form-control{placeholder: "password", type: "password"}/
-    .form-group
-      .col-lg-offset-2.col-lg-10
+  .row
+    .col-md-2
+    .col-md-8
+      %h4
+        Hello #{user.callingName}!
+      %p It's really great that you joined! There are only 2 steps necessary to create your first board!
+      %ol
+        %li You need to define JIRA server that you want to display data from
+        %li You need to select project you want to track (and any additional data)
+      %p When you complete you'll have a board ready for you! You'll be able to share it with your team mates or display it on your big TV, or iPad, or any other device :-)
+      %p
+        If you have any questions or problems don't hesitate to
+        != succeed "." do
+          %a{:href => "mailto:pawel@teamstatus.tv"}> contact us
+  .row
+    .col-md-2
+    .col-md-10
+      %h3 Set up JIRA server
+  .row
+    .col-md-2
+      %img.pull-right{ :src => image_path("jira-logo.png") }
+    .col-md-6
+      %form{role: "form"}
+        .form-group
+          %label{for: "jiraUrl"} JIRA address
+          %input#jiraUrl.form-control{placeholder: "http://your.jira.com", type: "url"}/
+        .form-group
+          %label{for: "jiraUsername"} JIRA username
+          %input#jiraUsername.form-control{placeholder: "username", type: "email"}/
+        .form-group
+          %label{for: "jiraPassword"} JIRA password
+          %input#jiraPassword.form-control{placeholder: "password", type: "password"}/
         %button.btn.btn-primary{type: "submit"} Save
 
   %hr.footer-divider/

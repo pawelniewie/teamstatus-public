@@ -8,6 +8,7 @@ module TeamStatus
 			store_in collection: "users"
 
 			has_many :boards
+			has_many :servers
 
 			field :email, type: String
 			field :fullName, type: String
@@ -19,6 +20,19 @@ module TeamStatus
 
 			index({ email: 1 }, { unique: true })
 			index({ "_id" => 1, "boards.name" => 1 }, { unique: true })
+			index({ "_id" => 1, "servers.address" => 1}, { unique: true })
+		end
+
+		class Server
+			inclide Mongoid::Document
+			store_in collection: "servers"
+
+			belongs_to :user
+
+			field :address, type: String
+			field :username, type: String
+			field :password, type: String
+			field :product, type: String, default: "jira"
 		end
 
 		class Board

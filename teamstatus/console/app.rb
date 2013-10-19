@@ -10,6 +10,10 @@ class ConsoleApp < BaseApp
     def user_id
       return session[:user_id]
     end
+
+    def user
+      @user ||= TeamStatus::Db::User.find(user_id) || halt(404)
+    end
   end
 
   before do
@@ -22,6 +26,10 @@ class ConsoleApp < BaseApp
 
   get '/' do
     haml :console
+  end
+
+  get '/jira' do
+    haml :jira
   end
 
 end
