@@ -4,7 +4,7 @@ require 'split/dashboard'
 
 require './app'
 
-%w{COOKIE_SECRET MAILCHIMP_KEY MAILCHIMP_LIST}.each do |var|
+%w{COOKIE_SECRET MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_KEY GOOGLE_SECRET}.each do |var|
   abort("missing env var: please set #{var}") unless ENV[var]
 end
 
