@@ -1,10 +1,11 @@
 require "mongoid"
 
 module TeamStatus
-	module Database
+	module Db
 
 		class User
 			include Mongoid::Document
+			store_in collection: "users"
 
 			has_many :boards
 
@@ -22,6 +23,7 @@ module TeamStatus
 
 		class Board
 		    include Mongoid::Document
+		    store_in collection: "boards"
 
 				belongs_to :user
 		    # embeds_many :widgets
