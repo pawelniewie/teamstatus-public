@@ -1,0 +1,9 @@
+- content_for(:head) do
+  != stylesheet_tag "console"
+- content_for(:scripts) do
+  !=javascript_tag('//cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js')
+  :javascript
+    mixpanel.track("Home");
+
+.container
+  Hello

@@ -2,6 +2,10 @@ require "teamstatus/db"
 require "teamstatus/helpers"
 
 class ConsoleApp < BaseApp
+  configure do
+    set :root, File.dirname(__FILE__)
+  end
+
   helpers do
     def user_id
       return session[:user_id]
@@ -16,7 +20,7 @@ class ConsoleApp < BaseApp
     redirect '/' if not user_id
   end
 
-  get '/console' do
+  get '/' do
     haml :console
   end
 

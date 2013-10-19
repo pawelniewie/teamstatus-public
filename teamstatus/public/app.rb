@@ -3,6 +3,10 @@ require "teamstatus/helpers"
 require "teamstatus/baseapp"
 
 class PublicApp < BaseApp
+  configure do
+    set :root, File.dirname(__FILE__)
+  end
+
   get '/' do
     haml :index
   end

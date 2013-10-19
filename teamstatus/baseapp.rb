@@ -11,7 +11,6 @@ class BaseApp < Sinatra::Base
 	register Sinatra::CompassSupport
 	register Sinatra::Contrib
 	register Sinatra::Namespace
-	register Sinatra::MultiView
 
 	helpers do
 	  include Sprockets::Helpers
