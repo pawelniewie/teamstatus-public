@@ -1,3 +1,4 @@
+require "rack/csrf"
 require "teamstatus/db"
 require "teamstatus/helpers"
 
@@ -21,7 +22,9 @@ class ConsoleApp < BaseApp
     # if settings.environment == :production && request.scheme != 'https'
       # redirect "https://#{request.env['HTTP_HOST']}"
     # end
+    cookies["XSRF-TOKEN"] = Rack::Csrf.token(env)
     redirect '/' if not user_id
+    redirect to('/jira') if not user.boards.exists? and request.path_info != "/jira"
   end
 
   get '/' do
@@ -30,6 +33,10 @@ class ConsoleApp < BaseApp
 
   get '/jira' do
     haml :jira
+  end
+
+  get '/boards' do
+    haml :boards
   end
 
 end

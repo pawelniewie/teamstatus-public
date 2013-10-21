@@ -24,7 +24,7 @@ module TeamStatus
 		end
 
 		class Server
-			inclide Mongoid::Document
+			include Mongoid::Document
 			store_in collection: "servers"
 
 			belongs_to :user

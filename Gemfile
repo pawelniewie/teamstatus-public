@@ -14,6 +14,7 @@ gem "puma"
 gem 'activesupport', '~> 3.1.0'
 gem 'rack-google-analytics'
 gem 'oauth2'
+gem "rack_csrf", :require => "rack/csrf"
 
 # Monitoring
 gem 'newrelic_rpm'

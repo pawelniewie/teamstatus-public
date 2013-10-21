@@ -1,5 +1,8 @@
 require 'rubygems'
-require 'bundler/setup'
+require "bundler"
+Bundler.setup(:default)
+Bundler.require
+
 require 'split/dashboard'
 
 dir = File.dirname(__FILE__)
@@ -19,6 +22,7 @@ if ENV['GOOGLE_ANALYTICS']
 end
 
 use Rack::Session::Cookie, :secret => ENV['COOKIE_SECRET']
+use Rack::Csrf, :raise => true, :header => 'X-XSRF-TOKEN'
 
 Mongoid.load!("config/mongoid.yml")
 

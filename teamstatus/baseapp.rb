@@ -16,6 +16,7 @@ class BaseApp < Sinatra::Base
 	  include Sprockets::Helpers
 	  include TeamStatus::Helpers
 	  include Split::Helper
+    include Sinatra::Cookies
 	end
 
   configure do
