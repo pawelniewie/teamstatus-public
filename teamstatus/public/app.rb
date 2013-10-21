@@ -39,8 +39,7 @@ class PublicApp < BaseApp
           :from_name=> "TeamStatus.TV",
           :from_email=> "root@teamstatus.tv",
           :to=>[
-            {:email => "pawelniewiadomski@me.com", :name => "Pawel Niewiadomski"},
-            {:email => "jacek.jaroczynski@gmail.com", :name => "Jacek Jaroczynski"}
+            {:email => "pawelniewiadomski@me.com", :name => "Pawel Niewiadomski"}
           ]
         }
         mandrill.messages.send message
