@@ -59,6 +59,8 @@
         .form-group
           %label{for: "jiraPassword"} JIRA password
           %input#jiraPassword.form-control{:placeholder => "password", :type => "password", 'ng-model' => 'jira.password'}/
+          %p
+            .alert.alert-warning Password is saved plain text in our database. For security reasons please consider creating a read-only JIRA account on your server.
         %button.btn.btn-primary{:type => "submit", "ng-submit" => 'saveJira()', "ng-disabled" => "sending"} Save
         %i.icon-refresh.icon-spin{ "ng-show" => "sending" }
 
