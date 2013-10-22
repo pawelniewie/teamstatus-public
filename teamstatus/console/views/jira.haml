@@ -49,19 +49,25 @@
     .col-md-2
       %img.pull-right{ :src => image_path("jira-logo.png") }
     .col-md-6
-      %form{role: "form"}
+      %form{role: "form", :name => "jiraServer", "ng-submit" => 'saveJira()', "ng-controller" => "JiraCtrl"}
         .form-group
           %label{for: "jiraUrl"} JIRA address
-          %input#jiraUrl.form-control{:placeholder => "http://your.jira.com", :type => "url", 'ng-model' => 'jira.url'}/
+          %input#jiraUrl.form-control{:placeholder => "http://your.jira.com", :type => "url", 'ng-model' => 'jira.url', :name => "jiraUrl", :required => ""}/
+          %small.error{ "ng-show" => "jiraServer.jiraUrl.$error.url" } That is not a valid address
+          %small.error{ "ng-show" => "jiraServer.jiraUrl.$error.required" } JIRA address is required
         .form-group
           %label{for: "jiraUsername"} JIRA username
-          %input#jiraUsername.form-control{:placeholder => "username", :type => "email", 'ng-model' => 'jira.username'}/
+          %input#jiraUsername.form-control{:placeholder => "username", :type => "text", 'ng-model' => 'jira.username', :name => "jiraUsername", 'ng-minlength' => 2, :required => ""}/
+          %small.error{ "ng-show" => "jiraServer.jiraUsername.$error.minlength" } Username is required to be at least 2 characters
+          %small.error{ "ng-show" => "jiraServer.jiraUsername.$error.required" } Username is required
         .form-group
           %label{for: "jiraPassword"} JIRA password
-          %input#jiraPassword.form-control{:placeholder => "password", :type => "password", 'ng-model' => 'jira.password'}/
+          %input#jiraPassword.form-control{:placeholder => "password", :type => "password", 'ng-model' => 'jira.password', :name => "jiraPassword", 'ng-minlength' => 2, :required => ""}/
+          %small.error{ "ng-show" => "jiraServer.jiraPassword.$error.minlength" } Password is required to be at least 2 characters
+          %small.error{ "ng-show" => "jiraServer.jiraPassword.$error.required" } Password is required
           %p
             .alert.alert-warning Password is saved plain text in our database. For security reasons please consider creating a read-only JIRA account on your server.
-        %button.btn.btn-primary{:type => "submit", "ng-submit" => 'saveJira()', "ng-disabled" => "sending"} Save
+        %button.btn.btn-primary{:type => "submit", "ng-disabled" => "sending"} Save
         %i.icon-refresh.icon-spin{ "ng-show" => "sending" }
 
   %hr.footer-divider/

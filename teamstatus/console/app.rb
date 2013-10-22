@@ -22,7 +22,7 @@ class ConsoleApp < BaseApp
     # if settings.environment == :production && request.scheme != 'https'
       # redirect "https://#{request.env['HTTP_HOST']}"
     # end
-    cookies["XSRF-TOKEN"] = Rack::Csrf.token(env)
+    response.set_cookie("XSRF-TOKEN", :value => Rack::Csrf.token(env))
     redirect '/' if not user_id
     redirect to('/jira') if not user.boards.exists? and request.path_info != "/jira"
   end
@@ -37,6 +37,11 @@ class ConsoleApp < BaseApp
 
   get '/boards' do
     haml :boards
+  end
+
+  post "/ajax/jiraServer" do
+    logger.info(params)
+    true.to_json
   end
 
 end
