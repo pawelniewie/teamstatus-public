@@ -1,52 +1,59 @@
 require "mongoid"
 
 module TeamStatus
-	module Db
+  module Db
 
-		class User
-			include Mongoid::Document
-			store_in collection: "users"
+    class User
+      include Mongoid::Document
+      store_in collection: "users"
 
-			has_many :boards
-			has_many :servers
+      has_many :boards
+      has_many :servers
 
-			field :email, type: String
-			field :fullName, type: String
-			field :callingName, type: String
-			field :picture, type: String
-			field :googleToken, type: String
-			field :googleTokenExpires, type: Time
-			field :male, type: Boolean
+      field :email, type: String
+      field :fullName, type: String
+      field :callingName, type: String
+      field :picture, type: String
+      field :googleToken, type: String
+      field :googleTokenExpires, type: Time
+      field :male, type: Boolean
 
-			index({ email: 1 }, { unique: true })
-			index({ "_id" => 1, "boards.name" => 1 }, { unique: true })
-			index({ "_id" => 1, "servers.address" => 1}, { unique: true })
-		end
+      index({ email: 1 }, { unique: true })
+    end
 
-		class Server
-			include Mongoid::Document
-			store_in collection: "servers"
+    class Server
+      include Mongoid::Document
+      store_in collection: "servers"
 
-			belongs_to :user
+      belongs_to :user
 
-			field :address, type: String
-			field :username, type: String
-			field :password, type: String
-			field :product, type: String, default: "jira"
-		end
+      field :address, type: String
+      field :username, type: String
+      field :password, type: String
+      field :product, type: String, default: "jira"
 
-		class Board
-		    include Mongoid::Document
-		    store_in collection: "boards"
+      index({ :user_id => 1, :address => 1}, { unique: true })
+    end
 
-				belongs_to :user
-		    # embeds_many :widgets
+    class Board
+        include Mongoid::Document
+        store_in collection: "boards"
 
-		    field :name, type: String
-		    field :publicId, type: String
+        belongs_to :user
+        # embeds_many :widgets
 
-		    index({ publicId: 1 }, { unique: true })
-		end
+        before_create :generate_publicId
 
-	end
+        field :name, type: String
+        field :publicId, type: String
+
+        index({ :user_id => 1, :name => 1 }, { unique: true })
+        index({ publicId: 1 }, { unique: true })
+
+        def generate_publicId
+          self.publicId = rand(36**10).to_s(36)
+        end
+    end
+
+  end
 end

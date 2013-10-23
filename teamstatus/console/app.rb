@@ -17,6 +17,10 @@ class ConsoleApp < BaseApp
       @user ||= TeamStatus::Db::User.find(user_id) || halt(404)
     end
 
+    def boards
+      @boards ||= user.boards
+    end
+
     def parsed_body
       request.body.rewind
       ::JSON.parse request.body.read
@@ -30,7 +34,7 @@ class ConsoleApp < BaseApp
     # end
     response.set_cookie("XSRF-TOKEN", :value => Rack::Csrf.token(env))
     redirect '/' if not user_id
-    redirect to('/jira') if not user.boards.exists? and request.path_info != "/jira" and not request.path_info.start_with? "/ajax/"
+    redirect to('/jira') if not user.servers.exists? and request.path_info != "/jira" and not request.path_info.start_with? "/ajax/"
   end
 
   get '/' do
@@ -42,6 +46,11 @@ class ConsoleApp < BaseApp
   end
 
   get '/boards' do
+    if not boards.exists?
+      board = TeamStatus::Db::Board.new()
+      board.name = "TeamBoard"
+      user.boards.push(board)
+    end
     haml :boards
   end
 
