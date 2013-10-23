@@ -25,7 +25,13 @@
             %li
               %a{href: "mailto:pawel@teamstatus.tv?Subject=Feedback"} Feedback
 
-.container{ "ng-app" => "" }
+.container
+  .boards
+    - boards.each do |board|
+      %a.thumbnail.board{:href => to(board.publicId)}
+        %img{:src => image_path("teamstatus-logo.png")}/
+        .caption
+          %h5=board.name
 
   %hr.footer-divider/
 
