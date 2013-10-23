@@ -28,7 +28,7 @@
 .container
   .boards
     - boards.each do |board|
-      %a.thumbnail.board{:href => to(board.publicId)}
+      %a.thumbnail.board{:href => to(board.public_url)}
         %img{:src => image_path("teamstatus-logo.png")}/
         .caption
           %h5=board.name
