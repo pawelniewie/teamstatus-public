@@ -1,3 +1,4 @@
+require "json"
 require "rack/csrf"
 require "teamstatus/db"
 require "teamstatus/helpers"
@@ -15,6 +16,11 @@ class ConsoleApp < BaseApp
     def user
       @user ||= TeamStatus::Db::User.find(user_id) || halt(404)
     end
+
+    def parsed_body
+      request.body.rewind
+      ::JSON.parse request.body.read
+    end
   end
 
   before do
@@ -24,7 +30,7 @@ class ConsoleApp < BaseApp
     # end
     response.set_cookie("XSRF-TOKEN", :value => Rack::Csrf.token(env))
     redirect '/' if not user_id
-    redirect to('/jira') if not user.boards.exists? and request.path_info != "/jira"
+    redirect to('/jira') if not user.boards.exists? and request.path_info != "/jira" and not request.path_info.start_with? "/ajax/"
   end
 
   get '/' do
@@ -39,9 +45,31 @@ class ConsoleApp < BaseApp
     haml :boards
   end
 
-  post "/ajax/jiraServer" do
-    logger.info(params)
-    true.to_json
+  get "/ajax/jiraServer" do
+    jiras = user.servers.where(product: 'jira')
+    if jiras.count > 0
+      return jiras[0].to_json
+    else
+      return nil
+    end
   end
 
+  post "/ajax/jiraServer" do
+    server = parsed_body
+
+    jiras = user.servers.where(product: 'jira')
+    if jiras.count == 0
+      server[:product] = 'jira'
+      jira = TeamStatus::Db::Server.new(server)
+      user.servers.push(jira)
+      jira.to_json
+    else
+      jira = jiras.first
+      jira.address = server["address"]
+      jira.username = server["username"]
+      jira.password = server["password"]
+      jira.save()
+      jira.to_json
+    end
+  end
 end

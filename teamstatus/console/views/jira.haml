@@ -51,10 +51,10 @@
     .col-md-6
       %form{role: "form", :name => "jiraServer", "ng-submit" => 'saveJira()', "ng-controller" => "JiraCtrl"}
         .form-group
-          %label{for: "jiraUrl"} JIRA address
-          %input#jiraUrl.form-control{:placeholder => "http://your.jira.com", :type => "url", 'ng-model' => 'jira.url', :name => "jiraUrl", :required => ""}/
-          %small.error{ "ng-show" => "jiraServer.jiraUrl.$error.url" } That is not a valid address
-          %small.error{ "ng-show" => "jiraServer.jiraUrl.$error.required" } JIRA address is required
+          %label{for: "jiraAddress"} JIRA address
+          %input#jiraAddress.form-control{:placeholder => "http://your.jira.com", :type => "url", 'ng-model' => 'jira.address', :name => "jiraAddress", :required => ""}/
+          %small.error{ "ng-show" => "jiraServer.jiraAddress.$error.url" } That is not a valid address
+          %small.error{ "ng-show" => "jiraServer.jiraAddress.$error.required" } JIRA address is required
         .form-group
           %label{for: "jiraUsername"} JIRA username
           %input#jiraUsername.form-control{:placeholder => "username", :type => "text", 'ng-model' => 'jira.username', :name => "jiraUsername", 'ng-minlength' => 2, :required => ""}/
