@@ -50,6 +50,11 @@
       %img.pull-right{ :src => image_path("jira-logo.png") }
     .col-md-6
       %form{role: "form", :name => "jiraServer", "ng-submit" => 'saveJira()', "ng-controller" => "JiraCtrl"}
+        %div{ "ng-show" => "saved" }
+          .alert.alert-success
+            %strong Saved!
+            Now
+            %a.alert-link{:href => to('/boards')} set up a board
         .form-group
           %label{for: "jiraAddress"} JIRA address
           %input#jiraAddress.form-control{:placeholder => "http://your.jira.com", :type => "url", 'ng-model' => 'jira.address', :name => "jiraAddress", :required => ""}/
