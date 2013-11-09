@@ -54,6 +54,11 @@ class ConsoleApp < BaseApp
     haml :boards
   end
 
+  get '/boards/:board' do
+    halt(404) if not board
+    haml :board
+  end
+
   get "/ajax/jiraServer" do
     jiras = user.servers.where(product: 'jira')
     if jiras.count > 0
