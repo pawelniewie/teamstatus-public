@@ -38,7 +38,7 @@ class ConsoleApp < BaseApp
   end
 
   get '/' do
-    haml :console
+    redirect to('/boards')
   end
 
   get '/jira' do
