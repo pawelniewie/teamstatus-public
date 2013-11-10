@@ -21,6 +21,12 @@ class ConsoleApp < BaseApp
       @boards ||= user.boards
     end
 
+    def board
+      @board ||= TeamStatus::Db::Board.find_by(:publicId => params[:board_id]) || halt(404)
+      halt(401) if @board.user_id != user._id
+      return @board
+    end
+
     def parsed_body
       request.body.rewind
       ::JSON.parse request.body.read
@@ -54,9 +60,8 @@ class ConsoleApp < BaseApp
     haml :boards
   end
 
-  get '/boards/:board' do
-    halt(404) if not board
-    haml :board
+  get '/boards/:board_id' do
+    haml :board, :locals => {:board => board}
   end
 
   get "/ajax/jiraServer" do
