@@ -1,0 +1,70 @@
+.stfu {
+	position: relative;
+	display: inline-block;
+	width: 260px;
+	height: 200px;
+}
+
+.stfu .fa {
+	font-size: 180px;
+	vertical-align: top;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.stfu .message {
+	font-size: 45px;
+	float: left;
+	text-align: center;
+	position: relative;
+	font-weight: bold;
+	font-family: monospace;
+	letter-spacing: 20px;
+}
+
+.stfu-on,
+.stfu-off {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.stfu-on {
+	display: none;
+	color: red;
+}
+
+.stfu-off {
+	display: none;
+	color: green;
+}
+
+.rotated-text {
+	display: inline-block;
+	overflow: hidden;
+	width: 3.5em;
+	line-height: 50px;
+}
+
+.rotated-text__inner {
+	display: inline-block;
+	white-space: nowrap;
+	-webkit-transform: translate(0,100%) rotate(-90deg);
+	-moz-transform: translate(0,100%) rotate(-90deg);
+	-ms-transform: translate(0,100%) rotate(-90deg);
+	-o-transform: translate(0,100%) rotate(-90deg);
+	transform: translate(0,100%) rotate(-90deg);
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	-o-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+
+/* This element stretches the parent to be square
+   by using the mechanics of vertical margins  */
+.rotated-text__inner:before {
+	content: "";
+	float: left;
+	margin-top: 100%;
+}
