@@ -27,6 +27,12 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 			}
 		};
 	})
+	.factory('board', ['$document', function($document) {
+		return {
+			editUrl: angular.element('meta[name="ts.board.editUrl"]').attr('content'),
+			publicId: angular.element('meta[name="ts.board.publicId"]').attr('content')
+		};
+	}])
 	.factory('widgets', ['$http', function($http) {
 		return [
 			{
@@ -52,20 +58,31 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 		});
 	}]);
 
-var AddWidgetCtrl = ['$scope', '$log', '$http', '$location', 'path', 'widgets', function($scope, $log, $http, $location, path, widgets) {
+var AddWidgetCtrl = ['$scope', '$log', '$http', '$location', '$window', 'path', 'widgets', 'board',
+	function($scope, $log, $http, $location, $window, path, widgets, board) {
 	$scope.widgets = widgets;
+	$scope.settings = {};
+	$scope.board = board;
 	$scope.$on('$routeChangeSuccess', function () {
-      var widgets = $scope.widgets;
-      var path = $location.path();
+			var widgets = $scope.widgets;
+			var path = $location.path();
 
-      for (var i = 0; i < widgets.length; i++) {
-          var widget = widgets[i];
-          var href = '/' + widget['id'];
-          widget['active'] = !!href && href === path;
-      }
-  });
+			_.each(widgets, function(widget) {
+				var href = '/' + widget['id'];
+				widget['active'] = !!href && href === path;
+				if(widget.active) {
+					$scope.currentWidget = widget;
+				}
+			});
+	});
+	$scope.addWiget = function() {
+		$http.post(path + '/ajax/board/' + $scope.board.publicId + '/widgets', {widget: $scope.currentWidget.id, settings: $scope.settings}).success(function(data) {
+			if (!data.error) {
+				$window.location.href=$scope.board.editUrl;
+			}
+		});
+	};
 }];
 
 var WidgetCtrl = ['$scope', '$routeParams', 'widgets', function($scope, $routeParams, widgets) {
-	$scope.widget = _.find(widgets, function(widget) { return widget.id == $routeParams.id; });
 }];

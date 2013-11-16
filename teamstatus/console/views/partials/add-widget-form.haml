@@ -1,8 +1,8 @@
 %img.thumbnail.pull-left{ "data-src"=> "holder.js/140x140", "bs-holder" => ""}
-%h1 {{widget.name}}
-%p {{widget.description}}
+%h1 {{currentWidget.name}}
+%p {{currentWidget.description}}
 / %i.fa.fa-spinner.fa-spin
 .clearfix
-%button.btn.btn-success.pull-right{:type => "button"}
+%button.btn.btn-success.pull-right{:type => "button", "ng-click" => "addWiget()"}
 	%i.fa.fa-plus
 	Add widget

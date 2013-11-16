@@ -41,7 +41,7 @@ module TeamStatus
         store_in collection: "boards"
 
         belongs_to :user
-        # embeds_many :widgets
+        embeds_many :widgetsettings, store_as: "settings"
 
         before_create :generate_publicId
 
@@ -68,5 +68,9 @@ module TeamStatus
         end
     end
 
+    class Widgetsetting
+      include Mongoid::Document
+      embedded_in :board
+    end
   end
 end

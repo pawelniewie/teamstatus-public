@@ -43,6 +43,11 @@ class ConsoleApp < BaseApp
     redirect to('/jira') if not user.servers.exists? and request.path_info != "/jira" and not request.path_info.start_with? "/ajax/"
   end
 
+  before "/ajax/*" do
+    content_type :json
+    cache_control :'no-cache'
+  end
+
   get '/' do
     redirect boards.first.edit_url
   end
@@ -94,5 +99,10 @@ class ConsoleApp < BaseApp
       jira.save()
       jira.to_json
     end
+  end
+
+  post "/ajax/board/:board_id/widgets" do |board_id|
+    board.widgetsettings.push(TeamStatus::Db::Widgetsetting.new(parsed_body))
+    {:error => false}.to_json
   end
 end
