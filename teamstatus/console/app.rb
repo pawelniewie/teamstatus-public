@@ -44,7 +44,7 @@ class ConsoleApp < BaseApp
   end
 
   get '/' do
-    redirect to('/boards')
+    redirect boards.first.edit_url
   end
 
   get '/jira' do
@@ -60,8 +60,12 @@ class ConsoleApp < BaseApp
     haml :boards
   end
 
-  get '/boards/:board_id' do
-    haml :board, :locals => {:board => board}
+  get '/boards/:board_id/add-widget' do
+    haml :"add-widget", :locals => {:board => board}
+  end
+
+  get '/partials/:partial_id' do
+    haml :"partials/#{params[:partial_id]}", {:layout => false}
   end
 
   get "/ajax/jiraServer" do

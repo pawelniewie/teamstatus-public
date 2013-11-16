@@ -11,7 +11,7 @@ $LOAD_PATH.unshift dir unless $LOAD_PATH.include?(dir)
 require 'teamstatus/public/app'
 require 'teamstatus/console/app'
 
-%w{COOKIE_SECRET MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_KEY GOOGLE_SECRET BOARDS_URL}.each do |var|
+%w{COOKIE_SECRET COOKIE_DOMAIN MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_KEY GOOGLE_SECRET BOARDS_URL}.each do |var|
   abort("missing env var: please set #{var}") unless ENV[var]
 end
 
@@ -21,7 +21,7 @@ if ENV['GOOGLE_ANALYTICS']
 	use Rack::GoogleAnalytics, :tracker => ENV['GOOGLE_ANALYTICS']
 end
 
-use Rack::Session::Cookie, :secret => ENV['COOKIE_SECRET']
+use Rack::Session::Cookie, :secret => ENV['COOKIE_SECRET'], :domain => ENV['COOKIE_DOMAIN']
 use Rack::Csrf, :raise => true, :header => 'X-XSRF-TOKEN'
 
 Mongoid.load!("config/mongoid.yml")

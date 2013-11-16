@@ -4,7 +4,7 @@
   !=javascript_tag('//cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js')
   !=javascript_tag('console.js')
   :javascript
-    mixpanel.track("Boards");
+    mixpanel.track("Board");
 
 .navbar-wrapper
   .container
@@ -23,13 +23,18 @@
             %li.active
               %a{:href => to('/boards')} Boards
 
-.container
-  .boards
-    - boards.each do |board|
-      %a.thumbnail.board{:href => to(board.public_url)}
-        %img{:src => image_path("teamstatus-logo.png")}/
-        .caption
-          %h5=board.name
+.container{"ng-app" => "teamstatus.console.widget", "ng-controller" => "AddWidgetCtrl"}
+
+  .page-header
+    %h1
+      Add widget
+      %small
+
+  .row
+    .col-md-2
+      .list-group
+        %a.list-group-item{:href => "#/{{widget.id}}", "ng-repeat" => "widget in widgets", "ng-class" => "{active: widget.active}"} {{widget.name}}
+    .col-md-8{"ng-view"=>""}
 
   %hr.footer-divider/
 

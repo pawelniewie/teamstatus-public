@@ -1,0 +1,3 @@
+[submodule "integrations"]
+	path = integrations
+	url = ssh://git@bitbucket.org/pawelniewiadomski/teamstatus-integrations.git

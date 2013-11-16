@@ -18,12 +18,8 @@
     %meta{:content => "Simple and beautiful wallboards for every team", :property => "og:description"}/
 
     / Le styles
-    %link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", :rel => "stylesheet"}/
-    %link{:href => "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", :rel => "stylesheet"}/
-
-    / HTML5 shim, for IE6-8 support of HTML5 elements
-    /[if lt IE 9] <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    /[if lt IE 8] <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome-ie7.min.css" rel="stylesheet">
+    %link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", :rel => "stylesheet"}/
 
     / start Mixpanel
     :javascript
@@ -37,6 +33,6 @@
     != yield
 
     %script{:src => "//code.jquery.com/jquery-1.10.0.min.js"}
-    %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"}
+    %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"}
 
     != yield_content(:scripts)
