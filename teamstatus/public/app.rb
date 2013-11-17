@@ -8,6 +8,7 @@ class PublicApp < BaseApp
   end
 
   get '/' do
+    session[:test] = true
     haml :index
   end
 
