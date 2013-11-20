@@ -18,6 +18,7 @@ module TeamStatus
       field :googleToken, type: String
       field :googleTokenExpires, type: Time
       field :male, type: Boolean
+      field :created_at, type: Time, default: -> { Time.now }
 
       index({ email: 1 }, { unique: true })
     end
@@ -33,7 +34,7 @@ module TeamStatus
       field :password, type: String
       field :product, type: String, default: "jira"
 
-      index({ :user_id => 1, :address => 1}, { unique: true })
+      index({ :user_id => 1, :address => 1 }, { unique: true })
     end
 
     class Board
