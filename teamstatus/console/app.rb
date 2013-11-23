@@ -101,6 +101,14 @@ class ConsoleApp < BaseApp
     end
   end
 
+  get "/ajax/integrations/:widget_id" do
+    send_file File.join(File.expand_path("integrations"), params[:widget_id], 'config.html')
+  end
+
+  get "/ajax/integrations/:widget_id/js" do
+    send_file File.join(File.expand_path("integrations"), params[:widget_id], 'config.js')
+  end
+
   post "/ajax/board/:board_id/widgets" do |board_id|
     board.widgetsettings.push(TeamStatus::Db::Widgetsetting.new(parsed_body))
     {:error => false}.to_json

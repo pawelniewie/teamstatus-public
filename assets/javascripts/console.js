@@ -44,6 +44,12 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 				name: "STFU",
 				id: "stfu",
 				description: "Tell your team to be quiet"
+			},
+			{
+				name: "Bamboo Builds",
+				id: "bamboo-builds",
+				description: "Get Bamboo Builds status",
+				configurable: true
 			}
 		];
 	}])
@@ -58,31 +64,59 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 		});
 	}]);
 
-var AddWidgetCtrl = ['$scope', '$log', '$http', '$location', '$window', 'path', 'widgets', 'board',
-	function($scope, $log, $http, $location, $window, path, widgets, board) {
+var WidgetsCtrl = ['$scope', '$routeParams', '$log', '$http', '$window', 'path', 'widgets', 'board',
+	function($scope, $routeParams, $log, $http, $window, path, widgets, board) {
 	$scope.widgets = widgets;
-	$scope.settings = {};
 	$scope.board = board;
-	$scope.$on('$routeChangeSuccess', function () {
-			var widgets = $scope.widgets;
-			var path = $location.path();
+	$scope.$on('$routeChangeSuccess', routeChanged);
 
-			_.each(widgets, function(widget) {
-				var href = '/' + widget['id'];
-				widget['active'] = !!href && href === path;
-				if(widget.active) {
-					$scope.currentWidget = widget;
-				}
-			});
-	});
-	$scope.addWiget = function() {
-		$http.post(path + '/ajax/board/' + $scope.board.publicId + '/widgets', {widget: $scope.currentWidget.id, settings: $scope.settings}).success(function(data) {
-			if (!data.error) {
-				$window.location.href=$scope.board.editUrl;
+	routeChanged();
+
+	function routeChanged() {
+		var widgets = $scope.widgets;
+		var widgetId = $routeParams.id;
+
+		_.each(widgets, function(widget) {
+			widget['active'] = !!widget['id'] && widget['id'] === widgetId;
+			if(widget.active) {
+				$scope.currentWidget = widget;
+				$scope.$broadcast('currentWidgetChanged', $scope.currentWidget);
 			}
 		});
-	};
+	}
 }];
 
-var WidgetCtrl = ['$scope', '$routeParams', 'widgets', function($scope, $routeParams, widgets) {
+var WidgetCtrl = ['$scope', '$http', '$compile', 'path', 'widgets', function($scope, $http, $compile, path, widgets) {
+	$scope.$on('currentWidgetChanged', function(event, widget) {
+		widgetChanged(widget);
+	});
+
+	if ($scope.currentWidget !== undefined) {
+		widgetChanged($scope.currentWidget);
+	}
+
+	function widgetChanged(widget) {
+		$scope.settings = {};
+		if (widget.configurable) {
+			$http.get(path + "/ajax/integrations/" + widget.id + "/js").success(function (data) {
+				eval.apply(window, [data]);
+				$http.get(path + "/ajax/integrations/" + widget.id).success(function (data) {
+					angular.element('.settings').html($compile(data)($scope));
+					$scope.settings = {
+						plans: "ZXCV"
+					};
+				});
+			});
+		}
+	}
+
+	$scope.addWidget = function() {
+		debugger;
+		console.log({widget: $scope.currentWidget.id, settings: $scope.settings});
+		// $http.post(path + '/ajax/board/' + $scope.board.publicId + '/widgets', {widget: $scope.currentWidget.id, settings: $scope.settings}).success(function(data) {
+		// 	if (!data.error) {
+		// 		$window.location.href=$scope.board.editUrl;
+		// 	}
+		// });
+	};
 }];

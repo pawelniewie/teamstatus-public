@@ -3,6 +3,8 @@
 %p {{currentWidget.description}}
 / %i.fa.fa-spinner.fa-spin
 .clearfix
-%button.btn.btn-success.pull-right{:type => "button", "ng-click" => "addWiget()"}
-	%i.fa.fa-plus
-	Add widget
+%form{role: "form", :name => "widgetSettings", "ng-submit" => "addWidget()"}
+	.settings
+	%button.btn.btn-success{:type => "submit"}
+		%i.fa.fa-plus
+		Add widget
