@@ -34,9 +34,9 @@
 
   .row
     .col-md-2
-      .list-group
+      .list-group{"ng-cloak" => ""}
         %a.list-group-item{:href => "#/{{widget.id}}", "ng-repeat" => "widget in widgets", "ng-class" => "{active: widget.active}"} {{widget.name}}
-    .col-md-8{"ng-view"=>""}
+    .col-md-8{"ng-view" => ""}
 
   %hr.footer-divider/
 

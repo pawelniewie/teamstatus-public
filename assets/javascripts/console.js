@@ -86,7 +86,7 @@ var WidgetsCtrl = ['$scope', '$routeParams', '$log', '$http', '$window', 'path',
 	}
 }];
 
-var WidgetCtrl = ['$scope', '$http', '$compile', 'path', 'widgets', function($scope, $http, $compile, path, widgets) {
+var WidgetCtrl = ['$scope', '$http', '$compile', '$window', 'path', 'widgets', function($scope, $http, $compile, $window, path, widgets) {
 	$scope.$on('currentWidgetChanged', function(event, widget) {
 		widgetChanged(widget);
 	});
@@ -111,12 +111,10 @@ var WidgetCtrl = ['$scope', '$http', '$compile', 'path', 'widgets', function($sc
 	}
 
 	$scope.addWidget = function() {
-		debugger;
-		console.log({widget: $scope.currentWidget.id, settings: $scope.settings});
-		// $http.post(path + '/ajax/board/' + $scope.board.publicId + '/widgets', {widget: $scope.currentWidget.id, settings: $scope.settings}).success(function(data) {
-		// 	if (!data.error) {
-		// 		$window.location.href=$scope.board.editUrl;
-		// 	}
-		// });
+		$http.post(path + '/ajax/board/' + $scope.board.publicId + '/widgets', {widget: $scope.currentWidget.id, settings: $scope.settings}).success(function(data) {
+			if (!data.error) {
+				$window.location.href=$scope.board.editUrl;
+			}
+		});
 	};
 }];
