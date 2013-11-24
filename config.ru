@@ -16,7 +16,7 @@ require 'teamstatus/console/app'
 end
 
 %w{MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_ANALYTICS REDISCLOUD_URL SPLIT_PASSWORD SPLIT_USER}.each do |var|
-	rack.logger.warn("missing env var (some features will be disabled): #{var}") if ENV[var]
+	puts "missing env var (some features will be disabled): #{var}" unless ENV[var]
 end
 
 if ENV['GOOGLE_ANALYTICS']
