@@ -9,7 +9,7 @@ production:
 development:
   sessions:
     default:
-      uri: mongodb://localhost/teamstatus
+      uri: <%= ENV['MONGOHQ_URL'] %>
       max_retries_on_connection_failure: 3
       persist_in_safe_mode: true
       skip_version_check: true

@@ -11,7 +11,7 @@ $LOAD_PATH.unshift dir unless $LOAD_PATH.include?(dir)
 require 'teamstatus/public/app'
 require 'teamstatus/console/app'
 
-%w{COOKIE_SECRET COOKIE_DOMAIN COOKIE_NAME GOOGLE_KEY GOOGLE_SECRET BOARDS_URL}.each do |var|
+%w{COOKIE_SECRET COOKIE_DOMAIN COOKIE_NAME GOOGLE_KEY GOOGLE_SECRET BOARDS_URL MONGOHQ_URL}.each do |var|
   abort("missing env var: please set #{var}") unless ENV[var]
 end
 
