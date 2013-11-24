@@ -11,8 +11,12 @@ $LOAD_PATH.unshift dir unless $LOAD_PATH.include?(dir)
 require 'teamstatus/public/app'
 require 'teamstatus/console/app'
 
-%w{COOKIE_SECRET COOKIE_DOMAIN COOKIE_NAME MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_KEY GOOGLE_SECRET BOARDS_URL}.each do |var|
+%w{COOKIE_SECRET COOKIE_DOMAIN COOKIE_NAME GOOGLE_KEY GOOGLE_SECRET BOARDS_URL}.each do |var|
   abort("missing env var: please set #{var}") unless ENV[var]
+end
+
+%w{MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_ANALYTICS REDISCLOUD_URL SPLIT_PASSWORD SPLIT_USER}.each do |var|
+	rack.logger.warn("missing env var (some features will be disabled): #{var}") if ENV[var]
 end
 
 if ENV['GOOGLE_ANALYTICS']
@@ -42,15 +46,14 @@ end
 # 	run TeamStatus::BoardApp
 # end
 
-if ENV['REDISCLOUD_URL']
+if ENV['REDISCLOUD_URL'] and ENV['SPLIT_USER'] and ENV['SPLIT_PASSWORD']
 	Split.redis = ENV["REDISCLOUD_URL"]
-end
+	Split.redis.namespace = "split:teamstatus"
+	Split::Dashboard.use Rack::Auth::Basic do |username, password|
+	  username == ENV['SPLIT_USER'] && password == ENV['SPLIT_PASSWORD']
+	end
 
-Split.redis.namespace = "split:teamstatus"
-Split::Dashboard.use Rack::Auth::Basic do |username, password|
-  username == 'pawel' && password == 'dupaJasiu'
-end
-
-map '/split' do
-	run Split::Dashboard
+	map '/split' do
+		run Split::Dashboard
+	end
 end

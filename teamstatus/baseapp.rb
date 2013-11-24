@@ -26,10 +26,6 @@ class BaseApp < Sinatra::Base
     set :assets_prefix, "/assets"
     set :digest_assets, true
 
-    # MailChimp configuration: ADD YOUR OWN ACCOUNT INFO HERE!
-    set :mailchimp_api_key, ENV['MAILCHIMP_KEY']
-    set :mailchimp_list_name, ENV['MAILCHIMP_LIST']
-
     Split.configure do |config|
       config.allow_multiple_experiments = true
     end
