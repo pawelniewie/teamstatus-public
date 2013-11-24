@@ -4,6 +4,10 @@
 / %i.fa.fa-spinner.fa-spin
 .clearfix
 %form{role: "form", :name => "widgetSettings", "ng-submit" => "addWidget()"}
+	.form-group
+		%label{for: "widgetTitle"} Widget title
+		%input#widgetTitle.form-control{name: "widgetTitle", "ng-model" => "widgetTitle", placeholder: "Optional title", type: "text"}/
+
 	.settings
 	%button.btn.btn-success{:type => "submit"}
 		%i.fa.fa-plus

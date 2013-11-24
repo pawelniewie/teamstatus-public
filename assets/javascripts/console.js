@@ -50,6 +50,12 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 				id: "bamboo-builds",
 				description: "Get Bamboo Builds status",
 				configurable: true
+			},
+			{
+				name: "JIRA Counter",
+				id: "jira-simple-counter",
+				description: "Display number of issues in JIRA",
+				configurable: true
 			}
 		];
 	}])
@@ -102,9 +108,7 @@ var WidgetCtrl = ['$scope', '$http', '$compile', '$window', 'path', 'widgets', f
 				eval.apply(window, [data]);
 				$http.get(path + "/ajax/integrations/" + widget.id).success(function (data) {
 					angular.element('.settings').html($compile(data)($scope));
-					$scope.settings = {
-						plans: "ZXCV"
-					};
+					$scope.settings = {};
 				});
 			});
 		}
