@@ -8,23 +8,6 @@
   :javascript
     mixpanel.track("Board");
 
-.navbar-wrapper
-  .container
-    .navbar.navbar-inverse.navbar-static-top
-      .container
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{href: "#"} TeamStatus.TV
-        .navbar-collapse.collapse
-          %ul.nav.navbar-nav
-            %li
-              %a{href: to('/jira')} JIRA
-            %li.active
-              %a{:href => to('/boards')} Boards
-
 .container{"ng-app" => "teamstatus.console.widget", "ng-controller" => "WidgetsCtrl"}
 
   .page-header

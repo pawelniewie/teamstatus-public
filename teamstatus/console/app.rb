@@ -40,7 +40,12 @@ class ConsoleApp < BaseApp
     # end
     response.set_cookie("XSRF-TOKEN", :value => Rack::Csrf.token(env))
     redirect '/' if not user_id
-    redirect to('/jira') if not user.servers.exists? and request.path_info != "/jira" and not request.path_info.start_with? "/ajax/"
+
+    if not boards.exists?
+      board = TeamStatus::Db::Board.new()
+      board.name = "TeamBoard"
+      user.boards.push(board)
+    end
   end
 
   before "/ajax/*" do
@@ -57,11 +62,6 @@ class ConsoleApp < BaseApp
   end
 
   get '/boards' do
-    if not boards.exists?
-      board = TeamStatus::Db::Board.new()
-      board.name = "TeamBoard"
-      user.boards.push(board)
-    end
     haml :boards
   end
 
