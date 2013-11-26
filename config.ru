@@ -3,8 +3,6 @@ require "bundler"
 Bundler.setup(:default)
 Bundler.require
 
-require 'split/dashboard'
-
 dir = File.dirname(__FILE__)
 $LOAD_PATH.unshift dir unless $LOAD_PATH.include?(dir)
 
@@ -42,11 +40,9 @@ map '/console' do
 	run ConsoleApp
 end
 
-# map '/board' do
-# 	run TeamStatus::BoardApp
-# end
-
 if ENV['REDISCLOUD_URL'] and ENV['SPLIT_USER'] and ENV['SPLIT_PASSWORD']
+	require 'split/dashboard'
+
 	Split.redis = ENV["REDISCLOUD_URL"]
 	Split.redis.namespace = "split:teamstatus"
 	Split::Dashboard.use Rack::Auth::Basic do |username, password|

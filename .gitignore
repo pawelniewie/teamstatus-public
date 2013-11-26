@@ -1,6 +1,6 @@
 /.idea
 .env
-vendor/install
+vendor/bundle
 .bundle
 dump.rdb
 .sass-cache

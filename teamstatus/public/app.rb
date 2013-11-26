@@ -55,8 +55,6 @@ class PublicApp < BaseApp
   end
 
   post '/signup' do
-    finished("twitter")
-
     email = params[:email]
     unless email.nil? || email.strip.empty?
       if mailchimp
