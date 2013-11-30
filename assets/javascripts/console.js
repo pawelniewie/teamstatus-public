@@ -38,24 +38,36 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 			{
 				name: "Clock",
 				id: "clock",
-				description: "Add a clock"
+				description: "Add a clock",
+				widgetSettings: {
+					title: "Clock"
+				}
 			},
 			{
 				name: "STFU",
 				id: "stfu",
-				description: "Tell your team to be quiet"
+				description: "Tell your team to be quiet",
+				widgetSettings: {
+					title: "Shhh..."
+				}
 			},
 			{
 				name: "Bamboo Builds",
 				id: "bamboo-builds",
 				description: "Get Bamboo Builds status",
-				configurable: true
+				configurable: true,
+				widgetSettings: {
+					title: "Builds"
+				}
 			},
 			{
 				name: "JIRA Counter",
 				id: "jira-simple-counter",
 				description: "Display number of issues in JIRA",
-				configurable: true
+				configurable: true,
+				widgetSettings: {
+					title: "Issues"
+				}
 			}
 		];
 	}])
@@ -103,6 +115,7 @@ var WidgetCtrl = ['$scope', '$http', '$compile', '$window', 'path', 'widgets', f
 
 	function widgetChanged(widget) {
 		$scope.settings = {};
+		$scope.widgetSettings = widget.widgetSettings || { title: "Widget" };
 		if (widget.configurable) {
 			$http.get(path + "/ajax/integrations/" + widget.id + "/js").success(function (data) {
 				eval.apply(window, [data]);
@@ -115,7 +128,11 @@ var WidgetCtrl = ['$scope', '$http', '$compile', '$window', 'path', 'widgets', f
 	}
 
 	$scope.addWidget = function() {
-		$http.post(path + '/ajax/board/' + $scope.board.publicId + '/widgets', {widget: $scope.currentWidget.id, settings: $scope.settings}).success(function(data) {
+		$http.post(path + '/ajax/board/' + $scope.board.publicId + '/widgets', {
+			widget: $scope.currentWidget.id,
+			settings: $scope.settings,
+			widgetSettings: $scope.widgetSettings
+		}).success(function(data) {
 			if (!data.error) {
 				$window.location.href=$scope.board.editUrl;
 			}

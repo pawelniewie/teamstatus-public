@@ -3,10 +3,10 @@
 %p {{currentWidget.description}}
 / %i.fa.fa-spinner.fa-spin
 .clearfix
-%form{role: "form", :name => "widgetSettings", "ng-submit" => "addWidget()"}
+%form{role: "form", :name => "addWidgetForm", "ng-submit" => "addWidget()"}
 	.form-group
-		%label{for: "widgetTitle"} Widget title
-		%input#widgetTitle.form-control{name: "widgetTitle", "ng-model" => "widgetTitle", placeholder: "Optional title", type: "text"}/
+		%label{for: "title"} Widget title
+		%input#title.form-control{name: "title", "ng-model" => "widgetSettings.title", placeholder: "Optional title", type: "text"}/
 
 	.settings
 	%button.btn.btn-success{:type => "submit"}
