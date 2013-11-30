@@ -115,6 +115,7 @@ class ConsoleApp < BaseApp
   end
 
   delete "/ajax/board/:board_id/widgets/:widget_id" do |board_id, widget_id|
+    board.widgetsettings.delete(board.widgetsettings.find(widget_id))
     {:error => false}.to_json
   end
 end
