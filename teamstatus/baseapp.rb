@@ -26,6 +26,8 @@ class BaseApp < Sinatra::Base
     set :assets_prefix, "/assets"
     set :digest_assets, true
 
+    set :protection, :except => [:http_origin]
+
     Split.configure do |config|
       config.allow_multiple_experiments = true
     end

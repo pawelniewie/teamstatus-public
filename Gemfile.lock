@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/pawelniewie/rack-cors.git
+  revision: 9fa8f7a3f164b33b2eb7b62e9b08b7f62251d80b
+  specs:
+    rack-cors (0.2.9)
+
+GIT
   remote: git://github.com/pawelniewie/split.git
   revision: 18f35909ec7330eaf7e77c125e87d383cf65504c
   specs:
@@ -132,6 +138,7 @@ DEPENDENCIES
   newrelic_rpm
   oauth2
   puma
+  rack-cors!
   rack-google-analytics
   rack_csrf
   sass

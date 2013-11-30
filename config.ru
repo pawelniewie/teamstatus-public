@@ -13,6 +13,8 @@ require 'teamstatus/console/app'
   abort("missing env var: please set #{var}") unless ENV[var]
 end
 
+ENV['BOARDS_URL'] = ENV['BOARDS_URL'].chomp('/')
+
 %w{MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_ANALYTICS REDISCLOUD_URL SPLIT_PASSWORD SPLIT_USER}.each do |var|
 	puts "missing env var (some features will be disabled): #{var}" unless ENV[var]
 end
@@ -24,7 +26,18 @@ if ENV['GOOGLE_ANALYTICS']
 end
 
 use Rack::Session::Cookie, :secret => ENV['COOKIE_SECRET'], :domain => ENV['COOKIE_DOMAIN'], :key => ENV['COOKIE_NAME']
-use Rack::Csrf, :raise => true, :header => 'X-XSRF-TOKEN'
+use Rack::Cors, :debug => false do
+  allow do
+    origins ENV['BOARDS_URL']
+
+    resource '/console/ajax/*',
+        :methods => [:get, :post, :put, :delete],
+        :headers => :any,
+        :max_age => 600,
+        :credentials => true
+  end
+end
+use Rack::Csrf, :raise => true, :header => 'X-XSRF-TOKEN', :key => ENV['COOKIE_NAME']
 
 Mongoid.load!("config/mongoid.yml")
 

@@ -113,4 +113,8 @@ class ConsoleApp < BaseApp
     board.widgetsettings.push(TeamStatus::Db::Widgetsetting.new(parsed_body))
     {:error => false}.to_json
   end
+
+  delete "/ajax/board/:board_id/widgets/:widget_id" do |board_id, widget_id|
+    {:error => false}.to_json
+  end
 end
