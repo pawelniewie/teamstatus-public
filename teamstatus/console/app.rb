@@ -38,7 +38,7 @@ class ConsoleApp < BaseApp
     # if settings.environment == :production && request.scheme != 'https'
       # redirect "https://#{request.env['HTTP_HOST']}"
     # end
-    response.set_cookie("XSRF-TOKEN", :value => Rack::Csrf.token(env), :domain => ENV['COOKIE_DOMAIN'])
+    response.set_cookie("XSRF-TOKEN", :value => Rack::Csrf.token(env), :domain => ENV['COOKIE_DOMAIN'], :path => '/')
     redirect '/' if not user_id
 
     if not boards.exists?
