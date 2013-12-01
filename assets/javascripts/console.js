@@ -68,6 +68,15 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 				widgetSettings: {
 					title: "Issues"
 				}
+			},
+			{
+				name: "JIRA Issues",
+				id: "jira-issue-list",
+				description: "Display list of issues from JIRA",
+				configurable: true,
+				widgetSettings: {
+					title: "Issues"
+				}
 			}
 		];
 	}])
