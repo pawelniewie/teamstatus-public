@@ -34,6 +34,7 @@ gem "compass"
 
 # Mails
 gem 'gibbon'
+gem 'intercom'
 gem 'mandrill-api', :require => "mandrill"
 
 # A/B testing

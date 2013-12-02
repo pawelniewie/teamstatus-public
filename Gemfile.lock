@@ -52,6 +52,7 @@ GEM
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.5)
+    intercom (0.1.17)
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
@@ -132,6 +133,7 @@ DEPENDENCIES
   csso-rails
   gibbon
   haml
+  intercom
   mandrill-api
   mongo
   mongoid (~> 3.0.0)
