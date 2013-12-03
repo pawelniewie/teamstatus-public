@@ -33,6 +33,7 @@ gem "sass", :require => "sass"
 gem "compass"
 
 # Mails
+gem 'gibbon'
 gem 'intercom'
 gem 'mandrill-api', :require => "mandrill"
 
