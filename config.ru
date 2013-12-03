@@ -15,7 +15,7 @@ end
 
 ENV['BOARDS_URL'] = ENV['BOARDS_URL'].chomp('/')
 
-%w{MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_ANALYTICS REDISCLOUD_URL SPLIT_PASSWORD SPLIT_USER}.each do |var|
+%w{MAILCHIMP_KEY MAILCHIMP_LIST GOOGLE_ANALYTICS REDISCLOUD_URL SPLIT_PASSWORD SPLIT_USER INTERCOM_APP_ID INTERCOM_KEY}.each do |var|
 	puts "missing env var (some features will be disabled): #{var}" unless ENV[var]
 end
 
@@ -23,6 +23,11 @@ if ENV['GOOGLE_ANALYTICS']
 	# Google Analytics: UNCOMMENT IF DESIRED, THEN ADD YOUR OWN ACCOUNT INFO HERE!
 	require 'rack/google-analytics'
 	use Rack::GoogleAnalytics, :tracker => ENV['GOOGLE_ANALYTICS']
+end
+
+if ENV['INTERCOM_APP_ID'] and ENV['INTERCOM_KEY']
+	Intercom.app_id = ENV['INTERCOM_APP_ID']
+	Intercom.api_key = ENV['INTERCOM_KEY']
 end
 
 use Rack::Session::Cookie, :secret => ENV['COOKIE_SECRET'], :domain => ENV['COOKIE_DOMAIN'], :key => ENV['COOKIE_NAME']

@@ -1,8 +1,7 @@
 - content_for(:head) do
   != stylesheet_tag "index"
 - content_for(:scripts) do
-  !=javascript_tag('//cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js')
-  !=javascript_tag("/js/main.js")
+  !=javascript_tag("betasignup")
   :javascript
     mixpanel.track("Home");
 
@@ -40,6 +39,7 @@
     #error{style: "display: none;"} Sorry, MailChimp couldn't validate your email. Try again?
 
   %form{action: "/signup"}
+    %input{:type => 'hidden', :name => '_csrf', :value => Rack::Csrf.token(env)}
     .input-group
       %input.form-control.input-lg#email{name: "email", placeholder: "Email me about the project", type: "text"}/
       %span.input-group-btn
@@ -55,9 +55,9 @@
 
   %ul.social-list-small
     %li
-      %g:plusone{href: "http://teamstatus.tv/?template=haml", size: "medium"}
+      %g:plusone{href: "http://teamstatus.tv", size: "medium"}
     %li
-      %a.twitter-share-button{"data-text" => "You project's progress on big TV! Builds, issues, and whatever you need! From @TeamStatusTV", "data-url" => "http://teamstatus.tv/?template=haml", href: "https://twitter.com/share"} Tweet
+      %a.twitter-share-button{"data-text" => "You project's progress on big TV! Builds, issues, and whatever you need! From @TeamStatusTV", "data-url" => "http://teamstatus.tv", href: "https://twitter.com/share"} Tweet
     %li
       .fb-like{"data-action" => "like", "data-href" => "https://www.facebook.com/TeamStatus.tv", "data-layout" => "standard", "data-share" => "true", "data-show-faces" => "false"}
 

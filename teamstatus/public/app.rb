@@ -10,7 +10,7 @@ class PublicApp < BaseApp
   helpers do
 
     def beta
-      !!ENV['BETA']
+      ENV['BETA']
     end
 
   end
@@ -69,15 +69,8 @@ class PublicApp < BaseApp
   post '/signup' do
     email = params[:email]
     unless email.nil? || email.strip.empty?
-
-      list = mailchimp.lists.list({:filters => {:list_name => settings.mailchimp_list_name}})
-      raise "Unable to retrieve list id from MailChimp API." if list.nil? or list["status"] == "error"
-      raise "List not found from MailChimp API." if list["total"].to_i != 1
-
-      # http://apidocs.mailchimp.com/api/rtfm/listsubscribe.func.php
-      # double_optin, update_existing, replace_interests, send_welcome are all true by default (change as desired)
-      status = mailchimp.lists.subscribe({:id => list["data"][0]["id"], :email => {:email => email}, :double_optin => true})
-      raise "Unable to add #{email} to list from MailChimp API." if status.nil? or status["status"] == "error"
+      Intercom::User.create(:email => email, :created_at => Time.now())
+      Intercom::Tag.create(:name => 'Newsletter', :emails => [email], :tag_or_untag => 'tag')
     end
     "Success."
   end

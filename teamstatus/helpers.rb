@@ -27,6 +27,10 @@ module TeamStatus
   	  })
   	end
 
+    def heroku
+      ENV['DYNO']
+    end
+
   end
 
   class Context

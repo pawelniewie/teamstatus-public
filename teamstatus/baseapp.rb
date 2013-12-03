@@ -46,8 +46,6 @@ class BaseApp < Sinatra::Base
 
     set :haml, { :format => :html5, :escape_html => true }
     set :scss, { :style => :compact, :debug_info => false }
-
-    # Compass.add_project_configuration(File.join(settings.root, 'config', 'compass.rb'))
   end
 
   configure :production do
