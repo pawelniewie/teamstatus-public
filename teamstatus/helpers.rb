@@ -22,6 +22,10 @@ module TeamStatus
       ENV['DYNO']
     end
 
+    def mixpanel_id
+      ENV['MIXPANEL_APP_ID']
+    end
+
   end
 
   class Context

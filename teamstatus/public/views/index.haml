@@ -1,9 +1,7 @@
 - content_for(:head) do
   != stylesheet_tag "index"
 - content_for(:scripts) do
-  !=javascript_tag('//cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js')
-  :javascript
-    mixpanel.track("Home");
+  != javascript_tag('index')
 
 .navbar-wrapper
   .container
