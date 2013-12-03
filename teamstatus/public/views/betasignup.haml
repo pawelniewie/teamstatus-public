@@ -38,12 +38,14 @@
     #success{style: "display: none;"} Success! Please check your inbox for a confirmation request.
     #error{style: "display: none;"} Sorry, MailChimp couldn't validate your email. Try again?
 
-  %form{action: "/signup"}
+  %form{id: 'signup', action: "/signup"}
     %input{:type => 'hidden', :name => '_csrf', :value => Rack::Csrf.token(env)}
     .input-group
       %input.form-control.input-lg#email{name: "email", placeholder: "Email me about the project", type: "text"}/
       %span.input-group-btn
-        %button.btn.btn-success.input-lg{type: "submit"} Subscribe
+        %button.btn.btn-success.input-lg{type: "submit"}
+          %i.fa.fa-spinner.fa-spin.loading
+          Subscribe
 
     %p.signup-terms
       You will receive only relevant, occasional messages, and your email
