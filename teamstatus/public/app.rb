@@ -40,6 +40,9 @@ class PublicApp < BaseApp
       user = TeamStatus::Db::User.create!(email: profile[:email], fullName: profile[:name], callingName: profile[:given_name],
         picture: profile[:picture], male: profile[:gender] == "male")
 
+      Intercom::User.create(:email => profile[:email], :created_at => Time.now(), :name => profile[:name])
+      Intercom::Tag.create(:name => 'Beta', :emails => [email], :tag_or_untag => 'tag')
+
       if mandrill
         begin
           message = {
