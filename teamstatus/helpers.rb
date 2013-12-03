@@ -5,14 +5,6 @@ require "gibbon"
 module TeamStatus
   module Helpers
 
-  	def mailchimp
-      if ENV['MAILCHIMP_KEY']
-    	  @gibbon ||= ::Gibbon::API.new ENV['MAILCHIMP_KEY']
-    	  @gibbon.throws_exceptions = false
-    	  return @gibbon
-      end
-  	end
-
   	def mandrill
       if (ENV['MANDRILL_KEY'])
         @mandrill ||= ::Mandrill::API.new ENV['MANDRILL_KEY']
