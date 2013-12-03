@@ -1,6 +1,5 @@
 require "oauth2"
 require "mandrill"
-require "gibbon"
 
 module TeamStatus
   module Helpers
