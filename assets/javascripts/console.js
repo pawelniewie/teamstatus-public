@@ -1,3 +1,4 @@
+//= require global.js
 var con = angular.module('teamstatus.console', ['ngRoute'])
 	.constant('path', '/console');
 

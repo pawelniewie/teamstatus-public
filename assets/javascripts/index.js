@@ -1,3 +1,4 @@
+//= require global.js
 $(function() {
 	if (mixpanel) {
 		mixpanel.track("Home");
