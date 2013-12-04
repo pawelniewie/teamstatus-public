@@ -1,9 +1,14 @@
-$(document).ready(function() {
+$(function() {
+  if (mixpanel) {
+    mixpanel.track("Sign up form");
+  }
+
   $("#signup .loading").hide();
   $("form").submit(function(e) {
     $("#notices div").hide();
     e.preventDefault();
 
+    mixpanel && mixpanel.track('Subscribe clicked', {'Email' : $("form input#email").val()});
     if ($("form input#email").val() === "") {
       $("#notices #error").show();
     } else {
