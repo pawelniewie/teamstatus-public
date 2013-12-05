@@ -78,6 +78,15 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 				widgetSettings: {
 					title: "Issues"
 				}
+			},
+			{
+				name: "Static HTML",
+				id: "static-html",
+				description: "Display static HTML",
+				configurable: true,
+				widgetSettings: {
+					title: "HTML"
+				}
 			}
 		];
 	}])
