@@ -31,7 +31,8 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 	.factory('board', ['$document', function($document) {
 		return {
 			editUrl: angular.element('meta[name="ts.board.editUrl"]').attr('content'),
-			publicId: angular.element('meta[name="ts.board.publicId"]').attr('content')
+			publicId: angular.element('meta[name="ts.board.publicId"]').attr('content'),
+			boardId: angular.element('meta[name="ts.board.id"]').attr('content')
 		};
 	}])
 	.factory('widgets', ['$http', function($http) {
@@ -147,7 +148,7 @@ var WidgetCtrl = ['$scope', '$http', '$compile', '$window', 'path', 'widgets', f
 	}
 
 	$scope.addWidget = function() {
-		$http.post(path + '/ajax/board/' + $scope.board.publicId + '/widgets', {
+		$http.post(path + '/ajax/board/' + $scope.board.boardId + '/widgets', {
 			widget: $scope.currentWidget.id,
 			settings: $scope.settings,
 			widgetSettings: $scope.widgetSettings

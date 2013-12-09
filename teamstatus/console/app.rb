@@ -22,9 +22,13 @@ class ConsoleApp < BaseApp
     end
 
     def board
-      @board ||= TeamStatus::Db::Board.find_by(:publicId => params[:board_id]) || halt(404)
+      @board ||= TeamStatus::Db::Board.find(params[:board_id]) || halt(404)
       halt(401) if @board.user_id != user._id
       return @board
+    end
+
+    def widget
+      return nil
     end
 
     def parsed_body
@@ -65,8 +69,12 @@ class ConsoleApp < BaseApp
     haml :boards
   end
 
-  get '/boards/:board_id/add-widget' do
+  get '/boards/:board_id/widget' do
     haml :"add-widget", :locals => {:board => board}
+  end
+
+  get '/boards/:board_id/widget/:widget_id' do
+    haml :"edit-widget", :locals => {:board => board, :widget => widget}
   end
 
   get '/partials/:partial_id' do

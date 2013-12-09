@@ -1,5 +1,6 @@
 - content_for(:head) do
   %meta{:name => "ts.board.publicId", :content => board.publicId}
+  %meta{:name => "ts.board.id", :content => board._id}
   %meta{:name => "ts.board.editUrl", :content => board.edit_url}
   != stylesheet_tag "console"
 - content_for(:scripts) do
