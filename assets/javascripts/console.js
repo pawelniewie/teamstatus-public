@@ -1,5 +1,6 @@
 //= require global.js
-var con = angular.module('teamstatus.console', ['ngRoute'])
+//= require angular-underscore/angular-underscore.js
+var con = angular.module('teamstatus.console', ['ngRoute', 'angular-underscore'])
 	.constant('path', '/console');
 
 var JiraCtrl = ['$scope', '$log', '$http', '$window', 'path', function($scope, $log, $http, $window, path) {
@@ -90,7 +91,9 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 				}
 			}
 		];
-	}])
+	}]);
+
+angular.module('teamstatus.console.widget.add', ['teamstatus.console.widget'])
 	.config(['$routeProvider', 'path', function($routeProvider, path) {
 		$routeProvider.when('/welcome', {
 			templateUrl: path + '/partials/add-widget-welcome'
@@ -99,6 +102,14 @@ angular.module('teamstatus.console.widget', ['teamstatus.console'])
 			controller: 'WidgetCtrl'
 		}).otherwise({
 			redirectTo: '/welcome'
+		});
+	}]);
+
+angular.module('teamstatus.console.widget.edit', ['teamstatus.console.widget'])
+	.config(['$routeProvider', 'path', function($routeProvider, path) {
+		$routeProvider.when('/:id', {
+			templateUrl: path + '/partials/add-widget-form',
+			controller: 'WidgetCtrl'
 		});
 	}]);
 
@@ -124,7 +135,33 @@ var WidgetsCtrl = ['$scope', '$routeParams', '$log', '$http', '$window', 'path',
 	}
 }];
 
-var WidgetCtrl = ['$scope', '$http', '$compile', '$window', 'path', 'widgets', function($scope, $http, $compile, $window, path, widgets) {
+var EditWidgetsCtrl = ['$scope', '$routeParams', '$log', '$http', '$window', 'path', 'widgets', 'board',
+	function($scope, $routeParams, $log, $http, $window, path, widgets, board) {
+	$scope.editing = true;
+	$scope.widgetsMap = _.indexBy(widgets, 'id');
+	$scope.board = board;
+	$scope.$on('$routeChangeSuccess', routeChanged);
+
+	$http.get(path + '/ajax/boards/' + board.boardId + '/widgets').success(function(data) {
+		$scope.boardWidgets = data;
+	});
+
+	routeChanged();
+
+	function routeChanged() {
+		var widgetId = $routeParams.id;
+
+		_.each($scope.boardWidgets, function(widget) {
+			widget['active'] = !!widget['_id'] && widget['_id'] === widgetId;
+			if(widget.active) {
+				$scope.currentWidget = _.extend(_.clone($scope.widgetsMap[widget.widget]), widget);
+				$scope.$broadcast('currentWidgetChanged', $scope.currentWidget);
+			}
+		});
+	}
+}];
+
+var WidgetCtrl = ['$scope', '$http', '$compile', '$window', 'path', 'widgets', 'board', function($scope, $http, $compile, $window, path, widgets, board) {
 	$scope.$on('currentWidgetChanged', function(event, widget) {
 		widgetChanged(widget);
 	});
@@ -134,28 +171,39 @@ var WidgetCtrl = ['$scope', '$http', '$compile', '$window', 'path', 'widgets', f
 	}
 
 	function widgetChanged(widget) {
-		$scope.settings = {};
+		$scope.settings = widget.settings || {};
 		$scope.widgetSettings = widget.widgetSettings || { title: "Widget" };
 		if (widget.configurable) {
 			$http.get(path + "/ajax/integrations/" + widget.id + "/js").success(function (data) {
 				eval.apply(window, [data]);
 				$http.get(path + "/ajax/integrations/" + widget.id).success(function (data) {
+					$scope.settings = widget.settings || {};
 					angular.element('.settings').html($compile(data)($scope));
-					$scope.settings = {};
 				});
 			});
 		}
 	}
 
 	$scope.addWidget = function() {
-		$http.post(path + '/ajax/board/' + $scope.board.boardId + '/widgets', {
-			widget: $scope.currentWidget.id,
-			settings: $scope.settings,
-			widgetSettings: $scope.widgetSettings
-		}).success(function(data) {
-			if (!data.error) {
-				$window.location.href=$scope.board.editUrl;
-			}
-		});
+		if ($scope.editing) {
+			$http.post(path + '/ajax/boards/' + $scope.board.boardId + '/widgets/' + $scope.currentWidget._id, {
+				settings: $scope.settings,
+				widgetSettings: $scope.widgetSettings
+			}).success(function(data) {
+				if (!data.error) {
+					$window.location.href=$scope.board.editUrl;
+				}
+			});
+		} else {
+			$http.post(path + '/ajax/boards/' + $scope.board.boardId + '/widgets', {
+				widget: $scope.currentWidget.id,
+				settings: $scope.settings,
+				widgetSettings: $scope.widgetSettings
+			}).success(function(data) {
+				if (!data.error) {
+					$window.location.href=$scope.board.editUrl;
+				}
+			});
+		}
 	};
 }];

@@ -7,19 +7,21 @@
   !=javascript_tag('//cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js')
   !=javascript_tag('console.js')
   :javascript
-    mixpanel.track("Add widget viewed");
+    mixpanel.track("Edit widget viewed");
 
-.container{"ng-app" => "teamstatus.console.widget.add", "ng-controller" => "WidgetsCtrl"}
+.container{"ng-app" => "teamstatus.console.widget.edit", "ng-controller" => "EditWidgetsCtrl"}
 
   .page-header
     %h1
-      Add widget
+      Edit widget
       %small
 
   .row
-    .col-md-2
+    .col-md-3
       .list-group{"ng-cloak" => ""}
-        %a.list-group-item{:href => "#/{{widget.id}}", "ng-repeat" => "widget in widgets", "ng-class" => "{active: widget.active}"} {{widget.name}}
+        %a.list-group-item{:href => "#/{{widget._id}}", "ng-repeat" => "widget in boardWidgets", "ng-class" => "{active: widget.active}"}
+          {{widget.widgetSettings.title}}
+          %span.label.label-default.pull-right {{widgetsMap[widget.widget].name}}
     .col-md-8{"ng-view" => ""}
 
   %hr.footer-divider/

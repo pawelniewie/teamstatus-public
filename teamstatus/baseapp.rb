@@ -36,6 +36,8 @@ class BaseApp < Sinatra::Base
       assets.append_path "assets/#{type}"
     end
 
+    assets.append_path 'vendor/assets/components'
+
     Sprockets::Helpers.configure do |config|
       config.environment = assets
       config.prefix      = assets_prefix

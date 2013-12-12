@@ -45,9 +45,9 @@
 
     %script{:src => "//code.jquery.com/jquery-1.10.0.min.js"}
     %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"}
-    %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"}
-    %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.min.js"}
-    %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.min.js"}
+    %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"}
+    %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-resource.min.js"}
+    %script{:src => "//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-route.min.js"}
     %script{:src => "//cdnjs.cloudflare.com/ajax/libs/angular-strap/0.7.4/angular-strap.min.js"}
     %script{:src => "//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap.min.js"}
     %script{:src => "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"}
@@ -55,9 +55,9 @@
 
     %script{src: "https://teamstatus.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e/en_USonyyzk-1988229788/6204/8/1.4.0-m8/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=b7a346ce", type: "text/javascript"}
 
-    / start Mixpanel
-    :javascript
-      (function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);mixpanel.init("9b4783cdb25e501deb46a756a6a727fd");
+    - if mixpanel_id
+      :javascript
+          (function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);mixpanel.init("#{mixpanel_id}");
 
     %script#IntercomSettingsScriptTag
       window.intercomSettings = { email: "#{user.email}", "user_hash": "#{OpenSSL::HMAC.hexdigest("sha256", "o4-XQYOCN651Lo_SQSdg2fRbzttKmRM1Duf6Ng0d", user.email)}", created_at: #{user.created_at.to_i}, app_id: "8fa52574bd16304e2b2790c4e2e8cb547a499d19" };

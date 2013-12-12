@@ -9,6 +9,11 @@
 		%input#title.form-control{name: "title", "ng-model" => "widgetSettings.title", placeholder: "Optional title", type: "text"}/
 
 	.settings
-	%button.btn.btn-success{:type => "submit"}
+	%button.btn.btn-success{:type => "submit", 'ng-if' => '!editing'}
 		%i.fa.fa-plus
 		Add widget
+	%button.btn.btn-success{:type => "submit", 'ng-if' => 'editing'}
+		%i.fa.fa-cog
+		Save widget
+	%a.btn.btn-link{'ng-href' => '{{board.editUrl}}'}
+		Cancel

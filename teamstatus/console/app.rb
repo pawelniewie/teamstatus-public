@@ -28,7 +28,7 @@ class ConsoleApp < BaseApp
     end
 
     def widget
-      return nil
+      @widget ||= board.widgetsettings.find(params[:widget_id]) || halt(404)
     end
 
     def parsed_body
@@ -69,12 +69,12 @@ class ConsoleApp < BaseApp
     haml :boards
   end
 
-  get '/boards/:board_id/widget' do
+  get '/boards/:board_id/widgets/add' do
     haml :"add-widget", :locals => {:board => board}
   end
 
-  get '/boards/:board_id/widget/:widget_id' do
-    haml :"edit-widget", :locals => {:board => board, :widget => widget}
+  get '/boards/:board_id/widgets/edit' do
+    haml :"edit-widget", :locals => {:board => board}
   end
 
   get '/partials/:partial_id' do
@@ -117,12 +117,22 @@ class ConsoleApp < BaseApp
     send_file File.join(File.expand_path("integrations"), params[:widget_id], 'config.js')
   end
 
-  post "/ajax/board/:board_id/widgets" do |board_id|
+  get "/ajax/boards/:board_id/widgets" do
+    board.widgetsettings.to_json
+  end
+
+  post "/ajax/boards/:board_id/widgets" do
     board.widgetsettings.push(TeamStatus::Db::Widgetsetting.new(parsed_body))
     {:error => false}.to_json
   end
 
-  delete "/ajax/board/:board_id/widgets/:widget_id" do |board_id, widget_id|
+  post "/ajax/boards/:board_id/widgets/:widget_id" do
+    widget.set(:settings, parsed_body['settings'])
+    widget.set(:widgetSettings, parsed_body['widgetSettings'])
+    widget.save
+  end
+
+  delete "/ajax/boards/:board_id/widgets/:widget_id" do |board_id, widget_id|
     board.widgetsettings.delete(board.widgetsettings.find(widget_id))
     {:error => false}.to_json
   end
