@@ -4,8 +4,6 @@ require "sinatra/support"
 require "compass"
 require "sprockets/helpers"
 
-require "teamstatus/helpers"
-
 class BaseApp < Sinatra::Base
 
 	register Sinatra::CompassSupport
@@ -14,8 +12,6 @@ class BaseApp < Sinatra::Base
 
 	helpers do
 	  include Sprockets::Helpers
-	  include TeamStatus::Helpers
-	  include Split::Helper
     include Sinatra::Cookies
 	end
 
@@ -27,10 +23,6 @@ class BaseApp < Sinatra::Base
     set :digest_assets, true
 
     set :protection, :except => [:http_origin]
-
-    Split.configure do |config|
-      config.allow_multiple_experiments = true
-    end
 
     %w{javascripts stylesheets images}.each do |type|
       assets.append_path "assets/#{type}"

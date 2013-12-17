@@ -1,21 +1,13 @@
 source "https://rubygems.org"
 ruby '2.0.0'
 
-# DB
-gem 'mongo'
-gem 'mongoid', "~> 3.0.0"
-gem 'bson_ext'
-
 # Web
 gem "sinatra"
 gem "sinatra-contrib"
 gem "sinatra-support"
 gem "puma"
-gem 'activesupport', '~> 3.1.0'
 gem 'rack-google-analytics'
-gem 'oauth2'
-gem "rack_csrf", :require => "rack/csrf"
-gem 'rack-cors', :require => 'rack/cors', :github => 'pawelniewie/rack-cors'
+gem 'activesupport', '~> 3.1.0'
 
 # Monitoring
 gem 'newrelic_rpm'
@@ -36,9 +28,6 @@ gem "compass"
 gem 'gibbon'
 gem 'intercom'
 gem 'mandrill-api', :require => "mandrill"
-
-# A/B testing
-gem "split",  github: "pawelniewie/split"
 
 group :development do
 	gem 'sinatra-reloader'
