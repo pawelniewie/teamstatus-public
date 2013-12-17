@@ -1,4 +1,5 @@
 //= require global.js
+//= require betasignup
 $(function() {
 	if (mixpanel) {
 		mixpanel.track("Home");

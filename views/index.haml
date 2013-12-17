@@ -74,11 +74,40 @@
       %p
         %a.btn.btn-default{href: "mailto:enterprise@teamstatus.tv", 'data-mixpanel' => 'Enterprise'} Contact us »
 
+  .signup-invitation
+    %h1 Participate in our private beta!
+    We're currently running a closed beta program. Please leave your email and we will contact you shortly.
+
+  #notices
+    #success{style: "display: none;"} Success! Please check your inbox for a confirmation request.
+    #error{style: "display: none;"} Sorry, MailChimp couldn't validate your email. Try again?
+
+  %form{id: 'signup', action: "/signup"}
+    .input-group
+      %input.form-control.input-lg#email{name: "email", placeholder: "Email me about the project", type: "text"}/
+      %span.input-group-btn
+        %button.btn.btn-success.input-lg{type: "submit"}
+          %i.fa.fa-spinner.fa-spin.loading
+          Subscribe
+
+    %p.signup-terms
+      You will receive only relevant, occasional messages, and your email
+      will be stored only by TeamStatus.TV, ensuring prompt removal should you
+      choose to unsubscribe.
+
+
   %hr.footer-divider/
 
   %footer
     %p
       .fb-like{"data-action" => "like", "data-href" => "https://www.facebook.com/TeamStatus.tv", "data-layout" => "standard", "data-share" => "true", "data-show-faces" => "false"}
+
+    %p
+      %g:plusone{href: "http://teamstatus.tv", size: "medium"}
+
+    %p
+      %a.twitter-share-button{"data-text" => "You project's progress on big TV! Builds, issues, and whatever you need! From @TeamStatusTV", "data-url" => "http://teamstatus.tv", href: "https://twitter.com/share"} Tweet
+
     .clearfix
     %p.pull-right
       %a{href: "#"} Back to top
