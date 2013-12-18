@@ -39,6 +39,9 @@
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
         })();
 
+    %script{src: "//platform.linkedin.com/in.js", type: "text/javascript"}
+      lang: en_US
+
     != yield_content(:head)
 
   %body
