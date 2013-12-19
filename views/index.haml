@@ -3,115 +3,97 @@
 - content_for(:scripts) do
   != javascript_tag('index')
 
-.navbar-wrapper
-  .container
-    .navbar.navbar-inverse.navbar-static-top
-      .container
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{href: "#"} TeamStatus.TV
-/
-  Carousel
-  \==================================================
-#myCarousel.carousel.slide
-  / Indicators
-  %ol.carousel-indicators
-    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
-    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
-    %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
-  .carousel-inner
-    .item.active
+.container
+  .jumbotron
+    %a{:href => "http://demo.teamstatus.tv", :title => "Click to see a demo"}
       %img{alt: "JIRA integration", src: image_path("jiraboard.png")}/
-      .container
-        .carousel-caption
-          %h1 See progress of your project
-          %p Watch Bamboo builds, JIRA issues or Crucible reviews in one place.
-    .item
-      %img{alt: "System integration", src: image_path("adminboard.png")}/
-      .container
-        .carousel-caption
-          %h1 See status of your systems
-          %p Watch processes, queues, disk space or memory usage in one place.
-    .item
-      %img{alt: "Custom integration", src: image_path("customboard.png")}/
-      .container
-        .carousel-caption
-          %h1 Adapt to your needs
-          %p Easily customize it to monitor all your systems.
-  %a.left.carousel-control{"data-slide" => "prev", href: "#myCarousel"}
-    %span.glyphicon.glyphicon-chevron-left
-  %a.right.carousel-control{"data-slide" => "next", href: "#myCarousel"}
-    %span.glyphicon.glyphicon-chevron-right
+      %h5 Click to see a demo
 
-.container.marketing
-  / Three columns of text below the carousel
-  .row
-    .col-lg-4
-      %img.img-circle{alt: "Small team", src: image_path('small-team.png')}/
-      %h2 For small teams
-      %p You can easily setup your first teamboard and check on your project within minutes, no coding required. You can easily integrate TeamStatus.TV with your Atlassian OnDemand account.
-      %p
-        - if beta
-          %a.btn.btn-default{href: "/auth/google", 'data-mixpanel' => 'Small'} Try it now with Google account »
-        - else
-          %a.btn.btn-default{href: "/signup", 'data-mixpanel' => 'Small'} Try it now »
-    .col-lg-4
-      %img.img-circle{alt: "Large enterprise", src: image_path('large-team.png')}/
-      %h2 For medium teams
-      %p You can setup multiple teamboards for each of your teams, you can also allow multiple people to manage them. You can integrate with Atlassian OnDemand or you public instances.
-      %p
-        - if beta
-          %a.btn.btn-default{href: "/auth/google", 'data-mixpanel' => 'Large'} Try it now with Google account »
-        - else
-          %a.btn.btn-default{href: "/signup", 'data-mixpanel' => 'Large'} Try it now »
-    .col-lg-4
-      %img.img-circle{alt: "Enterprise", src: image_path('infinity.png')}/
-      %h2 For enterprise companies
-      %p You can setup VPN to access your internal systems securely and if you don't like the idea of using cloud service there's a possibility of hosting TeamStatus.TV on your servers.
-      %p
-        %a.btn.btn-default{href: "mailto:enterprise@teamstatus.tv", 'data-mixpanel' => 'Enterprise'} Contact us »
+    %h1
+      %span.qoute “
+      We have great data but it's spread across many systems
+      %span.qoute ”
+
+  .content
+    %p
+      That's why we created TeamStatus.TV - we had the same pain.
+    %p
+      You have all those great tools. Issues in JIRA, reviews in Crucible, business data elsewhere.
+    %p
+      You know that an informed team makes better decision and people knowing the big picture feel more motivated.
+    %p
+      So you probably want to have a central place (like we do) when you can go to see the most important data.
+    %p Imagine:
+
+    %ul.questions
+      %li You have a reference point during stand ups
+      %li You can check the state of continuous integration with one glimpse
+      %li You have good data
+      %li You can make good decisions
+      %li All team members are on the same page
+
+    %p
+      And, while you're imagining that lovely scenario… What if you could instantly see, no jumping through different systems required, how your project is doing?
+
+    %h1
+      If you find you're spending more time gathering stats about your project than actually getting work done, check out TeamStatus.TV
+    %p
+      We love the tools we use, but even more we love having one central place to keep the data about our project.
+    %p
+      When you use TeamStatus.TV you get the benefit of using a tool designed to help you get the most of your other tools, to understand:
+
+    %ul.answers
+      %li number of issues in progress
+      %li list of support inqueries
+      %li current state of continuos integration
+      %li how many code reviews are open
+
+    %p
+      In addition you can build your own custom integrations, so you can tailor it to your needs.
+
+    %p We've built it thinking about your needs, tailored for:
+    %ul.teams
+      %li teams that do software development
+      %li support engineers
+      %li devops and sysadmins
 
   .signup-invitation
-    %h1 Participate in our private beta!
-    We're currently running a closed beta program. Please leave your email and we will contact you shortly.
+    %h1 Interested? Join our beta program!
+    We're currently running a closed beta. Please leave your email and we will enroll you shortly.
 
   #notices
-    #success{style: "display: none;"} Success! Please check your inbox for a confirmation request.
-    #error{style: "display: none;"} Sorry, MailChimp couldn't validate your email. Try again?
+    #success{style: "display: none;"}
+      .alert.alert-success
+        %div Success! Please check your inbox for a confirmation request.
+
+      .well.well-lg
+        %p While you wait spread the word:
+        %p.share
+          .fb-like{"data-action" => "like", "data-href" => "https://www.facebook.com/TeamStatus.tv", "data-layout" => "button_count", "data-share" => "true", "data-show-faces" => "false"}
+
+          %g:plusone{href: "http://teamstatus.tv", size: "medium"}
+
+          %a.twitter-share-button{"data-text" => "You project's progress on big TV! Builds, issues, and whatever you need! From @TeamStatusTV", "data-url" => "http://teamstatus.tv", href: "https://twitter.com/share"} Tweet
+
+          %script{"data-counter" => "right", "data-url" => "http://teamstatus.tv", type: "IN/Share"}
+
+    #error.alert.alert-danger{style: "display: none;"} Sorry, MailChimp couldn't validate your email. Try again?
 
   %form{id: 'signup', action: "/signup"}
     .input-group
-      %input.form-control.input-lg#email{name: "email", placeholder: "Email me about the project", type: "text"}/
+      %input.form-control.input-lg#email{name: "email", placeholder: "Leave an email if you want to join", type: "text"}/
       %span.input-group-btn
         %button.btn.btn-success.input-lg{type: "submit"}
           %i.fa.fa-spinner.fa-spin.loading
-          Subscribe
+          Join!
 
     %p.signup-terms
-      You will receive only relevant, occasional messages, and your email
-      will be stored only by TeamStatus.TV, ensuring prompt removal should you
-      choose to unsubscribe.
+      We hate SPAM, this address will be used solely (and occasionally) by TeamStatus.TV, you can unsubscribe any time.
 
 
   %hr.footer-divider/
 
   %footer
-    %p
-      .fb-like{"data-action" => "like", "data-href" => "https://www.facebook.com/TeamStatus.tv", "data-layout" => "standard", "data-share" => "true", "data-show-faces" => "false"}
-
-    %p
-      %g:plusone{href: "http://teamstatus.tv", size: "medium"}
-
-    %p
-      %a.twitter-share-button{"data-text" => "You project's progress on big TV! Builds, issues, and whatever you need! From @TeamStatusTV", "data-url" => "http://teamstatus.tv", href: "https://twitter.com/share"} Tweet
-
-    %p
-      %script{"data-counter" => "right", "data-url" => "http://teamstatus.tv", type: "IN/Share"}
-
-    .clearfix
     %p.pull-right
       %a{href: "#"} Back to top
     %p
