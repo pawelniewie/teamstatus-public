@@ -64,11 +64,11 @@
   #notices
     .success{style: "display: none;"}
       .alert.alert-success
-        %div Success! Please check your inbox for a confirmation request.
+        Success! Please check your inbox for a confirmation request.
 
       .well.well-lg
         %p While you wait spread the word:
-        %p.share
+        .share
           .fb-like{"data-action" => "like", "data-href" => "https://www.facebook.com/TeamStatus.tv", "data-layout" => "button_count", "data-share" => "true", "data-show-faces" => "false"}
 
           %g:plusone{href: "http://teamstatus.tv", size: "medium"}
