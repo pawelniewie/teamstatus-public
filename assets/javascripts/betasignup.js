@@ -13,6 +13,10 @@ $(function() {
     } else {
       $("#signup .loading").show();
       $.post("/signup", $(this).serialize(), function() {
+        FB.init({
+            xfbml      : true  // parse XFBML
+        });
+
         $("#signup .loading").hide();
         $("#notices .success").show();
         $("form input#email").val("");
