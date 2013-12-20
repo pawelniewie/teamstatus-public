@@ -96,6 +96,15 @@
   %hr.footer-divider/
 
   %footer
+    %p
+      .fb-like{"data-action" => "like", "data-href" => "https://www.facebook.com/TeamStatus.tv", "data-layout" => "button_count", "data-share" => "true", "data-show-faces" => "false"}
+      &nbsp; &nbsp;
+      %g:plusone{href: "http://teamstatus.tv", size: "medium"}
+
+      %a.twitter-share-button{"data-text" => "You project's progress on big TV! Builds, issues, and whatever you need! From @TeamStatusTV", "data-url" => "http://teamstatus.tv", href: "https://twitter.com/share"} Tweet
+
+      %script{"data-counter" => "right", "data-url" => "http://teamstatus.tv", type: "IN/Share"}
+
     %p.pull-right
       %a{href: "#"} Back to top
     %p
