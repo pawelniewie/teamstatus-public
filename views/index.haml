@@ -62,7 +62,7 @@
     We're currently running a closed beta. Please leave your email and we will enroll you shortly.
 
   #notices
-    #success{style: "display: none;"}
+    .success{style: "display: none;"}
       .alert.alert-success
         %div Success! Please check your inbox for a confirmation request.
 
@@ -77,7 +77,7 @@
 
           %script{"data-counter" => "right", "data-url" => "http://teamstatus.tv", type: "IN/Share"}
 
-    #error.alert.alert-danger{style: "display: none;"} Sorry, MailChimp couldn't validate your email. Try again?
+    .error.alert.alert-danger{style: "display: none;"} Sorry, MailChimp couldn't validate your email. Try again?
 
   %form{id: 'signup', action: "/signup"}
     .input-group

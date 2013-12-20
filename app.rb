@@ -37,7 +37,7 @@ class PublicApp < BaseApp
   end
 
   get '/signup' do
-    haml :betasignup
+    redirect to('/')
   end
 
   post '/signup' do
