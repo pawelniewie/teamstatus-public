@@ -24,19 +24,17 @@ body {
   }
 }
 
-/* SIGN UP
--------------------------------------------------- */
-
-/* Set the fixed height of the footer here */
-#push,
-#footer {
-    height: 60px;
-}
-
 #notices, #signup {
   width: 750px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#signup {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #notices {
@@ -44,29 +42,22 @@ body {
   margin-top: 20px;
 }
 
-.signup-invitation, .discover {
+.signup-invitation {
 	text-align: center;
-}
-
-.discover {
-	margin-top: 50px;
-}
-
-form {
-    text-align: center;
-    margin-top: 10px;
-    margin-left: 150px;
-    margin-right: 150px;
 }
 
 .signup-terms {
 	margin-top: 15px;
 }
 
-.social-list-small {
-    width: 90px;
-    min-height: 75px;
-    margin: 40px auto 0;
-    list-style-type: none;
-    list-style-position: outside;
+@media only screen and (max-width: 800px) {
+    .content, footer, #signup, #notices {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .jumbotron img {
+      width: 145px;
+    }
 }
