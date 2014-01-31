@@ -1,0 +1,157 @@
+#content-below.wrapper
+  .container
+    .row
+      .upsell
+        %small.muted
+          99.9% Uptime
+          %span.spacer //
+          Free upgrade assistence
+          %span.spacer //
+          24/7 Support
+          %span.spacer //
+          Plans from $19.99/month
+          %span.spacer //
+        %a.btn.btn-primary{href: pricing_path}
+          Start your Free Trial Today!
+          %i.fa.fa-arrow-right
+/ FOOTER
+%footer#footer
+  .container
+    .row
+      .col-md-3.col
+        .block.contact-block
+          / @todo: replace with company contact details
+          %h3 Contact Us
+          %address
+            %p
+              %abbr{title: "Phone"}
+                %i.fa.fa-phone
+              019223 8092344
+            %p
+              %abbr{title: "Email"}
+                %i.fa.fa-envelope
+              info@appstrap.me
+            %p
+              %abbr{title: "Address"}
+                %i.fa.fa-home
+              Sunshine House, Sunville. SUN12 8LU.
+      .col-md-5.col
+        .block
+          %h3 About Us
+          %p Making the web a prettier place one template at a time! We make beautiful, quality, responsive Drupal &amp; web templates!
+      .col-md-4.col
+        .block.newsletter
+          %h3 Newsletter
+          %p Stay up to date with our latest news and product releases by signing up to our newsletter.
+          / @todo: replace with mailchimp code
+          %form{role: "form"}
+            .input-group.input-group-sm
+              %label.sr-only{for: "email-field"} Email
+              %input#email-field.form-control{placeholder: "Email", type: "text"}/
+              %span.input-group-btn
+                %button.btn.btn-primary{type: "button"} Go!
+    .row
+      #toplink
+        %a.top-link{href: "#top", title: "Back to top"}
+          Back To Top
+          %i.fa.fa-chevron-up
+      / @todo: replace with company copyright details
+      .subfooter
+        .col-md-6
+          %p
+            Site template by
+            %a{href: "#"} AppStrap
+            | Copyright 2012 &#169; AppStrap
+        .col-md-6
+          %ul.list-inline.footer-menu
+            %li
+              %a{href: "#"} Terms
+            %li
+              %a{href: "#"} Privacy
+            %li
+              %a{href: "#"} Contact Us
+/ Hidden elements - excluded from jPanel Menu on mobile
+.hidden-elements.jpanel-menu-exclude
+  / @modal - signup modal
+  #signup-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
+          %h4.modal-title Sign Up
+        .modal-body
+          %form{action: "signup.htm", role: "form"}
+            %h5 Price Plan
+            %select.form-control
+              %option Basic
+              %option Pro
+              %option Pro +
+            %h5 Account Information
+            .form-group
+              %label.sr-only{for: "signup-first-name"} First Name
+              %input#signup-first-name.form-control{placeholder: "First name", type: "text"}/
+            .form-group
+              %label.sr-only{for: "signup-last-name"} Last Name
+              %input#signup-last-name.form-control{placeholder: "Last name", type: "text"}/
+            .form-group
+              %label.sr-only{for: "signup-username"} Userame
+              %input#signup-username.form-control{placeholder: "Username", type: "text"}/
+            .form-group
+              %label.sr-only{for: "signup-email"} Email address
+              %input#signup-email.form-control{placeholder: "Email address", type: "email"}/
+            .form-group
+              %label.sr-only{for: "signup-password"} Password
+              %input#signup-password.form-control{placeholder: "Password", type: "password"}/
+            .checkbox
+              %label
+                %input{type: "checkbox", value: "term"}/
+                I agree with the Terms and Conditions.
+            %button.btn.btn-primary{type: "submit"} Sign up
+        .modal-footer
+          %small
+            Already signed up?
+            = succeed "." do
+              %a{href: "login.htm"} Login here
+      / /.modal-content
+    / /.modal-dialog
+  / /.modal
+  / @modal - login modal
+  #login-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
+          %h4.modal-title Login
+        .modal-body
+          %form{action: "login.htm", role: "form"}
+            .form-group
+              %label.sr-only{for: "login-email"} Email
+              %input#login-email.form-control.email{placeholder: "Email", type: "email"}/
+            .form-group
+              %label.sr-only{for: "login-password"} Password
+              %input#login-password.form-control.password{placeholder: "Password", type: "password"}/
+            %button.btn.btn-primary{type: "button"} Login
+        .modal-footer
+          %small
+            Not a member?
+            %a.signup{href: "#"} Sign up now!
+          %br/
+          %small
+            %a{href: "#"} Forgotten password?
+      / /.modal-content
+    / /.modal-dialog
+  / /.modal
+/ Scripts
+%script{src: "js/jquery.min.js"}
+%script{src: "js/jquery-migrate-1.2.1.min.js"}
+/ Legacy jQuery support for quicksand plugin
+/ Bootstrap JS
+%script{src: "js/bootstrap.min.js"}
+/ JS plugins
+%script{src: "plugins/flexslider/jquery.flexslider-min.js"}
+%script{src: "plugins/clingify/jquery.clingify.min.js"}
+%script{src: "plugins/jPanelMenu/jquery.jpanelmenu.min.js"}
+%script{src: "plugins/jRespond/js/jRespond.js"}
+%script{src: "plugins/quicksand/jquery.quicksand.js"}
+/ Custom scripts mainly used to trigger libraries
+%script{src: "js/script.min.js"}

@@ -1,0 +1,32 @@
+/ Hidden Header Region
+.header-hidden
+  .header-hidden-inner.container
+    .row
+      .col-sm-4.col-md-4
+        %h3 About Us
+        %p Making the web a prettier place one template at a time! We make beautiful, quality, responsive Drupal &amp; web templates!
+        %a.btn.btn-sm.btn-primary{href: "about.htm"} Find out more
+      .col-sm-4.col-md-4
+        / @todo: replace with company contact details
+        %h3 Contact Us
+        %address
+          %p
+            %abbr{title: "Phone"}
+              %i.fa.fa-phone
+            019223 8092344
+          %p
+            %abbr{title: "Email"}
+              %i.fa.fa-envelope
+            info@themelize.me
+          %p
+            %abbr{title: "Address"}
+              %i.fa.fa-home
+            Sunshine House, Sunville. SUN12 8LU.
+      .col-sm-4.col-md-4
+        / Colour Switch for demo - @todo: remove in production
+        .colour-switcher
+          %h3 Theme Colours
+          %a.green.active{"data-original-title" => "Green (Default)", "data-placement" => "bottom", "data-toggle" => "tooltip", href: "#green"} Green
+          %a.red{"data-original-title" => "Red", "data-placement" => "bottom", "data-toggle" => "tooltip", href: "#red"} Red
+          %a.blue{"data-original-title" => "Blue", "data-placement" => "bottom", "data-toggle" => "tooltip", href: "#blue"} Blue
+          %p Cookies are NOT enabled so colour selection is not persistent.

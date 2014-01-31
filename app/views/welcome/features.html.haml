@@ -1,0 +1,126 @@
+%body.page.page-features
+  %a.sr-only{href: "#content"} Skip to content
+  #navigation.wrapper
+    .navbar-static-top
+      = render :partial => 'hidden_header'
+      = render :partial => 'header_and_branding'
+      = render :partial => 'navigation'
+
+  #content
+    .container
+      / Services
+      .block.features
+        %h2.title-divider
+          %span
+            Core
+            %span.de-em Features
+          %small Core features included in all plans.
+        .row.list-unstyled
+          .feature.col-sm-6.col-md-3
+            %img.img-responsive{alt: "Feature 1", src: "img/features/feature-1.png"}/
+            %h3.title
+              %a{href: "#"}
+                Mobile
+                %span.de-em Friendly
+            %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+          .feature.col-sm-6.col-md-3
+            %img.img-responsive{alt: "Feature 2", src: "img/features/feature-2.png"}/
+            %h3.title
+              %a{href: "#"}
+                24/7
+                %span.de-em Support
+            %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+          .feature.col-sm-6.col-md-3
+            %img.img-responsive{alt: "Feature 3", src: "img/features/feature-3.png"}/
+            %h3.title
+              %a{href: "#"}
+                Free Upgrade
+                %span.de-em Assistance
+            %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+          .feature.col-sm-6.col-md-3
+            %img.img-responsive{alt: "Feature 4", src: "img/features/feature-4.png"}/
+            %h3.title
+              %a{href: "#"}
+                99.9%
+                %span.de-em Uptime
+            %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+        .row
+          / Secondary features
+          .col-md-9
+            %h3.title-divider
+              %span
+                Bonus
+                %span.de-em Features
+              %small Bonus features only included in our Pro &amp; Pro + plans.
+            .tabbable.tabs-left.vertical-tabs.bold-tabs.row
+              %ul.nav.nav-tabs.nav-stacked.col-sm-4.col-md-4
+                %li.active
+                  %a{"data-toggle" => "tab", href: "#tab1"}
+                    Mobile Friendly
+                    %small Cause mobile matters
+                    %i.fa.fa-angle-right
+                %li
+                  %a{"data-toggle" => "tab", href: "#tab2"}
+                    24/7 Support
+                    %small When you need it most
+                    %i.fa.fa-angle-right
+                %li
+                  %a{"data-toggle" => "tab", href: "#tab3"}
+                    Upgrade Assistance
+                    %small FREE upgrades for life!
+                    %i.fa.fa-angle-right
+                %li
+                  %a{"data-toggle" => "tab", href: "#tab4"}
+                    99.9% Uptime
+                    %small Rhoncus adipiscing
+                    %i.fa.fa-angle-right
+              .tab-content.col-sm-8.col-md-8
+                #tab1.feature.tab-pane.active.col-sm-12.col-md-12
+                  %img.img-responsive{alt: "Feature 1", src: "img/features/feature-1.png"}/
+                  %h3.title.visible-phone Mobile Friendly
+                  / only show on mobile when tabs are open
+                  %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+                  %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna.
+                #tab2.feature.tab-pane.col-sm-12.col-md-12
+                  %img.img-responsive{alt: "Feature 2", src: "img/features/feature-2.png"}/
+                  %h3.title.visible-phone 24/7 Support
+                  / only show on mobile when tabs are open
+                  %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+                  %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna.
+                #tab3.feature.tab-pane.col-sm-12.col-md-12
+                  %img.img-responsive{alt: "Feature 3", src: "img/features/feature-3.png"}/
+                  %h3.title.visible-phone Upgrade Assistance
+                  / only show on mobile when tabs are open
+                  %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+                  %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna.
+                #tab4.feature.tab-pane.col-sm-12.col-md-12
+                  %img.img-responsive{alt: "Feature 4", src: "img/features/feature-4.png"}/
+                  %h3.title.visible-phone 99.9% Uptime
+                  / only show on mobile when tabs are open
+                  %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+                  %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna.
+          / Contact block
+          .col-md-3
+            %h3.title-divider
+              %span Questions?
+              %small Get in touch!
+            %p
+              %abbr{title: "Phone"}
+                %i.fa.fa-phone
+              019223 8092344
+            %p
+              %abbr{title: "Email"}
+                %i.fa.fa-envelope
+              info@themelize.me
+            %p
+              %abbr{title: "Address"}
+                %i.fa.fa-home
+              Sunshine House, Sunville. SUN12 8LU.
+            %form#callback-form.bordered-top-medium{action: "#", role: "form"}
+              .input-group
+                %label.sr-only{for: "callback-number"} Your Number
+                %input#callback-number.form-control{placeholder: "Your Number", type: "tel"}/
+                %span.input-group-btn
+                  %button.btn.btn-primary{type: "button"} Get Callback
+
+  =render :partial => 'ending_wrapper'

@@ -1,0 +1,66 @@
+/
+  Change order for full width navbar
+  <div class="navbar">
+  <div class="container" data-toggle="clingify">
+.container{"data-toggle" => "clingify"}
+  .navbar
+    /
+      mobile collapse menu button
+      \- data-toggle="toggle" = default BS menu
+      \- data-toggle="jpanel-menu" = jPanel Menu
+    %a.navbar-btn{"data-target" => ".navbar-collapse", "data-toggle" => "jpanel-menu"}
+      %span.bar
+      %span.bar
+      %span.bar
+      %span.bar
+    / user menu
+    .btn-group.user-menu.pull-right
+      %a.btn.btn-primary.signup{"data-toggle" => "modal", href: "#signup-modal"} Sign Up
+      %a.btn.btn-primary.dropdown-toggle.login{"data-toggle" => "modal", href: "#login-modal"} Login
+    / everything within this div is collapsed on mobile
+    .navbar-collapse.collapse
+      / main navigation
+      %ul.nav.navbar-nav
+        %li.home-link
+          =link_to root_path do
+            %i.fa.fa-home
+            %span.hidden Home
+        %li.dropdown{:class => ('active' if current_page? features_path)}
+          %a#features-drop.dropdown-toggle.menu-item{"data-toggle" => "dropdown", href: features_path} Features +
+          / Dropdown Menu - Mega Menu
+          %ul.dropdown-menu.mega-menu{"aria-labelledby" => "features-drop", role: "menu"}
+            %li.dropdown-header{role: "presentation"} Mega Menu with links &amp; text items
+            %li{role: "presentation"}
+              %ul.row.list-unstyled{role: "menu"}
+                %li.col-md-4{role: "presentation"}
+                  %a.img-link{href: "features.htm", role: "menuitem"}
+                    %img{alt: "Feature 1", src: "img/features/feature-1.png"}/
+                  %a.menu-item{href: "features.htm", role: "menuitem", tabindex: "-1"}
+                    %strong Mobile Friendly
+                  %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+                %li.col-md-4{role: "presentation"}
+                  %a.img-link{href: "features.htm", role: "menuitem"}
+                    %img{alt: "Feature 2", src: "img/features/feature-2.png"}/
+                  %a.menu-item{href: "features.htm", role: "menuitem", tabindex: "-1"}
+                    %strong 24/7 Support
+                  %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+                %li.col-md-4{role: "presentation"}
+                  %a.img-link{href: "features.htm", role: "menuitem"}
+                    %img{alt: "Feature 2", src: "img/features/feature-3.png"}/
+                  %a.menu-item{href: "features.htm", role: "menuitem", tabindex: "-1"}
+                    %strong 99% Uptime
+                  %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+        %li{:class => ('active' if current_page? pricing_path)}
+          %a.menu-item{href: pricing_path} Pricing
+        %li.dropdown{:class => ('active' if current_page? about_path or current_page? team_path or current_page? contact_path)}
+          %a#about-drop.dropdown-toggle{"data-toggle" => "dropdown", href: about_path} About +
+          / Dropdown Menu
+          %ul.dropdown-menu{"aria-labelledby" => "about-drop", role: "menu"}
+            %li{role: "presentation"}
+              %a.menu-item{href: about_path, role: "menuitem", tabindex: "-1"} About Us
+            %li{role: "presentation"}
+              %a.menu-item{href: team_path, role: "menuitem", tabindex: "-1"} Our Team
+            %li{role: "presentation"}
+              %a.menu-item{href: contact_path, role: "menuitem", tabindex: "-1"} Contact
+        %li{:class => ('active' if current_page? blog_path)}
+          %a.menu-item{href: blog_path} Blog

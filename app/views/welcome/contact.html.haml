@@ -1,0 +1,51 @@
+%body.page.page-contact
+  %a.sr-only{href: "#content"} Skip to content
+  #navigation.wrapper
+    .navbar-static-top
+      = render :partial => 'hidden_header'
+      = render :partial => 'header_and_branding'
+      = render :partial => 'navigation'
+
+  #content
+    .container
+      .row
+        =render :partial => 'about_sidebar'
+
+        / main content
+        .col-md-9
+          %h2.title-divider
+            %span
+              Contact
+              %span.de-em Us
+            %small Ways To Get In Touch
+          .row
+            .col-md-6
+              %form#contact-form{action: "#", role: "form"}
+                .form-group
+                  %label.sr-only{for: "contact-name"} Name
+                  %input#contact-name.form-control{placeholder: "Name", type: "text"}/
+                .form-group
+                  %label.sr-only{for: "contact-email"} Email
+                  %input#contact-email.form-control{placeholder: "Email", type: "email"}/
+                .form-group
+                  %label.sr-only{for: "contact-message"} Message
+                  %textarea#contact-message.form-control{placeholder: "Message", rows: "12"}
+                %input.btn.btn-primary{type: "button", value: "Send Message"}/
+            .col-md-6
+              %p
+                %abbr{title: "Phone"}
+                  %i.fa.fa-phone
+                019223 8092344
+              %p
+                %abbr{title: "Email"}
+                  %i.fa.fa-envelope
+                info@appstrap.me
+              %p
+                %abbr{title: "Address"}
+                  %i.fa.fa-home
+                Sunshine House, Sunville. SUN12 8LU.
+              %p
+                %a{href: "https://maps.google.co.uk/maps?q=London&ie=UTF8&hq=&hnear=London,+United+Kingdom&gl=uk&t=m&ll=51.510238,-0.127029&spn=0.042735,0.102654&z=12&"}
+                  %img.img-thumbnail{alt: "Location map", src: "img/misc/map.png"}/
+
+  =render :partial => 'ending_wrapper'
