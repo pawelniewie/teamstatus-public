@@ -1,8 +1,7 @@
 <% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
-var newsletter = angular.module('teamstatus.public.newsletter', ['ui.bootstrap'])
-	.constant('path', "<%= newsletter_path %>");
-
-var NewsletterCtrl = ['$scope', '$http', 'path', function($scope, $http, path) {
+angular.module('teamstatus.public.newsletter', ['ui.bootstrap'])
+	.constant('path', "<%= newsletter_path %>")
+	.controller('NewsletterCtrl', ['$scope', '$http', 'path', function($scope, $http, path) {
 	$scope.loading = false;
 	$scope.subscribed = false;
 
@@ -16,12 +15,11 @@ var NewsletterCtrl = ['$scope', '$http', 'path', function($scope, $http, path) {
 			$scope.subscribed = false;
 		});
 	};
-}];
+}]);
 
-var contact = angular.module('teamstatus.public.contact', ['ui.bootstrap'])
-	.constant('path', "<%= contact_path %>");
-
-var ContactCtrl = ['$scope', '$http', 'path', function($scope, $http, path) {
+angular.module('teamstatus.public.contact', ['ui.bootstrap'])
+	.constant('path', "<%= contact_path %>")
+	.controller('ContactCtrl', ['$scope', '$http', 'path', function($scope, $http, path) {
 	$scope.loading = false;
 	$scope.succeeded = false;
 
@@ -38,4 +36,6 @@ var ContactCtrl = ['$scope', '$http', 'path', function($scope, $http, path) {
 			$scope.succeeded = false;
 		});
 	};
-}];
+}]);
+
+angular.bootstrap(angular.element('.block.newsletter'), ['teamstatus.public.newsletter']);

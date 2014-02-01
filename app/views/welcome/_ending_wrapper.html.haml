@@ -40,7 +40,7 @@
           %h3 About Us
           %p Making your data work for you! One widget at a time!
       .col-md-4.col
-        .block.newsletter{:'ng-app' => 'teamstatus.public.newsletter', :'ng-controller' => 'NewsletterCtrl'}
+        .block.newsletter{:'ng-controller' => 'NewsletterCtrl', 'ng-cloak' => ''}
           %h3 Newsletter
           %p Stay up to date with our latest news and product releases by signing up to our newsletter.
           %form{role: "form", name: 'newsletter', :'ng-hide' => 'subscribed', 'ng-submit' => 'addSubscriber()'}
