@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'rails_stdout_logging'
 
 # Mails
+# Mails
+gem 'gibbon'
 gem 'intercom'
 gem 'mandrill-api', :require => "mandrill"
 

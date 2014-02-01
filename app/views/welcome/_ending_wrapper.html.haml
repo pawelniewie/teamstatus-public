@@ -41,14 +41,20 @@
         .block.newsletter{:'ng-app' => 'teamstatus.public.newsletter', :'ng-controller' => 'NewsletterCtrl'}
           %h3 Newsletter
           %p Stay up to date with our latest news and product releases by signing up to our newsletter.
-          %form{role: "form", :'ng-hide' => 'subscribed'}
+          %form{role: "form", name: 'newsletter', :'ng-hide' => 'subscribed', 'ng-submit' => 'addSubscriber()'}
             .input-group.input-group-sm
               %label.sr-only{for: "email-field"} Email
-              %input#email-field.form-control{placeholder: "Email", type: "text", :'ng-disabled' => 'loading'}/
+              %input#email-field.form-control{placeholder: "Email", name: 'email', type: "email", required: true, :'ng-model' => 'email', 'ng-minlength' => "5", :'ng-disabled' => 'loading'}/
               %span.input-group-btn
-                %button.btn.btn-primary{type: "button"}
+                %button.btn.btn-primary{type: "submit", :'ng-disabled' => 'loading'}
                   %span{:'ng-hide' => 'loading'} Go!
                   %i.fa.fa-spinner.fa-spin{:'ng-show' => 'loading'}
+
+            %small.error{"ng-show" => "newsletter.email.$error.email"} That's not a valid email
+            %small.error{"ng-show" => "newsletter.email.$error.minlength"} Email is required to be at least 5 characters
+            %small.error{"ng-show" => "newsletter.email.$error.required"} Email is required
+            %small.error{"ng-show" => "failure"} Unable to process request, please try again later
+
           .alert.alert-success{:'ng-show' => 'subscribed'}
             You have been subscribed to our newsletter!
     .row

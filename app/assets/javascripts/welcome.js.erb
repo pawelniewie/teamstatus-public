@@ -1,0 +1,20 @@
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
+var newsletter = angular.module('teamstatus.public.newsletter', ['ui.bootstrap'])
+	.constant('path', "<%= newsletter_path %>");
+
+var NewsletterCtrl = ['$scope', '$http', 'path', function($scope, $http, path) {
+	$scope.email = "pniewiadomski@atlassian.com";
+	$scope.loading = false;
+	$scope.subscribed = false;
+
+	$scope.addSubscriber = function() {
+		$scope.loading = true;
+		$http.post(path, { email: this.email }).success(function() {
+			$scope.loading = false;
+			$scope.subscribed = true;
+		}).error(function() {
+			$scope.loading = false;
+			$scope.subscribed = false;
+		});
+	};
+}];
