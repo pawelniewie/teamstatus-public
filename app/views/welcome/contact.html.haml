@@ -21,7 +21,7 @@
           .row
             .col-md-6
               %form#contact-form{action: "#", role: "form", name: 'contact', :'ng-app' => 'teamstatus.public.contact', :'ng-controller' => 'ContactCtrl', 'ng-submit' => 'sendMessage()'}
-                .alert.alert-success{:'ng-show' => 'succeeded'} Message was sent. Thank you!
+                .alert.alert-success{:'ng-show' => 'succeeded', 'ng-cloak' => ''} Message was sent. Thank you!
                 .form-group
                   %label.sr-only{for: "contact-name"} Name
                   %input#contact-name.form-control{placeholder: "Name", type: "text", name: 'name', :'ng-model' => 'name', :'ng-disabled' => 'loading'}/

@@ -16,7 +16,8 @@
     / user menu
     .btn-group.user-menu.pull-right
       %a.btn.btn-primary.signup{"data-toggle" => "modal", href: "#signup-modal"} Sign Up
-      %a.btn.btn-primary.dropdown-toggle.login{"data-toggle" => "modal", href: "#login-modal"} Login
+      / %a.btn.btn-primary.dropdown-toggle.login{"data-toggle" => "modal", href: "#login-modal"} Login
+      %a.btn.btn-primary.dropdown-toggle.login{href: "#{ENV['CONSOLE_URL']}/login/google"} Login
     / everything within this div is collapsed on mobile
     .navbar-collapse.collapse
       / main navigation

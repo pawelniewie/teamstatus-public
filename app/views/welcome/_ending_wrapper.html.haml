@@ -20,7 +20,6 @@
     .row
       .col-md-3.col
         .block.contact-block
-          / @todo: replace with company contact details
           %h3 Contact Us
           %address
             %p
@@ -64,7 +63,6 @@
         %a.top-link{href: "#top", title: "Back to top"}
           Back To Top
           %i.fa.fa-chevron-up
-      / @todo: replace with company copyright details
       .subfooter
         .col-md-6
           %p
@@ -82,45 +80,40 @@
 / Hidden elements - excluded from jPanel Menu on mobile
 .hidden-elements.jpanel-menu-exclude
   / @modal - signup modal
-  #signup-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+  #signup-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1", :'ng-controller' => 'SignUpCtrl'}
     .modal-dialog
       .modal-content
         .modal-header
           %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
           %h4.modal-title Sign Up
         .modal-body
-          %form{action: "signup.htm", role: "form"}
-            %h5 Price Plan
-            %select.form-control
-              %option Basic
-              %option Pro
-              %option Pro +
-            %h5 Account Information
-            .form-group
-              %label.sr-only{for: "signup-first-name"} First Name
-              %input#signup-first-name.form-control{placeholder: "First name", type: "text"}/
-            .form-group
-              %label.sr-only{for: "signup-last-name"} Last Name
-              %input#signup-last-name.form-control{placeholder: "Last name", type: "text"}/
-            .form-group
-              %label.sr-only{for: "signup-username"} Userame
-              %input#signup-username.form-control{placeholder: "Username", type: "text"}/
-            .form-group
-              %label.sr-only{for: "signup-email"} Email address
-              %input#signup-email.form-control{placeholder: "Email address", type: "email"}/
-            .form-group
-              %label.sr-only{for: "signup-password"} Password
-              %input#signup-password.form-control{placeholder: "Password", type: "password"}/
+          %form{role: "form"}
+            / %h5 Account Information
+            / .form-group
+            /   %label.sr-only{for: "signup-first-name"} First Name
+            /   %input#signup-first-name.form-control{placeholder: "First name", type: "text"}/
+            / .form-group
+            /   %label.sr-only{for: "signup-last-name"} Last Name
+            /   %input#signup-last-name.form-control{placeholder: "Last name", type: "text"}/
+            / .form-group
+            /   %label.sr-only{for: "signup-username"} Userame
+            /   %input#signup-username.form-control{placeholder: "Username", type: "text"}/
+            / .form-group
+            /   %label.sr-only{for: "signup-email"} Email address
+            /   %input#signup-email.form-control{placeholder: "Email address", type: "email"}/
+            / .form-group
+            /   %label.sr-only{for: "signup-password"} Password
+            /   %input#signup-password.form-control{placeholder: "Password", type: "password"}/
             .checkbox
               %label
-                %input{type: "checkbox", value: "term"}/
+                %input{type: "checkbox", value: "true", :'ng-model' => 'agreement'}/
                 I agree with the Terms and Conditions.
-            %button.btn.btn-primary{type: "submit"} Sign up
+            %a.btn.btn-primary{type: "submit", href: "#{ENV['CONSOLE_URL']}/login/google", :'ng-disabled' => '!agreement'} Sign up using Google Account
         .modal-footer
           %small
             Already signed up?
             = succeed "." do
-              %a{href: "login.htm"} Login here
+              %a{href: "#{ENV['CONSOLE_URL']}/login/google"} Login here
       / /.modal-content
     / /.modal-dialog
   / /.modal

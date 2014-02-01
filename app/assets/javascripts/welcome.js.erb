@@ -39,3 +39,8 @@ angular.module('teamstatus.public.contact', ['ui.bootstrap'])
 }]);
 
 angular.bootstrap(angular.element('.block.newsletter'), ['teamstatus.public.newsletter']);
+
+angular.module('teamstatus.public.login', [])
+	.controller('SignUpCtrl', [function () {}]);
+
+angular.bootstrap(angular.element('#signup-modal'), ['teamstatus.public.login']);
