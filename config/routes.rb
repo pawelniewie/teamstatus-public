@@ -12,6 +12,8 @@ Public::Application.routes.draw do
   get "blog" => 'welcome#blog'
   get "features" => 'welcome#features'
   get "pricing" => 'welcome#pricing'
+  get "terms" => 'welcome#terms'
+  get "privacy" => 'welcome#privacy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

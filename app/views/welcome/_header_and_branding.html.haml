@@ -1,0 +1,28 @@
+/ Header & Branding region
+.header
+  .header-inner.container
+    .row
+      .col-md-8
+        / branding/logo
+        %a.navbar-brand{href: root_path, title: "Home"}
+          %h1
+            %span> Team
+            Status
+            %span> .TV
+        .slogan Key Performance Indicators for your team
+      / header rightside
+      .col-md-4
+        / social media icons
+        .social-media
+          %a{href: "https://twitter.com/TeamStatusTV"}
+            %i.fa.fa-twitter
+          %a{href: "https://www.facebook.com/TeamStatus.tv"}
+            %i.fa.fa-facebook
+          / %a{href: "#"}
+          /   %i.fa.fa-linkedin
+          / %a{href: "#"}
+          /   %i.fa.fa-google-plus
+    #header-hidden-link
+      %a.show-hide{"data-target" => ".header-hidden", "data-toggle" => "show-hide", href: "#", title: "Click me you'll get a surprise"}
+        %i>
+        Open

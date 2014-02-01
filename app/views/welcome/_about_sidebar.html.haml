@@ -18,3 +18,13 @@
           Contact Us
           %small How to get in touch
           %i.fa.fa-angle-right
+      %li{:class => ('active' if current_page? terms_path)}
+        %a{href: terms_path}
+          Terms
+          %small Your terms of use
+          %i.fa.fa-angle-right
+      %li{:class => ('active' if current_page? privacy_path)}
+        %a{href: privacy_path}
+          Privacy
+          %small Our privacy policy
+          %i.fa.fa-angle-right

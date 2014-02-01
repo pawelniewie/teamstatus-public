@@ -12,11 +12,18 @@ class WelcomeController < ApplicationController
   end
 
   def blog
+    redirect_to 'http://blog.teamstatus.tv'
   end
 
   def features
   end
 
   def pricing
+  end
+
+  def privacy
+  end
+
+  def terms
   end
 end

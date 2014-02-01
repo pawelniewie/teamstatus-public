@@ -16,34 +16,7 @@
             %span.de-em Features
           %small Core features included in all plans.
         .row.list-unstyled
-          .feature.col-sm-6.col-md-3
-            %img.img-responsive{alt: "Feature 1", src: "img/features/feature-1.png"}/
-            %h3.title
-              %a{href: "#"}
-                Mobile
-                %span.de-em Friendly
-            %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
-          .feature.col-sm-6.col-md-3
-            %img.img-responsive{alt: "Feature 2", src: "img/features/feature-2.png"}/
-            %h3.title
-              %a{href: "#"}
-                24/7
-                %span.de-em Support
-            %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
-          .feature.col-sm-6.col-md-3
-            %img.img-responsive{alt: "Feature 3", src: "img/features/feature-3.png"}/
-            %h3.title
-              %a{href: "#"}
-                Free Upgrade
-                %span.de-em Assistance
-            %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
-          .feature.col-sm-6.col-md-3
-            %img.img-responsive{alt: "Feature 4", src: "img/features/feature-4.png"}/
-            %h3.title
-              %a{href: "#"}
-                99.9%
-                %span.de-em Uptime
-            %p Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.
+          =render :partial => 'main_features'
         .row
           / Secondary features
           .col-md-9
@@ -107,20 +80,14 @@
             %p
               %abbr{title: "Phone"}
                 %i.fa.fa-phone
-              019223 8092344
+              +48 609-575-575
             %p
               %abbr{title: "Email"}
                 %i.fa.fa-envelope
-              info@themelize.me
+              info@teamstatus.tv
             %p
               %abbr{title: "Address"}
                 %i.fa.fa-home
-              Sunshine House, Sunville. SUN12 8LU.
-            %form#callback-form.bordered-top-medium{action: "#", role: "form"}
-              .input-group
-                %label.sr-only{for: "callback-number"} Your Number
-                %input#callback-number.form-control{placeholder: "Your Number", type: "tel"}/
-                %span.input-group-btn
-                  %button.btn.btn-primary{type: "button"} Get Callback
+              Tischnera 14. Gdańsk. Poland. 80-283.
 
   =render :partial => 'ending_wrapper'

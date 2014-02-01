@@ -14,134 +14,111 @@
           %span
             Pricing
             %span.de-em Plans
-          %small Competitive pricing for all your needs.
+          %small Sign up in 20 seconds, upgrade, downgrade or cancel any time.
         / Stack 1
         .row.pricing-stack
-          .col-md-3
+          .col-md-3.col-md-offset-1
             .well
-              %h3.title Starter
-              %p.price
-                %span.fancy Free!
-              %ul.unstyled.points
-                %li 3 User Accounts
-                %li 3 Private Projects
-                %li Umlimited Public Projects
-                %li 5GB of space
-              %a.btn.btn-primary Sign Up
-          .col-md-3
-            .well.active
-              %h3.title
-                %span.em Pro
-                %span.fancy Plus
+              %h3.title Mini
               %p.price
                 %span.currency $
                 %span.digits
-                  49
-                  %span .95
-                %span.term /MO
+                  16
+                %span.term /MONTH
               %ul.unstyled.points
-                %li 50 User Accounts
-                %li 50 Private Projects
-                %li Umlimited Public Projects
-                %li Unlimited space
-              %a.btn.btn-primary Sign Up
+                %li 1 dashboard
+                %li Unlimited widgets
+                %li Unlimited watchers
+                %li TV Mode
+                %li Email support
+                %li Developer SDK
           .col-md-3
             .well.active
               %h3.title
-                %span.em Biz
-                %span.fancy Plus
+                %span.em Team
               %p.price
                 %span.currency $
                 %span.digits
-                  199
-                  %span .95
-                %span.term /MO
+                  39
+                %span.term /MONTH
               %ul.unstyled.points
-                %li Umlimited User Accounts
-                %li Umlimited Private Projects
-                %li Umlimited Public Projects
-                %li Unlimited space
-              %a.btn.btn-primary Sign Up
+                %li 5 dashboards
+                %li Unlimited widgets
+                %li Unlimited watchers
+                %li TV Mode
+                %li Email support
+                %li Developer SDK
           .col-md-3
-            .well
-              %h3.title
-                Starter
-                %span.fancy Plus
-              %p.price
-                %span.currency $
-                %span.digits
-                  19
-                  %span .95
-                %span.term /MO
-              %ul.unstyled.points
-                %li 10 User Accounts
-                %li 10 Private Projects
-                %li Umlimited Public Projects
-                %li 15GB of space
-              %a.btn.btn-primary Sign Up
-        .row.pricing-stack.bordered-top-large
-          .col-md-offset-1.col-sm-4.col-md-3
-            .well
-              %h3.title Starter
-              %p.price
-                %span.fancy Free!
-              %ul.unstyled.points
-                %li 3 User Accounts
-                %li 3 Private Projects
-                %li Umlimited Public Projects
-                %li 5GB of space
-              %a.btn.btn-primary Sign Up
-          .col-sm-4.col-md-4
             .well.active
               %h3.title
-                %span.em Pro
-                %span.fancy Plus
+                %span.em Company
+                %span.fancy
               %p.price
                 %span.currency $
                 %span.digits
-                  49
-                  %span .95
-                %span.term /MO
+                  129
+                %span.term /MONTH
               %ul.unstyled.points
-                %li 50 User Accounts
-                %li 50 Private Projects
-                %li Umlimited Public Projects
-                %li Unlimited space
-              %a.btn.btn-primary Sign Up
-          .col-sm-4.col-md-3
-            .well
-              %h3.title
-                Starter
-                %span.fancy Plus
-              %p.price
-                %span.currency $
-                %span.digits
-                  19
-                  %span .95
-                %span.term /MO
-              %ul.unstyled.points
-                %li 10 User Accounts
-                %li 10 Private Projects
-                %li Umlimited Public Projects
-                %li 15GB of space
-              %a.btn.btn-primary Sign Up
+                %li 10 dashboards
+                %li Unlimited widgets
+                %li Unlimited watchers
+                %li TV Mode
+                %li Email support
+                %li Developer SDK
+
         .row
           / Plan features
           .well.well-mini.pull-center
             %h4.inline-el.pad-right
               %span
-                All Plans
+                Try it for FREE
                 = succeed ":" do
-                  %span.de-em Include
+                  %span.de-em for 30 days
             %p.inline-el.pad-left.muted
-              90 day money back guarantee
-              %span.spacer //
-              24/7 telephone support
-              %span.spacer //
-              FREE Setup
-              %span.spacer //
-              Migration Help
-              %span.spacer //
-              Developer API
+              %a.btn.btn-primary{"data-toggle" => "modal", href: "#signup-modal"} Start Today! No credit card required
+              %p EU customers will be charged VAT at 23%
+
+        .row.pricing-stack.bordered-top-large
+          .col-md-3.col-sm-4.col-md-offset-3
+            .well.active
+              %h3.title
+                %span.em Enterprise
+              %p.price
+                %span.currency $
+                %span.digits
+                  389
+                %span.term /MONTH
+              %ul.unstyled.points
+                %li 50 dashboards
+                %li Unlimited widgets
+                %li Unlimited watchers
+                %li TV Mode
+                %li Email support
+                %li Developer SDK
+                %li IP restriction
+                %li Custom Domain
+              %a.btn.btn-primary Sign Up
+
+          .col-md-3.col-sm-4
+            .well.active
+              %h3.title
+                %span.em Enterprise
+                %div.fancy behind the firewall
+              %p.price
+                %span.currency $
+                %span.digits
+                  1500
+                %span.term /YEAR
+              %ul.unstyled.points
+                %li Unlimited dashboards
+                %li Unlimited widgets
+                %li Unlimited watchers
+                %li TV Mode
+                %li Email support
+                %li Developer SDK
+                %li Source code
+                %li Installed by customer
+                %li Hosted by customer
+              %a.btn.btn-primary Download
 
   =render :partial => 'ending_wrapper'

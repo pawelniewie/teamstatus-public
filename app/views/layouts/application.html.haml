@@ -1,0 +1,37 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "utf-8"}/
+    %title TeamStatus.TV - Key Performance Indicators for your team
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    / @todo: fill with your company info or remove
+    %meta{content: "", name: "description"}/
+    %meta{content: "TeamStatus.TV", name: "author"}/
+    / Bootstrap CSS
+    %link{href: "css/bootstrap.min.css", rel: "stylesheet"}/
+    / Font Awesome
+    %link{href: "css/font-awesome.min.css", rel: "stylesheet"}/
+    / Plugins
+    %link{href: "plugins/animate/animate.css", rel: "stylesheet"}/
+    %link{href: "plugins/flexslider/flexslider.css", rel: "stylesheet"}/
+    %link{href: "plugins/clingify/clingify.css", rel: "stylesheet"}/
+    / Theme style
+    %link{href: "css/theme-style.min.css", rel: "stylesheet"}/
+    / Your custom colour override
+    %link#colour-scheme{href: "css/colour-red.css", rel: "stylesheet"}/
+    / Your custom override
+    %link{href: "css/custom-style.css", rel: "stylesheet"}/
+    / HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries
+    /[if lt IE 9]
+      <script src="plugins/html5shiv/dist/html5shiv.js"></script>
+      <script src="plugins/respond/respond.min.js"></script>
+    / Le fav and touch icons - @todo: fill with your icons or remove
+    %link{href: "img/icons/favicon.png", rel: "shortcut icon"}/
+    %link{href: "img/icons/114x114.png", rel: "apple-touch-icon-precomposed", sizes: "114x114"}/
+    %link{href: "img/icons/72x72.png", rel: "apple-touch-icon-precomposed", sizes: "72x72"}/
+    %link{href: "img/icons/default.png", rel: "apple-touch-icon-precomposed"}/
+    %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti", rel: "stylesheet", type: "text/css"}/
+    / Retina.js plugin - @see: http://retinajs.com/
+    %script{src: "plugins/retina/js/retina-1.1.0.min.js"}
+  %body= yield
