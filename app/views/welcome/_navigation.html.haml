@@ -29,27 +29,31 @@
           %a#features-drop.dropdown-toggle.menu-item{"data-toggle" => "dropdown", href: features_path} Features +
           / Dropdown Menu - Mega Menu
           %ul.dropdown-menu.mega-menu{"aria-labelledby" => "features-drop", role: "menu"}
-            %li.dropdown-header{role: "presentation"} How TeamStatus can help you
+            %li.dropdown-header{role: "presentation"} What we offer to help you
             %li{role: "presentation"}
               %ul.row.list-unstyled{role: "menu"}
+
                 %li.col-md-4{role: "presentation"}
                   %a.img-link{href: features_path, role: "menuitem"}
                     %img{alt: "Atlassian integration", src: image_path('feature-atlassian.png')}/
                   %a.menu-item{href: features_path, role: "menuitem", tabindex: "-1"}
                     %strong Integration
-                  %span JIRA, Bamboo, Crucible, TeamStatus knows how to talk with them!
+                  / %span JIRA, Bamboo, Crucible, TeamStatus knows how to talk with them!
+
                 %li.col-md-4{role: "presentation"}
                   %a.img-link{href: features_path, role: "menuitem"}
-                    %img{alt: "Feature 2", src: "img/features/feature-2.png"}/
+                    %img{alt: "Customize it", src: "img/features/feature-3.png"}/
                   %a.menu-item{href: features_path, role: "menuitem", tabindex: "-1"}
-                    %strong 24/7 Support
-                  %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+                    %strong Customization
+                  / %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+
                 %li.col-md-4{role: "presentation"}
                   %a.img-link{href: features_path, role: "menuitem"}
-                    %img{alt: "Feature 2", src: "img/features/feature-3.png"}/
+                    %img{alt: "Your terms", src: "img/features/feature-4.png"}/
                   %a.menu-item{href: features_path, role: "menuitem", tabindex: "-1"}
-                    %strong 99% Uptime
-                  %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+                    %strong Your terms
+                  / %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+
         %li{:class => ('active' if current_page? demo_path)}
           %a.menu-item{href: demo_path} Demo
         %li{:class => ('active' if current_page? pricing_path)}
