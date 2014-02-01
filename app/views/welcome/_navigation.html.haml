@@ -29,15 +29,15 @@
           %a#features-drop.dropdown-toggle.menu-item{"data-toggle" => "dropdown", href: features_path} Features +
           / Dropdown Menu - Mega Menu
           %ul.dropdown-menu.mega-menu{"aria-labelledby" => "features-drop", role: "menu"}
-            %li.dropdown-header{role: "presentation"} Mega Menu with links &amp; text items
+            %li.dropdown-header{role: "presentation"} How TeamStatus can help you
             %li{role: "presentation"}
               %ul.row.list-unstyled{role: "menu"}
                 %li.col-md-4{role: "presentation"}
                   %a.img-link{href: features_path, role: "menuitem"}
-                    %img{alt: "Feature 1", src: "img/features/feature-1.png"}/
+                    %img{alt: "Atlassian integration", src: image_path('feature-atlassian.png')}/
                   %a.menu-item{href: features_path, role: "menuitem", tabindex: "-1"}
-                    %strong Mobile Friendly
-                  %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+                    %strong Integration
+                  %span JIRA, Bamboo, Crucible, TeamStatus knows how to talk with them!
                 %li.col-md-4{role: "presentation"}
                   %a.img-link{href: features_path, role: "menuitem"}
                     %img{alt: "Feature 2", src: "img/features/feature-2.png"}/
@@ -50,6 +50,8 @@
                   %a.menu-item{href: features_path, role: "menuitem", tabindex: "-1"}
                     %strong 99% Uptime
                   %span Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!
+        %li{:class => ('active' if current_page? demo_path)}
+          %a.menu-item{href: demo_path} Demo
         %li{:class => ('active' if current_page? pricing_path)}
           %a.menu-item{href: pricing_path} Pricing
         %li.dropdown{:class => ('active' if current_page? about_path or current_page? team_path or current_page? contact_path)}

@@ -10,6 +10,7 @@ Public::Application.routes.draw do
   get "team" => 'welcome#team'
   get "contact" => 'welcome#contact'
   get "blog" => 'welcome#blog'
+  get "demo" => 'welcome#demo'
   get "features" => 'welcome#features'
   get "pricing" => 'welcome#pricing'
   get "terms" => 'welcome#terms'

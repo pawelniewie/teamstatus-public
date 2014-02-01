@@ -15,6 +15,10 @@ class WelcomeController < ApplicationController
     redirect_to 'http://blog.teamstatus.tv'
   end
 
+  def demo
+    redirect_to 'http://demo.teamstatus.tv'
+  end
+
   def features
   end
 
