@@ -9,6 +9,7 @@ Public::Application.routes.draw do
   get "about" => 'welcome#about'
   get "team" => 'welcome#team'
   get "contact" => 'welcome#contact'
+  post "contact" => 'welcome#message'
   get "blog" => 'welcome#blog'
   get "demo" => 'welcome#demo'
   get "features" => 'welcome#features'

@@ -20,17 +20,28 @@
             %small Ways To Get In Touch
           .row
             .col-md-6
-              %form#contact-form{action: "#", role: "form"}
+              %form#contact-form{action: "#", role: "form", name: 'contact', :'ng-app' => 'teamstatus.public.contact', :'ng-controller' => 'ContactCtrl', 'ng-submit' => 'sendMessage()'}
+                .alert.alert-success{:'ng-show' => 'succeeded'} Message was sent. Thank you!
                 .form-group
                   %label.sr-only{for: "contact-name"} Name
-                  %input#contact-name.form-control{placeholder: "Name", type: "text"}/
+                  %input#contact-name.form-control{placeholder: "Name", type: "text", name: 'name', :'ng-model' => 'name', :'ng-disabled' => 'loading'}/
                 .form-group
                   %label.sr-only{for: "contact-email"} Email
-                  %input#contact-email.form-control{placeholder: "Email", type: "email"}/
+                  %input#contact-email.form-control{placeholder: "Email", type: "email", name: 'email', required: true, :'ng-model' => 'email', 'ng-minlength' => "5", :'ng-disabled' => 'loading'}/
+
+                  %small.error{"ng-show" => "contact.email.$error.email"} That's not a valid email
+                  %small.error{"ng-show" => "contact.email.$error.minlength"} Email is required to be at least 5 characters
+                  %small.error{"ng-show" => "contact.email.$error.required"} Email is required
+
                 .form-group
                   %label.sr-only{for: "contact-message"} Message
-                  %textarea#contact-message.form-control{placeholder: "Message", rows: "12"}
-                %input.btn.btn-primary{type: "button", value: "Send Message"}/
+                  %textarea#contact-message.form-control{placeholder: "Message", rows: "12", name: 'message', required: true, :'ng-model' => 'message', 'ng-minlength' => '5', :'ng-disabled' => 'loading'}
+
+                  %small.error{"ng-show" => "contact.message.$error.minlength"} Message is required to be at least 5 characters
+                  %small.error{"ng-show" => "contact.message.$error.required"} Message is required
+
+                %input.btn.btn-primary{type: "submit", value: "Send Message", :'ng-disabled' => 'loading', :'ng-hide' => 'loading'}/
+                %input.btn.btn-primary{type: "submit", value: "Sending...", :'ng-disabled' => 'loading', :'ng-show' => 'loading'}/
             .col-md-6
               %p
                 %abbr{title: "Phone"}

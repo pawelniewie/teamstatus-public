@@ -3,7 +3,6 @@ var newsletter = angular.module('teamstatus.public.newsletter', ['ui.bootstrap']
 	.constant('path', "<%= newsletter_path %>");
 
 var NewsletterCtrl = ['$scope', '$http', 'path', function($scope, $http, path) {
-	$scope.email = "pniewiadomski@atlassian.com";
 	$scope.loading = false;
 	$scope.subscribed = false;
 
@@ -15,6 +14,28 @@ var NewsletterCtrl = ['$scope', '$http', 'path', function($scope, $http, path) {
 		}).error(function() {
 			$scope.loading = false;
 			$scope.subscribed = false;
+		});
+	};
+}];
+
+var contact = angular.module('teamstatus.public.contact', ['ui.bootstrap'])
+	.constant('path', "<%= contact_path %>");
+
+var ContactCtrl = ['$scope', '$http', 'path', function($scope, $http, path) {
+	$scope.loading = false;
+	$scope.succeeded = false;
+
+	$scope.sendMessage = function() {
+		$scope.loading = true;
+		$http.post(path, { email: this.email, name: this.name, message: this.message }).success(function() {
+			$scope.loading = false;
+			$scope.succeeded = true;
+			$scope.email = '';
+			$scope.message = '';
+			$scope.name = '';
+		}).error(function() {
+			$scope.loading = false;
+			$scope.succeeded = false;
 		});
 	};
 }];
