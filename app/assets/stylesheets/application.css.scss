@@ -9,6 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ * Plugins
+ *= require plugins/animate/animate.css
+ *= require plugins/flexslider/flexslider.css
+ *= require plugins/clingify/clingify.css
+ * Theme style
+ *= require theme-style.min.css
+ * Your custom colour override
+ *= require colour-red.css
+ * Your custom override
+ *= require custom-style.css
  *= require_tree .
  */
 

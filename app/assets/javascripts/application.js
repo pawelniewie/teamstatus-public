@@ -17,4 +17,15 @@
 //= require angular-route
 //= require angular-resource
 //= require angular-ui-bootstrap-tpls
+
+//= require jquery-migrate-1.2.1.min.js
+// Legacy jQuery support for quicksand plugin
+//= require plugins/flexslider/jquery.flexslider-min.js
+//= require plugins/clingify/jquery.clingify.min.js
+//= require plugins/jPanelMenu/jquery.jpanelmenu.min.js
+//= require plugins/jRespond/js/jRespond.js
+//= require plugins/quicksand/jquery.quicksand.js
+// Custom scripts mainly used to trigger libraries
+//= require script.min.js
+
 //= require_tree .
