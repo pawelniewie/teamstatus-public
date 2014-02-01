@@ -38,16 +38,19 @@
           %h3 About Us
           %p Making your data work for you! One widget at a time!
       .col-md-4.col
-        .block.newsletter
+        .block.newsletter{:'ng-app' => 'teamstatus.public.newsletter', :'ng-controller' => 'NewsletterCtrl'}
           %h3 Newsletter
           %p Stay up to date with our latest news and product releases by signing up to our newsletter.
-          / @todo: replace with mailchimp code
-          %form{role: "form"}
+          %form{role: "form", :'ng-hide' => 'subscribed'}
             .input-group.input-group-sm
               %label.sr-only{for: "email-field"} Email
-              %input#email-field.form-control{placeholder: "Email", type: "text"}/
+              %input#email-field.form-control{placeholder: "Email", type: "text", :'ng-disabled' => 'loading'}/
               %span.input-group-btn
-                %button.btn.btn-primary{type: "button"} Go!
+                %button.btn.btn-primary{type: "button"}
+                  %span{:'ng-hide' => 'loading'} Go!
+                  %i.fa.fa-spinner.fa-spin{:'ng-show' => 'loading'}
+          .alert.alert-success{:'ng-show' => 'subscribed'}
+            You have been subscribed to our newsletter!
     .row
       #toplink
         %a.top-link{href: "#top", title: "Back to top"}
@@ -140,11 +143,9 @@
     / /.modal-dialog
   / /.modal
 / Scripts
-%script{src: "js/jquery.min.js"}
+!=javascript_include_tag 'application'
 %script{src: "js/jquery-migrate-1.2.1.min.js"}
 / Legacy jQuery support for quicksand plugin
-/ Bootstrap JS
-%script{src: "js/bootstrap.min.js"}
 / JS plugins
 %script{src: "plugins/flexslider/jquery.flexslider-min.js"}
 %script{src: "plugins/clingify/jquery.clingify.min.js"}

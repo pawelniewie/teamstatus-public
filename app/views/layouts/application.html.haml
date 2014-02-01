@@ -8,10 +8,9 @@
     / @todo: fill with your company info or remove
     %meta{content: "", name: "description"}/
     %meta{content: "TeamStatus.TV", name: "author"}/
-    / Bootstrap CSS
-    %link{href: "css/bootstrap.min.css", rel: "stylesheet"}/
-    / Font Awesome
-    %link{href: "css/font-awesome.min.css", rel: "stylesheet"}/
+
+    != stylesheet_link_tag "application"
+
     / Plugins
     %link{href: "plugins/animate/animate.css", rel: "stylesheet"}/
     %link{href: "plugins/flexslider/flexslider.css", rel: "stylesheet"}/
@@ -34,4 +33,4 @@
     %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti", rel: "stylesheet", type: "text/css"}/
     / Retina.js plugin - @see: http://retinajs.com/
     %script{src: "plugins/retina/js/retina-1.1.0.min.js"}
-  %body= yield
+  != yield

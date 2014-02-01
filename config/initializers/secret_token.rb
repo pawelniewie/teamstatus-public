@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Public::Application.config.secret_key_base = '07198c91eaae3721433b07e214cf0c4998ff0542456957d631a48c96256b047195895425a7b9837219ef8165c7ffda312a0a7e2583488fbeaa24ae28fd2baf17'
+Public::Application.config.secret_key_base = ENV['COOKIE_SECRET']
