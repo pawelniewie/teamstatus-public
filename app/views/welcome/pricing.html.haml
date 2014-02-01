@@ -97,7 +97,7 @@
                 %li Developer SDK
                 %li IP restriction
                 %li Custom Domain
-              %a.btn.btn-primary Sign Up
+              %a.btn.btn-primary{"data-toggle" => "modal", href: "#signup-modal"} Sign Up
 
           .col-md-3.col-sm-4
             .well.active
@@ -119,6 +119,6 @@
                 %li Source code
                 %li Installed by customer
                 %li Hosted by customer
-              %a.btn.btn-primary Download
+              %a.btn.btn-primary{href: 'https://www.dropbox.com/s/9mh7ml6du8b8tgc/TeamStatus.latest.tar.gz'} Download
 
   =render :partial => 'ending_wrapper'
