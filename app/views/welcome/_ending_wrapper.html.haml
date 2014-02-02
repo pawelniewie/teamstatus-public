@@ -79,6 +79,49 @@
               %a{href: contact_path} Contact Us
 / Hidden elements - excluded from jPanel Menu on mobile
 .hidden-elements.jpanel-menu-exclude
+  / @modal - download modal
+  #download-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1", :'ng-controller' => 'DownloadCtrl'}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
+          %h4.modal-title Download
+        .modal-body
+          %p{:'ng-show' => 'succeeded'}
+            Your download will begin shortly. If it doesn't start follow
+            =succeed '.' do
+              %a{'ng-href' => '{{download.url}}', 'target' => '_blank', 'download' => 'TeamStatus.tar.gz'} this download link
+
+          %form{role: "form", name: 'download', 'ng-submit' => "startDownload()", :'ng-hide' => 'succeeded'}
+            %h5 Contact Information
+            .form-group
+              %label.sr-only{for: "signup-first-name"} First Name
+              %input#signup-first-name.form-control{placeholder: "First name", name: "first_name", type: "text", :'ng-model' => 'first_name', :required => true, :'ng-disabled' => 'loading'}/
+
+              %small.error{"ng-show" => "download.first_name.$error.required"} First name is required
+
+            .form-group
+              %label.sr-only{for: "signup-last-name"} Last Name
+              %input#signup-last-name.form-control{placeholder: "Last name", name: "last_name", type: "text", :'ng-model' => 'last_name', :required => true, :'ng-disabled' => 'loading'}/
+
+              %small.error{"ng-show" => "download.last_name.$error.required"} Last name is required
+
+            .form-group
+              %label.sr-only{for: "signup-email"} Email address
+              %input#signup-email.form-control{placeholder: "Email address", type: "email", name: 'email', :'ng-model' => 'email', :required => true, 'ng-minlength' => 5, :'ng-disabled' => 'loading'}/
+
+              %small.error{"ng-show" => "download.email.$error.email"} That's not a valid email
+              %small.error{"ng-show" => "download.email.$error.minlength"} Email is required to be at least 5 characters
+              %small.error{"ng-show" => "download.email.$error.required"} Email is required
+
+            .checkbox
+              %label
+                %input{type: "checkbox", value: "true", :'ng-model' => 'agreement', :'ng-disabled' => 'loading'}/
+                I agree with the Terms and Conditions.
+
+            %button.btn.btn-primary{type: "submit", :'ng-disabled' => '!agreement', :'ng-hide' => 'loading'} Download
+            %button.btn.btn-primary{type: "button", :disabled => true, :'ng-show' => 'loading'} Downloading...
+
   / @modal - signup modal
   #signup-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1", :'ng-controller' => 'SignUpCtrl'}
     .modal-dialog
@@ -108,15 +151,13 @@
               %label
                 %input{type: "checkbox", value: "true", :'ng-model' => 'agreement'}/
                 I agree with the Terms and Conditions.
-            %a.btn.btn-primary{type: "submit", href: "#{ENV['CONSOLE_URL']}/login/google", :'ng-disabled' => '!agreement'} Sign up using Google Account
+            %a.btn.btn-primary{href: "#{ENV['CONSOLE_URL']}/login/google", :'ng-disabled' => '!agreement'} Sign up using Google Account
         .modal-footer
           %small
             Already signed up?
             = succeed "." do
               %a{href: "#{ENV['CONSOLE_URL']}/login/google"} Login here
-      / /.modal-content
-    / /.modal-dialog
-  / /.modal
+
   / @modal - login modal
   #login-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
     .modal-dialog
@@ -140,8 +181,6 @@
           %br/
           %small
             %a{href: "#"} Forgotten password?
-      / /.modal-content
-    / /.modal-dialog
-  / /.modal
+
 / Scripts
 !=javascript_include_tag 'application'

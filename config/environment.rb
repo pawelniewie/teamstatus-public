@@ -5,7 +5,7 @@ require 'intercom'
 # Initialize the Rails application.
 Public::Application.initialize!
 
-%w{COOKIE_SECRET COOKIE_NAME CONSOLE_SECRET CONSOLE_URL MAILCHIMP_KEY MAILCHIMP_LIST}.each do |var|
+%w{COOKIE_SECRET COOKIE_NAME CONSOLE_SECRET CONSOLE_URL MAILCHIMP_KEY MAILCHIMP_LIST DOWNLOAD_URL}.each do |var|
   abort("missing env var: please set #{var}") unless ENV[var]
 end
 

@@ -17,6 +17,8 @@ Public::Application.routes.draw do
   get "terms" => 'welcome#terms'
   get "privacy" => 'welcome#privacy'
   post "newsletter" => 'welcome#newsletter'
+  post "download" => 'welcome#download'
+  get "download" => 'welcome#s3'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
