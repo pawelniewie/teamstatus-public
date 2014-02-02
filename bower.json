@@ -1,7 +1,0 @@
-{
-  "name": "teamstatus-beta",
-  "dependencies": {
-  	"angularjs": "*",
-    "angular-underscore": "*"
-  }
-}
