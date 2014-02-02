@@ -1,0 +1,30 @@
+/ sidebar
+.col-md-3.sidebar
+  .section-menu
+    %ul.nav.nav-list
+      %li.nav-header In This Section
+      %li{:class => ('active' if current_page? about_path)}
+        %a.first{href: about_path}
+          About Us
+          %small How It All Began
+          %i.fa.fa-angle-right
+      %li{:class => ('active' if current_page? team_path)}
+        %a{href: team_path}
+          The Team
+          %small Our team of stars
+          %i.fa.fa-angle-right
+      %li{:class => ('active' if current_page? contact_path)}
+        %a{href: contact_path}
+          Contact Us
+          %small How to get in touch
+          %i.fa.fa-angle-right
+      %li{:class => ('active' if current_page? terms_path)}
+        %a{href: terms_path}
+          Terms
+          %small Your terms of use
+          %i.fa.fa-angle-right
+      %li{:class => ('active' if current_page? privacy_path)}
+        %a{href: privacy_path}
+          Privacy
+          %small Our privacy policy
+          %i.fa.fa-angle-right

@@ -1,0 +1,186 @@
+#content-below.wrapper
+  .container
+    .row
+      .upsell
+        %small.muted
+          99% Uptime
+          %span.spacer //
+          Email Support
+          %span.spacer //
+          Plans from $16/month
+          %span.spacer //
+          In the cloud or on your server
+          %span.spacer //
+        %a.btn.btn-primary{href: pricing_path}
+          Start your Free Trial Today!
+          %i.fa.fa-arrow-right
+/ FOOTER
+%footer#footer
+  .container
+    .row
+      .col-md-3.col
+        .block.contact-block
+          %h3 Contact Us
+          %address
+            %p
+              %abbr{title: "Phone"}
+                %i.fa.fa-phone
+              +48 609-657-575
+            %p
+              %abbr{title: "Email"}
+                %i.fa.fa-envelope
+              info@teamstatus.tv
+            %p
+              %abbr{title: "Address"}
+                %i.fa.fa-home
+              Tischnera 14. Gdansk. Poland. 80-283.
+      .col-md-5.col
+        .block
+          %h3 About Us
+          %p Making your data work for you! One widget at a time!
+      .col-md-4.col
+        .block.newsletter{:'ng-controller' => 'NewsletterCtrl', 'ng-cloak' => ''}
+          %h3 Newsletter
+          %p Stay up to date with our latest news and product releases by signing up to our newsletter.
+          %form{role: "form", name: 'newsletter', :'ng-hide' => 'subscribed', 'ng-submit' => 'addSubscriber()'}
+            .input-group.input-group-sm
+              %label.sr-only{for: "email-field"} Email
+              %input#email-field.form-control{placeholder: "Email", name: 'email', type: "email", required: true, :'ng-model' => 'email', 'ng-minlength' => "5", :'ng-disabled' => 'loading'}/
+              %span.input-group-btn
+                %button.btn.btn-primary{type: "submit", :'ng-disabled' => 'loading'}
+                  %span{:'ng-hide' => 'loading'} Go!
+                  %i.fa.fa-spinner.fa-spin{:'ng-show' => 'loading'}
+
+            %small.error{"ng-show" => "newsletter.email.$error.email"} That's not a valid email
+            %small.error{"ng-show" => "newsletter.email.$error.minlength"} Email is required to be at least 5 characters
+            %small.error{"ng-show" => "newsletter.email.$error.required"} Email is required
+            %small.error{"ng-show" => "failure"} Unable to process request, please try again later
+
+          .alert.alert-success{:'ng-show' => 'subscribed'}
+            You have been subscribed to our newsletter!
+    .row
+      #toplink
+        %a.top-link{href: "#top", title: "Back to top"}
+          Back To Top
+          %i.fa.fa-chevron-up
+      .subfooter
+        .col-md-6
+          %p
+            Site template by
+            %a{href: "#"} AppStrap
+            | Copyright 2013-2014 &#169; TeamStatus.TV
+        .col-md-6
+          %ul.list-inline.footer-menu
+            %li
+              %a{href: terms_path} Terms
+            %li
+              %a{href: privacy_path} Privacy
+            %li
+              %a{href: contact_path} Contact Us
+/ Hidden elements - excluded from jPanel Menu on mobile
+.hidden-elements.jpanel-menu-exclude
+  / @modal - download modal
+  #download-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1", :'ng-controller' => 'DownloadCtrl'}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
+          %h4.modal-title Download
+        .modal-body
+          %p{:'ng-show' => 'succeeded'}
+            Your download will begin shortly. If it doesn't start follow
+            =succeed '.' do
+              %a{'ng-href' => '{{download.url}}', 'target' => '_blank', 'download' => 'TeamStatus.tar.gz'} this download link
+
+          %form{role: "form", name: 'download', 'ng-submit' => "startDownload()", :'ng-hide' => 'succeeded'}
+            %h5 Contact Information
+            .form-group
+              %label.sr-only{for: "signup-first-name"} First Name
+              %input#signup-first-name.form-control{placeholder: "First name", name: "first_name", type: "text", :'ng-model' => 'first_name', :required => true, :'ng-disabled' => 'loading'}/
+
+              %small.error{"ng-show" => "download.first_name.$error.required"} First name is required
+
+            .form-group
+              %label.sr-only{for: "signup-last-name"} Last Name
+              %input#signup-last-name.form-control{placeholder: "Last name", name: "last_name", type: "text", :'ng-model' => 'last_name', :required => true, :'ng-disabled' => 'loading'}/
+
+              %small.error{"ng-show" => "download.last_name.$error.required"} Last name is required
+
+            .form-group
+              %label.sr-only{for: "signup-email"} Email address
+              %input#signup-email.form-control{placeholder: "Email address", type: "email", name: 'email', :'ng-model' => 'email', :required => true, 'ng-minlength' => 5, :'ng-disabled' => 'loading'}/
+
+              %small.error{"ng-show" => "download.email.$error.email"} That's not a valid email
+              %small.error{"ng-show" => "download.email.$error.minlength"} Email is required to be at least 5 characters
+              %small.error{"ng-show" => "download.email.$error.required"} Email is required
+
+            .checkbox
+              %label
+                %input{type: "checkbox", value: "true", :'ng-model' => 'agreement', :'ng-disabled' => 'loading'}/
+                I agree with the Terms and Conditions.
+
+            %button.btn.btn-primary{type: "submit", :'ng-disabled' => '!agreement', :'ng-hide' => 'loading'} Download
+            %button.btn.btn-primary{type: "button", :disabled => true, :'ng-show' => 'loading'} Downloading...
+
+  / @modal - signup modal
+  #signup-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1", :'ng-controller' => 'SignUpCtrl'}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
+          %h4.modal-title Sign Up
+        .modal-body
+          %form{role: "form"}
+            / %h5 Account Information
+            / .form-group
+            /   %label.sr-only{for: "signup-first-name"} First Name
+            /   %input#signup-first-name.form-control{placeholder: "First name", type: "text"}/
+            / .form-group
+            /   %label.sr-only{for: "signup-last-name"} Last Name
+            /   %input#signup-last-name.form-control{placeholder: "Last name", type: "text"}/
+            / .form-group
+            /   %label.sr-only{for: "signup-username"} Userame
+            /   %input#signup-username.form-control{placeholder: "Username", type: "text"}/
+            / .form-group
+            /   %label.sr-only{for: "signup-email"} Email address
+            /   %input#signup-email.form-control{placeholder: "Email address", type: "email"}/
+            / .form-group
+            /   %label.sr-only{for: "signup-password"} Password
+            /   %input#signup-password.form-control{placeholder: "Password", type: "password"}/
+            .checkbox
+              %label
+                %input{type: "checkbox", value: "true", :'ng-model' => 'agreement'}/
+                I agree with the Terms and Conditions.
+            %a.btn.btn-primary{href: "#{ENV['CONSOLE_URL']}/login/google", :'ng-disabled' => '!agreement'} Sign up using Google Account
+        .modal-footer
+          %small
+            Already signed up?
+            = succeed "." do
+              %a{href: "#{ENV['CONSOLE_URL']}/login/google"} Login here
+
+  / @modal - login modal
+  #login-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
+          %h4.modal-title Login
+        .modal-body
+          %form{action: "login.htm", role: "form"}
+            .form-group
+              %label.sr-only{for: "login-email"} Email
+              %input#login-email.form-control.email{placeholder: "Email", type: "email"}/
+            .form-group
+              %label.sr-only{for: "login-password"} Password
+              %input#login-password.form-control.password{placeholder: "Password", type: "password"}/
+            %button.btn.btn-primary{type: "button"} Login
+        .modal-footer
+          %small
+            Not a member?
+            %a.signup{href: "#"} Sign up now!
+          %br/
+          %small
+            %a{href: "#"} Forgotten password?
+
+/ Scripts
+!=javascript_include_tag 'application'

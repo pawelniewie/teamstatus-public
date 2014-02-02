@@ -1,0 +1,72 @@
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
+angular.module('teamstatus.public.newsletter', ['ui.bootstrap'])
+	.constant('path', "<%= newsletter_path %>")
+	.controller('NewsletterCtrl', ['$scope', '$http', 'path', function($scope, $http, path) {
+	$scope.loading = false;
+	$scope.subscribed = false;
+
+	$scope.addSubscriber = function() {
+		$scope.loading = true;
+		$http.post(path, { email: this.email }).success(function() {
+			$scope.loading = false;
+			$scope.subscribed = true;
+		}).error(function() {
+			$scope.loading = false;
+			$scope.subscribed = false;
+		});
+	};
+}]);
+
+angular.module('teamstatus.public.contact', ['ui.bootstrap'])
+	.constant('path', "<%= contact_path %>")
+	.controller('ContactCtrl', ['$scope', '$http', 'path', function($scope, $http, path) {
+	$scope.loading = false;
+	$scope.succeeded = false;
+
+	$scope.sendMessage = function() {
+		$scope.loading = true;
+		$http.post(path, { email: this.email, name: this.name, message: this.message }).success(function() {
+			$scope.loading = false;
+			$scope.succeeded = true;
+			$scope.email = '';
+			$scope.message = '';
+			$scope.name = '';
+		}).error(function() {
+			$scope.loading = false;
+			$scope.succeeded = false;
+		});
+	};
+}]);
+
+angular.bootstrap(angular.element('.block.newsletter'), ['teamstatus.public.newsletter']);
+
+angular.module('teamstatus.public.login', [])
+	.constant('downloadPath', "<%= download_path %>")
+	.controller('SignUpCtrl', [function () {}])
+	.controller('DownloadCtrl', ['$scope', '$http', 'downloadPath', function ($scope, $http, downloadPath) {
+		$scope.loading = false;
+		$scope.succeeded = false;
+
+		$scope.first_name = "Pawel";
+		$scope.last_name = "Niewiadomski";
+		$scope.email = "11110000b@gmail.com";
+		$scope.agreement = true;
+
+		$scope.startDownload = function() {
+			$scope.loading = true;
+			$http.post(downloadPath + ".json", { email: this.email, first_name: this.first_name, last_name: this.last_name }).success(function(download) {
+				$scope.loading = false;
+				$scope.succeeded = true;
+				$scope.download = download;
+
+				$.fileDownload(downloadPath).done(function() {
+					$('#download-modal').modal('hide');
+				});
+			}).error(function() {
+				$scope.loading = false;
+				$scope.succeeded = false;
+			});
+		};
+	}]);
+
+angular.bootstrap(angular.element('.hidden-elements.jpanel-menu-exclude'), ['teamstatus.public.login']);

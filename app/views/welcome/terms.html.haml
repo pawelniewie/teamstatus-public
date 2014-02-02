@@ -1,0 +1,25 @@
+%body.page.page-about
+  %a.sr-only{href: "#content"} Skip to content
+  #navigation.wrapper
+    .navbar-static-top
+      = render :partial => 'hidden_header'
+      = render :partial => 'header_and_branding'
+      = render :partial => 'navigation'
+
+  #content
+    #about.container
+      .row
+        =render :partial => 'about_sidebar'
+
+        / main content
+        .col-md-9
+          %h2.title-divider
+            %span
+              Your
+              %span.de-em terms of use
+            %small What we think you will use TeamStatus for!
+          / About company
+          %h4 Lawyers dispatched!
+          %p Hopefully they will return with something understandable by mere mortals.
+
+  =render :partial => 'ending_wrapper'

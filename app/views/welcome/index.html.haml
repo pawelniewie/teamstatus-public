@@ -1,0 +1,87 @@
+%body.page.page-index-static
+  %a.sr-only{href: "#content"} Skip to content
+  #navigation.wrapper
+    .navbar-static-top
+      = render :partial => 'hidden_header'
+      = render :partial => 'header_and_branding'
+      = render :partial => 'navigation'
+
+  #highlighted
+    .inner
+      / Static Banner
+      %section.static-banner.container
+        .slide
+          .col-md-7
+            %img.img-responsive{alt: "Slide 1", src: image_path('slide-1.png')}/
+          .col-md-5.caption
+            %h2 All your data in sight!
+            %h4 In one central place
+            %p Perfect for your team!
+            %a.btn.btn-lg.btn-primary{"data-toggle" => "modal", href: "#signup-modal"} Try now for free
+  #content
+    .container
+      .block
+        %h2.title-divider
+          %span
+            Do you have a lot of data
+            %span.de-em spread across many systems?
+
+        %p
+          That's why we created TeamStatus.TV - we had the same pain.
+        %p
+          You have all those great tools. Issues in JIRA, reviews in Crucible, business data elsewhere.
+        %p
+          You know that an informed team makes better decision and people knowing the big picture feel more motivated.
+        %p
+          So you probably want to have a central place (like we do) when you can go to see the most important data.
+        %p Imagine:
+
+        %ul.questions
+          %li You have a reference point during stand ups
+          %li You can check the state of continuous integration with one glimpse
+          %li You have good data
+          %li You can make good decisions
+          %li All team members are on the same page
+
+        %p
+          And, while you're imagining that lovely scenario… What if you could instantly see, no jumping through different systems required, how your project is doing?
+
+      .block
+        %h2.title-divider
+          %span
+            Do you want to focus on your work
+            %span.de-em instead of doing stats?
+        %p
+          We love the tools we use, but even more we love having one central place to keep the data about our project.
+        %p
+          When you use TeamStatus.TV you get the benefit of using a tool designed to help you get the most of your other tools, to understand:
+
+        %ul.answers
+          %li number of issues in progress
+          %li list of support inqueries
+          %li current state of continuos integration
+          %li how many code reviews are open
+
+        %p
+          In addition you can build your own custom integrations, so you can tailor it to your needs.
+
+        %p We've built it thinking about your needs, tailored for:
+        %ul.teams
+          %li teams that do software development
+          %li support engineers
+          %li devops and sysadmins
+
+
+      / Services
+      / .block.features
+      /   %h2.title-divider
+      /     %span
+      /       Core
+      /       %span.de-em Features
+      /     / %small Core features included in all plans.
+      /   .row
+      /     =render :partial => 'main_features'
+
+      / =render :partial => 'testimonials'
+
+  =render :partial => 'ending_wrapper'

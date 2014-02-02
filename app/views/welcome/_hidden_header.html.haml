@@ -1,0 +1,31 @@
+/ Hidden Header Region
+.header-hidden
+  .header-hidden-inner.container
+    .row
+      .col-sm-4.col-md-4
+        %h3 About Us
+        %p Making your data work for you! One widget at a time!
+        %a.btn.btn-sm.btn-primary{href: about_path} Find out more
+      .col-sm-4.col-md-4
+        %h3 Contact Us
+        %address
+          %p
+            %abbr{title: "Phone"}
+              %i.fa.fa-phone
+            +48 609-657-575
+          %p
+            %abbr{title: "Email"}
+              %i.fa.fa-envelope
+            info@teamstatus.tv
+          %p
+            %abbr{title: "Address"}
+              %i.fa.fa-home
+            Tischnera 14, Gdansk. Poland. 80-283.
+      .col-sm-4.col-md-4
+        / Colour Switch for demo - @todo: remove in production
+        .colour-switcher
+          %h3 Theme Colours
+          %a.green.active{"data-original-title" => "Green (Default)", "data-placement" => "bottom", "data-toggle" => "tooltip", href: "#green"} Green
+          %a.red{"data-original-title" => "Red", "data-placement" => "bottom", "data-toggle" => "tooltip", href: "#red"} Red
+          %a.blue{"data-original-title" => "Blue", "data-placement" => "bottom", "data-toggle" => "tooltip", href: "#blue"} Blue
+          %p Cookies are NOT enabled so colour selection is not persistent.
