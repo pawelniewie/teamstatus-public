@@ -16,3 +16,10 @@
 /tmp
 
 /vendor/bundle
+/vendor/assets/components
+/vendor/assets/bower_components
+/vendor/assets/.bowerrc
+/vendor/assets/bower.json
+
+# Ignore application configuration
+/config/application.yml
