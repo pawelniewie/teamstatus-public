@@ -26,8 +26,8 @@
           =link_to root_path do
             %i.fa.fa-home
             %span.hidden Home
-        %li.dropdown{:class => ('active' if current_page? features_path)}
-          %a#features-drop.menu-item{href: features_path} Features
+        %li{:class => ('active' if current_page? features_path)}
+          %a.menu-item{href: features_path} Features
         %li{:class => ('active' if current_page? demo_path)}
           %a.menu-item{href: demo_path} Demo
         %li{:class => ('active' if current_page? pricing_path)}
