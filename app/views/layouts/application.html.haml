@@ -1,35 +1,46 @@
 !!!
 %html{lang: "en"}
-  %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{charset: "utf-8"}/
-    %title TeamStatus.TV - Key Performance Indicators for your team
-    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
-    %meta{content: "Simple and beautiful wallboards for every team", name: "description"}/
-    %meta{content: "TeamStatus.TV", name: "author"}/
+	%head
+		%meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+		%meta{charset: "utf-8"}/
+		%title TeamStatus.TV - Key Performance Indicators for your team
+		%meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+		%meta{content: "Simple and beautiful wallboards for every team", name: "description"}/
+		%meta{content: "TeamStatus.TV", name: "author"}/
 
-    / To learn more about Open Graph, visit
-    / 'https://developers.facebook.com/docs/opengraph/'
-    %meta{:content => "TeamStatus.TV", :property => "og:title"}/
-    %meta{:content => "website", :property => "og:type"}/
-    %meta{:content => "TeamStatus.TV", :property => "og:site_name"}/
-    %meta{:content => "http://teamstatus.tv", :property => "og:url"}/
-    %meta{:content => "en_US", :property => "og:locale"}/
-    %meta{:content => "https://s3.amazonaws.com/teamstatus-assets/landing-page/V1/dashboard-tv.jpg", :property => "og:image"}/
-    %meta{:content => "Simple and beautiful wallboards for every team", :property => "og:description"}/
+		/ To learn more about Open Graph, visit
+		/ 'https://developers.facebook.com/docs/opengraph/'
+		%meta{:content => "TeamStatus.TV", :property => "og:title"}/
+		%meta{:content => "website", :property => "og:type"}/
+		%meta{:content => "TeamStatus.TV", :property => "og:site_name"}/
+		%meta{:content => "http://teamstatus.tv", :property => "og:url"}/
+		%meta{:content => "en_US", :property => "og:locale"}/
+		%meta{:content => "https://s3.amazonaws.com/teamstatus-assets/landing-page/V1/dashboard-tv.jpg", :property => "og:image"}/
+		%meta{:content => "Simple and beautiful wallboards for every team", :property => "og:description"}/
 
-    != stylesheet_link_tag "application"
+		!= stylesheet_link_tag "application"
 
-    / HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries
-    /[if lt IE 9]
-    !=javascript_include_tag "plugins/html5shiv/dist/html5shiv.js"
-    !=javascript_include_tag "plugins/respond/respond.min.js"
-    / Le fav and touch icons - @todo: fill with your icons or remove
-    %link{href: "img/icons/favicon.png", rel: "shortcut icon"}/
-    %link{href: "img/icons/114x114.png", rel: "apple-touch-icon-precomposed", sizes: "114x114"}/
-    %link{href: "img/icons/72x72.png", rel: "apple-touch-icon-precomposed", sizes: "72x72"}/
-    %link{href: "img/icons/default.png", rel: "apple-touch-icon-precomposed"}/
-    %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti", rel: "stylesheet", type: "text/css"}/
-    / Retina.js plugin - @see: http://retinajs.com/
-    !=javascript_include_tag "plugins/retina/js/retina-1.1.0.min.js"
-  != yield
+		/ HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries
+		/[if lt IE 9]
+		!=javascript_include_tag "plugins/html5shiv/dist/html5shiv.js"
+		!=javascript_include_tag "plugins/respond/respond.min.js"
+		/ Le fav and touch icons - @todo: fill with your icons or remove
+		%link{href: "img/icons/favicon.png", rel: "shortcut icon"}/
+		%link{href: "img/icons/114x114.png", rel: "apple-touch-icon-precomposed", sizes: "114x114"}/
+		%link{href: "img/icons/72x72.png", rel: "apple-touch-icon-precomposed", sizes: "72x72"}/
+		%link{href: "img/icons/default.png", rel: "apple-touch-icon-precomposed"}/
+		%link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti", rel: "stylesheet", type: "text/css"}/
+		/ Retina.js plugin - @see: http://retinajs.com/
+		!=javascript_include_tag "plugins/retina/js/retina-1.1.0.min.js"
+
+	%body.page{:class => body_class}
+		%a.sr-only{href: "#content"} Skip to content
+		#navigation.wrapper
+			.navbar-static-top
+				= render :partial => 'hidden_header'
+				= render :partial => 'header_and_branding'
+				= render :partial => 'navigation'
+
+		!= yield
+
+		=render :partial => 'ending_wrapper'

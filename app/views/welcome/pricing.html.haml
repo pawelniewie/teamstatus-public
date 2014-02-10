@@ -1,124 +1,114 @@
-%body.page.page-pricing
-  %a.sr-only{href: "#content"} Skip to content
-  #navigation.wrapper
-    .navbar-static-top
-      = render :partial => 'hidden_header'
-      = render :partial => 'header_and_branding'
-      = render :partial => 'navigation'
+#content
+  .container
+    .block
+      / Default Pricing Table
+      %h2.title-divider
+        %span
+          Pricing
+          %span.de-em Plans
+        %small Sign up in 20 seconds, upgrade, downgrade or cancel any time.
+      / Stack 1
+      .row.pricing-stack
+        .col-md-3.col-md-offset-1
+          .well
+            %h3.title Mini
+            %p.price
+              %span.currency $
+              %span.digits
+                16
+              %span.term /MONTH
+            %ul.unstyled.points
+              %li 1 dashboard
+              %li Unlimited widgets
+              %li Unlimited watchers
+              %li TV Mode
+              %li Email support
+              %li Developer SDK
+        .col-md-3
+          .well.active
+            %h3.title
+              %span.em Team
+            %p.price
+              %span.currency $
+              %span.digits
+                39
+              %span.term /MONTH
+            %ul.unstyled.points
+              %li 5 dashboards
+              %li Unlimited widgets
+              %li Unlimited watchers
+              %li TV Mode
+              %li Email support
+              %li Developer SDK
+        .col-md-3
+          .well.active
+            %h3.title
+              %span.em Company
+              %span.fancy
+            %p.price
+              %span.currency $
+              %span.digits
+                129
+              %span.term /MONTH
+            %ul.unstyled.points
+              %li 10 dashboards
+              %li Unlimited widgets
+              %li Unlimited watchers
+              %li TV Mode
+              %li Email support
+              %li Developer SDK
 
-  #content
-    .container
-      .block
-        / Default Pricing Table
-        %h2.title-divider
-          %span
-            Pricing
-            %span.de-em Plans
-          %small Sign up in 20 seconds, upgrade, downgrade or cancel any time.
-        / Stack 1
-        .row.pricing-stack
-          .col-md-3.col-md-offset-1
-            .well
-              %h3.title Mini
-              %p.price
-                %span.currency $
-                %span.digits
-                  16
-                %span.term /MONTH
-              %ul.unstyled.points
-                %li 1 dashboard
-                %li Unlimited widgets
-                %li Unlimited watchers
-                %li TV Mode
-                %li Email support
-                %li Developer SDK
-          .col-md-3
-            .well.active
-              %h3.title
-                %span.em Team
-              %p.price
-                %span.currency $
-                %span.digits
-                  39
-                %span.term /MONTH
-              %ul.unstyled.points
-                %li 5 dashboards
-                %li Unlimited widgets
-                %li Unlimited watchers
-                %li TV Mode
-                %li Email support
-                %li Developer SDK
-          .col-md-3
-            .well.active
-              %h3.title
-                %span.em Company
-                %span.fancy
-              %p.price
-                %span.currency $
-                %span.digits
-                  129
-                %span.term /MONTH
-              %ul.unstyled.points
-                %li 10 dashboards
-                %li Unlimited widgets
-                %li Unlimited watchers
-                %li TV Mode
-                %li Email support
-                %li Developer SDK
+      .row
+        / Plan features
+        .well.well-mini.pull-center
+          %h4.inline-el.pad-right
+            %span
+              Try it for FREE
+              = succeed ":" do
+                %span.de-em for 30 days
+          %p.inline-el.pad-left.muted
+            %a.btn.btn-primary{"data-toggle" => "modal", href: "#signup-modal"} Start Today! No credit card required
+            %p EU customers will be charged VAT at 23%
 
-        .row
-          / Plan features
-          .well.well-mini.pull-center
-            %h4.inline-el.pad-right
-              %span
-                Try it for FREE
-                = succeed ":" do
-                  %span.de-em for 30 days
-            %p.inline-el.pad-left.muted
-              %a.btn.btn-primary{"data-toggle" => "modal", href: "#signup-modal"} Start Today! No credit card required
-              %p EU customers will be charged VAT at 23%
+      .row.pricing-stack.bordered-top-large
+        .col-md-3.col-sm-4.col-md-offset-3
+          .well.active
+            %h3.title
+              %span.em Enterprise
+            %p.price
+              %span.currency $
+              %span.digits
+                389
+              %span.term /MONTH
+            %ul.unstyled.points
+              %li 50 dashboards
+              %li Unlimited widgets
+              %li Unlimited watchers
+              %li TV Mode
+              %li Email support
+              %li Developer SDK
+              %li IP restriction
+              %li Custom Domain
+            %a.btn.btn-primary{"data-toggle" => "modal", href: "#signup-modal"} Sign Up
 
-        .row.pricing-stack.bordered-top-large
-          .col-md-3.col-sm-4.col-md-offset-3
-            .well.active
-              %h3.title
-                %span.em Enterprise
-              %p.price
-                %span.currency $
-                %span.digits
-                  389
-                %span.term /MONTH
-              %ul.unstyled.points
-                %li 50 dashboards
-                %li Unlimited widgets
-                %li Unlimited watchers
-                %li TV Mode
-                %li Email support
-                %li Developer SDK
-                %li IP restriction
-                %li Custom Domain
-              %a.btn.btn-primary{"data-toggle" => "modal", href: "#signup-modal"} Sign Up
-
-          .col-md-3.col-sm-4
-            .well.active
-              %h3.title
-                %span.em Enterprise
-                %div.fancy behind the firewall
-              %p.price
-                %span.currency $
-                %span.digits
-                  1500
-                %span.term /YEAR
-              %ul.unstyled.points
-                %li Unlimited dashboards
-                %li Unlimited widgets
-                %li Unlimited watchers
-                %li TV Mode
-                %li Email support
-                %li Developer SDK
-                %li Source code
-                %li Installed by customer
-                %li Hosted by customer
-              %a.btn.btn-primary{"data-toggle" => "modal", href: "#download-modal"} Download
-
-  =render :partial => 'ending_wrapper'
+        .col-md-3.col-sm-4
+          .well.active
+            %h3.title
+              %span.em Enterprise
+              %div.fancy behind the firewall
+            %p.price
+              %span.currency $
+              %span.digits
+                1500
+              %span.term /YEAR
+            %ul.unstyled.points
+              %li Unlimited dashboards
+              %li Unlimited widgets
+              %li Unlimited watchers
+              %li TV Mode
+              %li Email support
+              %li Developer SDK
+              %li Source code
+              %li Installed by customer
+              %li Hosted by customer
+            %a.btn.btn-primary{"data-toggle" => "modal", href: "#download-modal"} Download

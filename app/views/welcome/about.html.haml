@@ -1,50 +1,40 @@
-%body.page.page-about
-  %a.sr-only{href: "#content"} Skip to content
-  #navigation.wrapper
-    .navbar-static-top
-      = render :partial => 'hidden_header'
-      = render :partial => 'header_and_branding'
-      = render :partial => 'navigation'
+#content
+  #about.container
+    .row
+      =render :partial => 'about_sidebar'
 
-  #content
-    #about.container
-      .row
-        =render :partial => 'about_sidebar'
+      / main content
+      .col-md-9
+        %h2.title-divider
+          %span
+            About
+            %span.de-em Us
+          %small What &amp; who makes us tick!
+        / About company
+        %h4 How It All Began
+        %p We had so many great tools that we used on a daily basis but we didn't have a place when all this crucial information would be gathered and presented in a easy to comprehend way. So we decided to build it. TeamStatus.TV was founded in 2013 and since then it grows.
 
-        / main content
-        .col-md-9
-          %h2.title-divider
-            %span
-              About
-              %span.de-em Us
-            %small What &amp; who makes us tick!
-          / About company
-          %h4 How It All Began
-          %p We had so many great tools that we used on a daily basis but we didn't have a place when all this crucial information would be gathered and presented in a easy to comprehend way. So we decided to build it. TeamStatus.TV was founded in 2013 and since then it grows.
+        %h4 Our Philosophy
+        %p Rules we follow.
+        %p
+          %span.em Don't fuck the customer
+          It's all about helping people succeed. We put customers first, because we are passionate about helping them achieve their goals. There's nothing better than knowing that you actually helped someone.
+        %p
+          %span.em Think globally, act locally
+          Think about the bigger picture, keep it in mind, but also be aware of all the constraints, do the best possible job you can do at this moment in time that will bring you forward to the bigger goal, but try not to reach the bigger goal in one jump. It's unreasonable and you don't know where the journey will actually take you. By making small steps you discover all the details behind the bigger goal.
+        %p
+          %span.em You are responsible
+          You are in charge, no one else can tell you what to do and no one else will take blame for you. You create your own roadmap, you set your own goals, you set your own work time. And if you fail it's only because of you. But don't worry failures are the best way to learn new things and grow!
+        %p
+          %span.em Be the change you seek
+          If you noticed there are no managers here. There's no hierarchy. No one's telling you what to do. So if you see something is broken it's your job to fix it, go spend your time and improve it.
+        %p
+          %span.em Steal like an artist
+          You should not be ashamed of copying ideas. All great inventions start with someone taking an idea, improving it, building upon it and shipping it. Steal so the artist you stole it from can say only "wow, that's amazing, I wish I thought of that"!
+        %p
+          %span.em Have fun
+          Life's an adventure, so treat your job like an adventure too! Work on fun stuff, cool projects, do whatever makes you happy. Remember that sometimes a boring job can be an adventure for someone else, and other way around. So don't be ashamed and don't treat it as your duty to do the boring stuff. Find someone that will take pleasure from it, or find a way to outsource it.
 
-          %h4 Our Philosophy
-          %p Rules we follow.
-          %p
-            %span.em Don't fuck the customer
-            It's all about helping people succeed. We put customers first, because we are passionate about helping them achieve their goals. There's nothing better than knowing that you actually helped someone.
-          %p
-            %span.em Think globally, act locally
-            Think about the bigger picture, keep it in mind, but also be aware of all the constraints, do the best possible job you can do at this moment in time that will bring you forward to the bigger goal, but try not to reach the bigger goal in one jump. It's unreasonable and you don't know where the journey will actually take you. By making small steps you discover all the details behind the bigger goal.
-          %p
-            %span.em You are responsible
-            You are in charge, no one else can tell you what to do and no one else will take blame for you. You create your own roadmap, you set your own goals, you set your own work time. And if you fail it's only because of you. But don't worry failures are the best way to learn new things and grow!
-          %p
-            %span.em Be the change you seek
-            If you noticed there are no managers here. There's no hierarchy. No one's telling you what to do. So if you see something is broken it's your job to fix it, go spend your time and improve it.
-          %p
-            %span.em Steal like an artist
-            You should not be ashamed of copying ideas. All great inventions start with someone taking an idea, improving it, building upon it and shipping it. Steal so the artist you stole it from can say only "wow, that's amazing, I wish I thought of that"!
-          %p
-            %span.em Have fun
-            Life's an adventure, so treat your job like an adventure too! Work on fun stuff, cool projects, do whatever makes you happy. Remember that sometimes a boring job can be an adventure for someone else, and other way around. So don't be ashamed and don't treat it as your duty to do the boring stuff. Find someone that will take pleasure from it, or find a way to outsource it.
+        / =render :partial => 'vital_stats'
 
-          / =render :partial => 'vital_stats'
-
-          / =render :partial => 'testimonials2'
-
-  =render :partial => 'ending_wrapper'
+        / =render :partial => 'testimonials2'
