@@ -12,9 +12,14 @@ Public::Application.configure do
   # preloads Rails for running tests, you may have to set it to true.
   config.eager_load = false
 
+  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = false
+
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = true
   config.static_cache_control = "public, max-age=3600"
+
+  # Generate digests for assets URLs.
+  config.assets.digest = true
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

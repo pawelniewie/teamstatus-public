@@ -25,6 +25,9 @@ module Public
 	# config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
 	# config.i18n.default_locale = :de
 
+  # Enabled Rails's static asset server
+  config.serve_static_assets = true
+
 	# config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts', 'plugins', 'flexslider', 'fonts')
 	# config.assets.precompile += %w(*.ttf *.eot *.svg *.woff)
 	# config.assets.precompile << %r(fonts/flexslider-icon\.(?:eot|svg|ttf|woff)$)
