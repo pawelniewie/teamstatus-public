@@ -31,6 +31,9 @@ module Public
 	# config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts', 'plugins', 'flexslider', 'fonts')
 	# config.assets.precompile += %w(*.ttf *.eot *.svg *.woff)
 	# config.assets.precompile << %r(fonts/flexslider-icon\.(?:eot|svg|ttf|woff)$)
+	config.assets.precompile << 'plugins/html5shiv/dist/html5shiv.js'
+	config.assets.precompile << 'plugins/respond/respond.min.js'
+	config.assets.precompile << 'plugins/retina/js/retina-1.1.0.min.js'
 
 	initializer :after_append_asset_paths,
 				:group => :all,
