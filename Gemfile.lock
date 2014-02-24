@@ -97,7 +97,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.4)
     multi_xml (0.5.5)
-    newrelic_rpm (3.7.1.188)
+    newrelic_rpm (3.7.2.195)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     polyglot (0.3.3)
