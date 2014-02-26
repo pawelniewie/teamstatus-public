@@ -105,7 +105,7 @@ class WelcomeController < ApplicationController
       status = mailchimp.lists.subscribe({:id => list["data"][0]["id"], :email => {:email => email}, :double_optin => false})
       raise "Communication problem" if status.nil?
       raise "Unable to add #{email} to list from MailChimp API." if status["status"] == "error" and status["name"] != "List_AlreadySubscribed"
-    rescue error
+    rescue Exception => error
       logger.error "Error adding a subscriber #{error}"
       raise error
     end
