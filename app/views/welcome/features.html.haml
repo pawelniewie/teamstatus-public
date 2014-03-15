@@ -1,108 +1,106 @@
-#content
-  .container
-    / Services
-    .block.features
-      %h2.title-divider
+/ Services
+.block.features
+  %h2.title-divider
+    %span
+      Core
+      %span.de-em Features
+    %small Core features included in all plans.
+  .row.list-unstyled
+    =render :partial => 'main_features'
+  .row
+    / Secondary features
+    .col-md-9
+      %h3.title-divider
         %span
-          Core
-          %span.de-em Features
-        %small Core features included in all plans.
-      .row.list-unstyled
-        =render :partial => 'main_features'
-      .row
-        / Secondary features
-        .col-md-9
-          %h3.title-divider
-            %span
-              Widgets
-              %span.de-em Gallery
-            %small Widgets available currently.
-          .tabbable.tabs-left.vertical-tabs.bold-tabs.row
-            %ul.nav.nav-tabs.nav-stacked.col-sm-4.col-md-4
-              %li.active
-                %a{"data-toggle" => "tab", href: "#tab1"}
-                  JIRA
-                  %small Watch your progress
-                  %i.fa.fa-angle-right
-              %li
-                %a{"data-toggle" => "tab", href: "#tab2"}
-                  Crucible
-                  %small Reviews in progress
-                  %i.fa.fa-angle-right
-              %li
-                %a{"data-toggle" => "tab", href: "#tab3"}
-                  Bamboo
-                  %small Monitor your builds
-                  %i.fa.fa-angle-right
-              %li
-                %a{"data-toggle" => "tab", href: "#tab4"}
-                  PostgreSQL
-                  %small Your custom data
-                  %i.fa.fa-angle-right
-              %li
-                %a{"data-toggle" => "tab", href: "#tab5"}
-                  Clock
-                  %small Time around the world
-                  %i.fa.fa-angle-right
-              %li
-                %a{"data-toggle" => "tab", href: "#tab6"}
-                  STFU
-                  %small Tell your team to be quiet
-                  %i.fa.fa-angle-right
+          Widgets
+          %span.de-em Gallery
+        %small Widgets available currently.
+      .tabbable.tabs-left.vertical-tabs.bold-tabs.row
+        %ul.nav.nav-tabs.nav-stacked.col-sm-4.col-md-4
+          %li.active
+            %a{"data-toggle" => "tab", href: "#tab1"}
+              JIRA
+              %small Watch your progress
+              %i.fa.fa-angle-right
+          %li
+            %a{"data-toggle" => "tab", href: "#tab2"}
+              Crucible
+              %small Reviews in progress
+              %i.fa.fa-angle-right
+          %li
+            %a{"data-toggle" => "tab", href: "#tab3"}
+              Bamboo
+              %small Monitor your builds
+              %i.fa.fa-angle-right
+          %li
+            %a{"data-toggle" => "tab", href: "#tab4"}
+              PostgreSQL
+              %small Your custom data
+              %i.fa.fa-angle-right
+          %li
+            %a{"data-toggle" => "tab", href: "#tab5"}
+              Clock
+              %small Time around the world
+              %i.fa.fa-angle-right
+          %li
+            %a{"data-toggle" => "tab", href: "#tab6"}
+              STFU
+              %small Tell your team to be quiet
+              %i.fa.fa-angle-right
 
-            .tab-content.col-sm-8.col-md-8
+        .tab-content.col-sm-8.col-md-8
 
-              #tab1.feature.tab-pane.active.col-sm-12.col-md-12
-                %img.img-responsive{alt: "JIRA", src: image_path('feature-jira.png')}/
-                %h3.title.visible-phone Watch your progress
-                / only show on mobile when tabs are open
-                %p Connect to JIRA and watch your progress.
+          #tab1.feature.tab-pane.active.col-sm-12.col-md-12
+            %img.img-responsive{alt: "JIRA", src: image_path('feature-jira.png')}/
+            %h3.title.visible-phone Watch your progress
+            / only show on mobile when tabs are open
+            %p Connect to JIRA and watch your progress.
 
-              #tab2.feature.tab-pane.col-sm-12.col-md-12
-                %img.img-responsive{alt: "Crucible", src: "img/features/feature-2.png"}/
-                %h3.title.visible-phone Reviews in progress
-                / only show on mobile when tabs are open
-                %p Connect to Crucible and monitor review progress in your team.
+          #tab2.feature.tab-pane.col-sm-12.col-md-12
+            %img.img-responsive{alt: "Crucible", src: "img/features/feature-2.png"}/
+            %h3.title.visible-phone Reviews in progress
+            / only show on mobile when tabs are open
+            %p Connect to Crucible and monitor review progress in your team.
 
-              #tab3.feature.tab-pane.col-sm-12.col-md-12
-                %img.img-responsive{alt: "Bamboo", src: image_path('feature-bamboo.png')}/
-                %h3.title.visible-phone Monitor your builds
-                / only show on mobile when tabs are open
-                %p Connect to Bamboo and monitor your builds.
+          #tab3.feature.tab-pane.col-sm-12.col-md-12
+            %img.img-responsive{alt: "Bamboo", src: image_path('feature-bamboo.png')}/
+            %h3.title.visible-phone Monitor your builds
+            / only show on mobile when tabs are open
+            %p Connect to Bamboo and monitor your builds.
 
-              #tab4.feature.tab-pane.col-sm-12.col-md-12
-                %img.img-responsive{alt: "PostgreSQL", src: image_path('feature-postgresql.png')}/
-                %h3.title.visible-phone Your custom data
-                / only show on mobile when tabs are open
-                %p Connect to PostgreSQL and display custom data.
+          #tab4.feature.tab-pane.col-sm-12.col-md-12
+            %img.img-responsive{alt: "PostgreSQL", src: image_path('feature-postgresql.png')}/
+            %h3.title.visible-phone Your custom data
+            / only show on mobile when tabs are open
+            %p Connect to PostgreSQL and display custom data.
 
-              #tab5.feature.tab-pane.col-sm-12.col-md-12
-                %img.img-responsive{alt: "Clock", src: image_path('feature-clock.png')}/
-                %h3.title.visible-phone Clock
-                / only show on mobile when tabs are open
-                %p Show time around the world.
+          #tab5.feature.tab-pane.col-sm-12.col-md-12
+            %img.img-responsive{alt: "Clock", src: image_path('feature-clock.png')}/
+            %h3.title.visible-phone Clock
+            / only show on mobile when tabs are open
+            %p Show time around the world.
 
-              #tab6.feature.tab-pane.col-sm-12.col-md-12
-                %img.img-responsive{alt: "STFU", src: image_path('feature-stfu.png')}/
-                %h3.title.visible-phone STFU
-                / only show on mobile when tabs are open
-                %p Tell your team to be quiet.
+          #tab6.feature.tab-pane.col-sm-12.col-md-12
+            %img.img-responsive{alt: "STFU", src: image_path('feature-stfu.png')}/
+            %h3.title.visible-phone STFU
+            / only show on mobile when tabs are open
+            %p Tell your team to be quiet.
 
-        / Contact block
-        .col-md-3
-          %h3.title-divider
-            %span Questions?
-            %small Get in touch!
-          %p
-            %abbr{title: "Phone"}
-              %i.fa.fa-phone
-            %a{href: contact_phone_url}=contact_phone
-          %p
-            %abbr{title: "Email"}
-              %i.fa.fa-envelope
-            %a{href: 'mailto:info@teamstatus.tv'} info@teamstatus.tv
-          %p
-            %abbr{title: "Address"}
-              %i.fa.fa-home
-            %span.nowrap Tischnera 14. Gdansk.
-            %span.nowrap Poland. 80-283.
+    / Contact block
+    .col-md-3
+      %h3.title-divider
+        %span Questions?
+        %small Get in touch!
+      %p
+        %abbr{title: "Phone"}
+          %i.fa.fa-phone
+        %a{href: contact_phone_url}=contact_phone
+      %p
+        %abbr{title: "Email"}
+          %i.fa.fa-envelope
+        %a{href: 'mailto:info@teamstatus.tv'} info@teamstatus.tv
+      %p
+        %abbr{title: "Address"}
+          %i.fa.fa-home
+        %span.nowrap Tischnera 14. Gdansk.
+        %span.nowrap Poland. 80-283.

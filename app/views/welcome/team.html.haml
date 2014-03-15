@@ -1,73 +1,71 @@
-#content
-  #about.container
-    .row
-      =render :partial => 'about_sidebar'
+.row
+  =render :partial => 'about_sidebar'
 
-      / main content
-      .col-md-9
-        %h2.title-divider
-          %span
-            The
-            %span.de-em Team
-          %small
-            Our team of stars!
-        / The team
-        #team.block.team.margin-top-large
-          .media
-            .pull-left
-              %img.img-thumbnail.media-object{alt: "Pawel Niewiadomski", src: image_path('pawel-niewiadomski.jpeg')}/
-            .media-body
-              %h4.media-heading Pawel Niewiadomski
-              %p.role Founder &amp; Developer
-              %p
-                Be bold. Question the status quo. Be creative. Less is better. Live a moment. Help others. Focus. Ignore everybody. Think differently. Become a linchpin. Fail often. Stay hungry. Stay foolish.
-              %ul.list-inline
-                %li
-                  %a{href: "https://twitter.com/devonsteroids"}
-                    %i.fa.fa-twitter
-                    Twitter
-                %li
-                  %a{href: "https://www.facebook.com/pawelniewie"}
-                    %i.fa.fa-facebook
-                    Facebook
-                %li
-                  %a{href: "http://linkedin.com/in/pawelniewiadomski"}
-                    %i.fa.fa-linkedin
-                    LinkedIn
-                %li
-                  %a{href: "https://plus.google.com/u/0/110326854159605514630/posts"}
-                    %i.fa.fa-google-plus
-                    Google+
-          .media
-            .pull-left
-              %img.img-thumbnail.media-object{alt: "Jan Nowak", src: image_path('jan-nowak.jpg')}/
-            .media-body
-              %h4.media-heading Jan Nowak
-              %p.role Founder &amp; Biz Dev
-              %p Work smart. Don't waste your time on doing stupid things. Always look for opportunities in change. Don't be afraid to do anything. It's ok to try everything in life. Travel a lot.
+  / main content
+  .col-md-9
+    %h2.title-divider
+      %span
+        The
+        %span.de-em Team
+      %small
+        Our team of stars!
+    / The team
+    #team.block.team.margin-top-large
+      .media
+        .pull-left
+          %img.img-thumbnail.media-object{alt: "Pawel Niewiadomski", src: image_path('pawel-niewiadomski.jpeg')}/
+        .media-body
+          %h4.media-heading Pawel Niewiadomski
+          %p.role Founder &amp; Developer
+          %p
+            Be bold. Question the status quo. Be creative. Less is better. Live a moment. Help others. Focus. Ignore everybody. Think differently. Become a linchpin. Fail often. Stay hungry. Stay foolish.
+          %ul.list-inline
+            %li
+              %a{href: "https://twitter.com/devonsteroids"}
+                %i.fa.fa-twitter
+                Twitter
+            %li
+              %a{href: "https://www.facebook.com/pawelniewie"}
+                %i.fa.fa-facebook
+                Facebook
+            %li
+              %a{href: "http://linkedin.com/in/pawelniewiadomski"}
+                %i.fa.fa-linkedin
+                LinkedIn
+            %li
+              %a{href: "https://plus.google.com/u/0/110326854159605514630/posts"}
+                %i.fa.fa-google-plus
+                Google+
+      .media
+        .pull-left
+          %img.img-thumbnail.media-object{alt: "Jan Nowak", src: image_path('jan-nowak.jpg')}/
+        .media-body
+          %h4.media-heading Jan Nowak
+          %p.role Founder &amp; Biz Dev
+          %p Work smart. Don't waste your time on doing stupid things. Always look for opportunities in change. Don't be afraid to do anything. It's ok to try everything in life. Travel a lot.
 
-              %ul.list-inline
-                %li
-                  %a{href: "http://twitter.com/yohnyyN"}
-                    %i.fa.fa-twitter
-                    Twitter
-                %li
-                  %a{href: "https://www.facebook.com/jan.nowak.9484"}
-                    %i.fa.fa-facebook
-                    Facebook
-                %li
-                  %a{href: "https://linkedin.com/pub/jan-nowak/68/9bb/290"}
-                    %i.fa.fa-linkedin
-                    LinkedIn
-          .media
-            .pull-left
-              %img.img-thumbnail.media-object{alt: "Robert", src: "img/team/deniro.jpg"}/
-            .media-body
-              %h4.media-heading This is place for you!
-              %p.role Can you help us?
-              %p
-                If you feel you can help and you believe you would be a good fit for our team please wait no more and shoot us
-                =succeed '.' do
-                  %a{href: 'mailto:job@teamstatus.tv'} an email
+          %ul.list-inline
+            %li
+              %a{href: "http://twitter.com/yohnyyN"}
+                %i.fa.fa-twitter
+                Twitter
+            %li
+              %a{href: "https://www.facebook.com/jan.nowak.9484"}
+                %i.fa.fa-facebook
+                Facebook
+            %li
+              %a{href: "https://linkedin.com/pub/jan-nowak/68/9bb/290"}
+                %i.fa.fa-linkedin
+                LinkedIn
+      .media
+        .pull-left
+          %img.img-thumbnail.media-object{alt: "Robert", src: "img/team/deniro.jpg"}/
+        .media-body
+          %h4.media-heading This is place for you!
+          %p.role Can you help us?
+          %p
+            If you feel you can help and you believe you would be a good fit for our team please wait no more and shoot us
+            =succeed '.' do
+              %a{href: 'mailto:job@teamstatus.tv'} an email
 
-        / =render :partial => 'testimonials3'
+    / =render :partial => 'testimonials3'

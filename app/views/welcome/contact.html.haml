@@ -1,52 +1,50 @@
-#content
-  .container
+.row
+  =render :partial => 'about_sidebar'
+
+  / main content
+  .col-md-9
+    %h2.title-divider
+      %span
+        Contact
+        %span.de-em Us
+      %small Ways To Get In Touch
     .row
-      =render :partial => 'about_sidebar'
+      .col-md-6
+        %form#contact-form{action: "#", role: "form", name: 'contact', :'ng-app' => 'teamstatus.public.contact', :'ng-controller' => 'ContactCtrl', 'ng-submit' => 'sendMessage()'}
+          .alert.alert-success{:'ng-show' => 'succeeded', 'ng-cloak' => ''} Message was sent. Thank you!
+          .form-group
+            %label.sr-only{for: "contact-name"} Name
+            %input#contact-name.form-control{placeholder: "Name", type: "text", name: 'name', :'ng-model' => 'name', :'ng-disabled' => 'loading'}/
+          .form-group
+            %label.sr-only{for: "contact-email"} Email
+            %input#contact-email.form-control{placeholder: "Email", type: "email", name: 'email', required: true, :'ng-model' => 'email', 'ng-minlength' => "5", :'ng-disabled' => 'loading'}/
 
-      / main content
-      .col-md-9
-        %h2.title-divider
-          %span
-            Contact
-            %span.de-em Us
-          %small Ways To Get In Touch
-        .row
-          .col-md-6
-            %form#contact-form{action: "#", role: "form", name: 'contact', :'ng-app' => 'teamstatus.public.contact', :'ng-controller' => 'ContactCtrl', 'ng-submit' => 'sendMessage()'}
-              .alert.alert-success{:'ng-show' => 'succeeded', 'ng-cloak' => ''} Message was sent. Thank you!
-              .form-group
-                %label.sr-only{for: "contact-name"} Name
-                %input#contact-name.form-control{placeholder: "Name", type: "text", name: 'name', :'ng-model' => 'name', :'ng-disabled' => 'loading'}/
-              .form-group
-                %label.sr-only{for: "contact-email"} Email
-                %input#contact-email.form-control{placeholder: "Email", type: "email", name: 'email', required: true, :'ng-model' => 'email', 'ng-minlength' => "5", :'ng-disabled' => 'loading'}/
+            %small.error{"ng-show" => "contact.email.$error.email"} That's not a valid email
+            %small.error{"ng-show" => "contact.email.$error.minlength"} Email is required to be at least 5 characters
+            %small.error{"ng-show" => "contact.email.$error.required"} Email is required
 
-                %small.error{"ng-show" => "contact.email.$error.email"} That's not a valid email
-                %small.error{"ng-show" => "contact.email.$error.minlength"} Email is required to be at least 5 characters
-                %small.error{"ng-show" => "contact.email.$error.required"} Email is required
+          .form-group
+            %label.sr-only{for: "contact-message"} Message
+            %textarea#contact-message.form-control{placeholder: "Message", rows: "12", name: 'message', required: true, :'ng-model' => 'message', 'ng-minlength' => '5', :'ng-disabled' => 'loading'}
 
-              .form-group
-                %label.sr-only{for: "contact-message"} Message
-                %textarea#contact-message.form-control{placeholder: "Message", rows: "12", name: 'message', required: true, :'ng-model' => 'message', 'ng-minlength' => '5', :'ng-disabled' => 'loading'}
+            %small.error{"ng-show" => "contact.message.$error.minlength"} Message is required to be at least 5 characters
+            %small.error{"ng-show" => "contact.message.$error.required"} Message is required
 
-                %small.error{"ng-show" => "contact.message.$error.minlength"} Message is required to be at least 5 characters
-                %small.error{"ng-show" => "contact.message.$error.required"} Message is required
-
-              %input.btn.btn-primary{type: "submit", value: "Send Message", :'ng-disabled' => 'loading', :'ng-hide' => 'loading'}/
-              %input.btn.btn-primary{type: "submit", value: "Sending...", :'ng-disabled' => 'loading', :'ng-show' => 'loading'}/
-          .col-md-6
-            %p
-              %abbr{title: "Phone"}
-                %i.fa.fa-phone
-              %a{href: contact_phone_url}=contact_phone
-            %p
-              %abbr{title: "Email"}
-                %i.fa.fa-envelope
-              %a{href: 'mailto:info@teamstatus.tv'} info@teamstatus.tv
-            %p
-              %abbr{title: "Address"}
-                %i.fa.fa-home
-              Tischnera 14. Gdansk. Poland. 80-283.
-            / %p
-            /   %a{href: "https://maps.google.co.uk/maps?q=&ie=UTF8&hq=&hnear=London,+United+Kingdom&gl=uk&t=m&ll=51.510238,-0.127029&spn=0.042735,0.102654&z=12&"}
-            /     %img.img-thumbnail{alt: "Location map", src: "img/misc/map.png"}/
+          %input.btn.btn-primary{type: "submit", value: "Send Message", :'ng-disabled' => 'loading', :'ng-hide' => 'loading'}/
+          %input.btn.btn-primary{type: "submit", value: "Sending...", :'ng-disabled' => 'loading', :'ng-show' => 'loading'}/
+      .col-md-6
+        %p
+          %abbr{title: "Phone"}
+            %i.fa.fa-phone
+          %a{href: contact_phone_url}=contact_phone
+        %p
+          %abbr{title: "Email"}
+            %i.fa.fa-envelope
+          %a{href: 'mailto:info@teamstatus.tv'} info@teamstatus.tv
+        %p
+          %abbr{title: "Address"}
+            %i.fa.fa-home
+          Tischnera 14. Gdansk. Poland. 80-283.
+        / %p
+        /   %a{href: "https://maps.google.co.uk/maps?q=&ie=UTF8&hq=&hnear=London,+United+Kingdom&gl=uk&t=m&ll=51.510238,-0.127029&spn=0.042735,0.102654&z=12&"}
+        /     %img.img-thumbnail{alt: "Location map", src: "img/misc/map.png"}/
