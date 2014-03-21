@@ -26,9 +26,28 @@
  //
  /////////////////////////////////////////////////////////////////////*/
 
-body.welcome-features .features .feature.tab-pane img {
-    min-width: 100px;
+body {
+	.welcome-features .features .feature.tab-pane img {
+	    min-width: 100px;
+	}
+
+	.title-divider {
+		background: none;
+
+		span {
+			line-height: 1.4;
+		}
+	}
 }
+
+@media (min-width: 992px) {
+	body {
+		.title-divider {
+			background: #ffffff url(../img/bg_divider.png) left center repeat-x;
+		}
+	}
+}
+
 
 /*
  * --------------------------------------------------
